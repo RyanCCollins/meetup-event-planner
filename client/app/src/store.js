@@ -3,23 +3,23 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { browserHistory } from 'react-router';
 import createLogger from 'redux-logger';
-import promiseMiddleware from 'redux-promise-middleware';
 import rootReducer from './reducers';
 const isClient = typeof document !== 'undefined';
 const isDeveloping = process.env.NODE_ENV !== 'production';
+import client from './apolloClient';
 
-import { initialState as featureComponent } from './containers/FeatureFirstContainer/reducer';
+import { initialState as landingContainer } from 'containers/LandingContainer/reducer';
 
 const initialState = {
-  featureComponent,
+  landingContainer,
 };
 
 /* Commonly used middlewares and enhancers */
 /* See: http://redux.js.org/docs/advanced/Middleware.html*/
 const loggerMiddleware = createLogger();
-const middlewares = [thunk, promiseMiddleware()];
+const middlewares = [thunk, client.middleware()];
 
-if (isDeveloping) {
+if (isDeveloping && isClient) {
   middlewares.push(loggerMiddleware);
 }
 
