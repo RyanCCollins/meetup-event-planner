@@ -6,7 +6,7 @@ class ApiController < ApplicationController
   def create
     query_string = params[:query]
     query_variables = ensure_hash(params[:variables])
-    result = BoilerplateSchema.execute(
+    result = MeetupEventPlannerSchema.execute(
       query_string,
       variables: query_variables,
       context: {}
