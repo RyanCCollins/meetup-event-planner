@@ -5,7 +5,6 @@ import Menu from 'grommet-udacity/components/Menu';
 import Anchor from 'grommet-udacity/components/Anchor';
 import Search from 'grommet-udacity/components/Search';
 import LogoImage from './logo.png';
-
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
 
@@ -17,13 +16,7 @@ const Navbar = () => (
       </Title>
       <Menu direction="row" align="center" responsive={false}>
         <Anchor href="#" className="active">
-          First
-        </Anchor>
-        <Anchor href="#">
-          Second
-        </Anchor>
-        <Anchor href="#">
-          Third
+          Events
         </Anchor>
         <Search dropAlign={{ right: 'right' }} />
       </Menu>
