@@ -11,4 +11,26 @@ QueryType = GraphQL::ObjectType.define do
       events
     }
   end
+  field :event, EventType do
+    argument :id, types.ID
+    resolve -> (obj, args, ctx) do
+      event = Event.find_by_id(args[:id])
+      event
+    end
+  end
+  field :hosts, types[HostType] do
+    resolve -> (obj, args, ctx) do
+      Host.all
+    end
+  end
+  field :guests, types[GuestType] do
+    resolve -> (obj, args, ctx) do
+      Guest.all
+    end
+  end
+  field :eventTypes, types[EventTypeEnum] do
+    resolve -> (obj, args, ctx) do
+      Event.defined_enums["event_type"].map { |k, _| k }.to_a
+    end
+  end
 end
