@@ -11,11 +11,13 @@ import client from './apolloClient';
 import { initialState as landingContainer } from 'containers/LandingContainer/reducer';
 import { initialState as signupContainer } from 'containers/SignupContainer/reducer';
 import { initialState as loginContainer } from 'containers/LoginContainer/reducer';
+import { initialState as createEventContainer } from 'containers/CreateEventContainer/reducer';
 
 const initialState = {
   landingContainer,
   signupContainer,
   loginContainer,
+  createEventContainer,
 };
 
 /* Commonly used middlewares and enhancers */

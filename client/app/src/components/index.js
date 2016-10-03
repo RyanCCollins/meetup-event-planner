@@ -1,4 +1,5 @@
 /* Assemble all components for export */
+export ToastMessage from './ToastMessage';
 export EventForm from './EventForm';
 export EventInfo from './EventInfo';
 export LoadingIndicator from './LoadingIndicator';
