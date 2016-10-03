@@ -15,7 +15,7 @@ const Navbar = () => (
         <img className={styles.logo} src={LogoImage} alt="logo"/>
       </Title>
       <Menu direction="row" align="center" responsive={false}>
-        <Anchor href="#" className="active">
+        <Anchor href="/events" className="active">
           Events
         </Anchor>
         <Search dropAlign={{ right: 'right' }} />

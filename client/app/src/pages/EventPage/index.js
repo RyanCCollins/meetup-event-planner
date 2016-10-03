@@ -1,12 +1,12 @@
 import React from 'react';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
-import { EventsContainer } from 'containers';
+import { EventContainer } from 'containers';
 
-const EventsPage = () => (
+const EventPage = () => (
   <div className={styles.container}>
-    <EventsContainer />
+    <EventContainer />
   </div>
 );
 
-export default cssModules(EventsPage, styles);
+export default cssModules(EventPage, styles);
