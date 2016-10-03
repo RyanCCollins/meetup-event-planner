@@ -9,6 +9,9 @@ import Section from 'grommet-udacity/components/Section';
 import Box from 'grommet-udacity/components/Box';
 import List from 'grommet-udacity/components/List';
 import ListItem from 'grommet-udacity/components/ListItem';
+import Button from 'grommet-udacity/components/Button';
+import Heading from 'grommet-udacity/components/Heading';
+import CalendarIcon from 'grommet-udacity/components/icons/base/Calendar';
 
 class EventsContainer extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -18,7 +21,12 @@ class EventsContainer extends Component { // eslint-disable-line react/prefer-st
     } = this.props;
     return (
       <Section>
-        <Box>
+        <Box align="center">
+          <CalendarIcon size="large" />
+          <Heading align="center">
+            Events
+          </Heading>
+          <Button href="/create-event" label="Create Event" onClick={e => e} />
           {loading ?
             <LoadingIndicator isLoading={loading} />
           :

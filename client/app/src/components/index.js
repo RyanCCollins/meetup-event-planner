@@ -1,4 +1,5 @@
 /* Assemble all components for export */
+export EventForm from './EventForm';
 export EventInfo from './EventInfo';
 export LoadingIndicator from './LoadingIndicator';
 export AuthFormFooter from './AuthFormFooter';

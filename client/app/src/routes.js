@@ -19,8 +19,9 @@ const routes = (
         <Route path="/signup" component={Pages.SignupPage} />
         <Route path="/login" component={Pages.LoginPage} />
         <Route path="/events" component={Pages.EventsPage} />
-        <Route path="/event/:event_id" component={Pages.EventPage} />
-          <Route path="*" component={Pages.NotFoundPage} />
+        <Route path="/events/:event_id" component={Pages.EventPage} />
+        <Route path="/create-event" component={Pages.CreateEventPage} />
+        <Route path="*" component={Pages.NotFoundPage} />
       </Route>
     </Router>
   </ApolloProvider>

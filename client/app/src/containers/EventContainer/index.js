@@ -9,6 +9,7 @@ class Event extends Component { // eslint-disable-line react/prefer-stateless-fu
   render() {
     return (
       <div className={styles.event}>
+        hello from Event Container
       </div>
     );
   }
