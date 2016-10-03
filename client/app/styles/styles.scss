@@ -12,13 +12,13 @@
 */
 
 input, textarea {
-  max-width: 430px;
+  max-width: 380px;
   outline: none;
   @media screen and (max-width: 480px) {
     max-width: 330px;
   }
   @media screen and (max-width: 330px) {
-    max-width: 200px;
+    max-width: 280px;
   }
 }
 

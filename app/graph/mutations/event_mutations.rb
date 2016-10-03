@@ -3,9 +3,9 @@ module EventMutations
     name 'CreateEvent'
     input_field :name, !types.String
     input_field :message, types.String
-    input_field :start_date, types.String
-    input_field :end_date, types.String
-    input_field :type, types.Int
+    input_field :start_date, !types.String
+    input_field :end_date, !types.String
+    input_field :type, !types.String
     input_field :host, HostInputType
     input_field :guests, types[GuestInputType]
 

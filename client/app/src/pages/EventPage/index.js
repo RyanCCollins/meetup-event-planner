@@ -3,9 +3,11 @@ import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import { EventContainer } from 'containers';
 
-const EventPage = () => (
+const EventPage = ({
+  params,
+}) => (
   <div className={styles.container}>
-    <EventContainer />
+    <EventContainer params={params} />
   </div>
 );
 

@@ -51,3 +51,15 @@ export const createEventRemoveGuest = (index) => ({
   type: types.CREATE_EVENT_REMOVE_GUEST,
   index,
 });
+
+export const fieldsToData = (fields, guestList) => ({
+  name: fields.nameInput.value,
+  message: fields.messageInput.value,
+  start: fields.startDateInput.value,
+  end: fields.endDateInput.value,
+  type: fields.typeInput.value.option,
+  host: {
+    name: fields.hostInput.value,
+  },
+  guests: guestList.map((item) => ({ name: item })),
+});

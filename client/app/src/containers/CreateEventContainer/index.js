@@ -10,6 +10,7 @@ import { EventForm, LoadingIndicator, ToastMessage } from 'components';
 import { reduxForm } from 'redux-form';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import validation from './utils/validations';
 
 export const formFields = [
   'nameInput',
@@ -39,21 +40,18 @@ class CreateEvent extends Component {
   handleSubmit() {
     const {
       actions,
-      submitEvent,
+      mutate,
       fields,
       guestList,
     } = this.props;
-    const data = {
-      name: fields.nameInput.value,
-      message: fields.messageInput.value,
-      start: fields.startDateInput.value,
-      end: fields.endDateInput.value,
-      type: fields.typeInput.value,
-      host: fields.hostInput.value,
-      guests: guestList.map((item) => ({ name: item })),
+    const variables = {
+      variables: CreateEventActionCreators.fieldsToData(fields, guestList),
     };
-    submitEvent(data)
-      .then(() => {
+    mutate(variables)
+      .then(res => {
+        if (!res.data) {
+          throw new Error('An error has occured.');
+        }
         actions.createEventMessage('Event submitted successfully');
       })
       .catch(err => {
@@ -164,14 +162,15 @@ const createEventQuery = gql`
 `;
 
 const createEventMutation = gql`
-mutation createEvent($name:String!, $message:String,
-  $start: String, $end: String, $type:Int,
+mutation createEvent($name: String!, $message: String,
+  $start: String!, $end: String!, $type:String!,
     $host: HostInput, $guests: [GuestInput]) {
       CreateEvent(input: { name: $name, message: $message, start_date: $start,
         end_date: $end, host: $host, type: $type, guests: $guests}) {
           event {
             id
             name
+            type: event_type
             guests {
               name
             }
@@ -186,6 +185,7 @@ mutation createEvent($name:String!, $message:String,
 const FormContainer = reduxForm({
   form: 'CreateEvent',
   fields: formFields,
+  validate: validation,
 })(Container);
 
 const ContainerWithData = graphql(createEventQuery, {
@@ -197,15 +197,7 @@ const ContainerWithData = graphql(createEventQuery, {
   }),
 })(FormContainer);
 
-const ContainerWithMutations = graphql(createEventMutation, {
-  props: ({ mutate }) => ({
-    submitEvent: (...params) => mutate({
-      variables: {
-        ...params,
-      },
-    }),
-  }),
-})(ContainerWithData);
+const ContainerWithMutations = graphql(createEventMutation)(ContainerWithData);
 
 export default connect(
   mapStateToProps,

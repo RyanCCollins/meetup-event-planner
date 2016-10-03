@@ -4,8 +4,10 @@ const twoWordsRE = /^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/;
 const lowercaseRE = /^(?=.*[a-z]).+$/;
 const uppercaseRE = /^(?=.*[A-Z]).+$/;
 const specialCharRE = /^(?=.*[_\W]).+$/;
+// eslint-disable
 const emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
+const dateRE = /^[0,1]?\d\/(([0-2]?\d)|([3][01]))\/((199\d)|([2-9]\d{3}))\s[0-2]?[0-9]:[0-5][0-9] (am|pm)?$/
+// eslint-enable
 
 /**
  * @function join
@@ -88,6 +90,18 @@ export const containsTwoWords = (value) => {
 
 export const isEmail = (value) =>
   value && validateWithRE(emailRE, 'Must be a valid email address.')(value);
+
+export const isValidDate = (value) =>
+  value && validateWithRE(dateRE, 'Must be a valid date time.')(value);
+
+const validateOneOf = (values, message) => (value) => {
+  const isValid = values.filter(item => item === value).length > 0;
+  return isValid ? message : null;
+};
+
+export const oneOf = (values) =>
+  (value) =>
+    validateOneOf(values, `Value must be one of: ${values.join(', ')}`)(value);
 
 export const createValidator = (validationRules) =>
   (data = {}) => {

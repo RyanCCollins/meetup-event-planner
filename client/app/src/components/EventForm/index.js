@@ -61,13 +61,17 @@ const EventForm = ({
         label="Host"
         htmlFor="host-input"
         help="Who is hosting this shindig?"
+        error={hostInput.touched && hostInput.error ? hostInput.error : null}
       >
         <SearchInput
           {...hostInput}
           id="host-input"
           name="host"
           suggestions={pastHosts.map(i => i.name)}
-          onDOMChange={(e) => hostInput.onChange(e.target.value)}
+          onDOMChange={(e) => {
+            hostInput.touched = true;
+            hostInput.onChange(e.target.value);
+          }}
           onSelect={({ _, suggestion }) => hostInput.onChange(suggestion)}
         />
       </FormField>

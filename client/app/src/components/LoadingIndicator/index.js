@@ -26,6 +26,7 @@ const LoadingIndicator = ({
   </Box>
 );
 
+
 LoadingIndicator.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   message: PropTypes.string.isRequired,
