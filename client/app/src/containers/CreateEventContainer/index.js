@@ -52,7 +52,10 @@ class CreateEvent extends Component {
         if (!res.data) {
           throw new Error('An error has occured.');
         }
-        actions.createEventMessage('Event submitted successfully');
+        actions.createEventMessage('Event submitted successfully. Redirecting back to event page.');
+        setTimeout(() => {
+          this.context.router.push('/events');
+        }, 4000);
       })
       .catch(err => {
         actions.createEventError(err.message || 'An unknown error has occured');
@@ -130,6 +133,10 @@ CreateEvent.propTypes = {
   message: PropTypes.string,
   actions: PropTypes.object.isRequired,
   guestList: PropTypes.array,
+};
+
+CreateEvent.contextTypes = {
+  router: PropTypes.func.isRequired,
 };
 
 // mapStateToProps :: {State} -> {Props}

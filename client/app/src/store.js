@@ -12,8 +12,10 @@ import { initialState as landingContainer } from 'containers/LandingContainer/re
 import { initialState as signupContainer } from 'containers/SignupContainer/reducer';
 import { initialState as loginContainer } from 'containers/LoginContainer/reducer';
 import { initialState as createEventContainer } from 'containers/CreateEventContainer/reducer';
+import { initialState as appState } from 'components/App/reducer';
 
 const initialState = {
+  appState,
   landingContainer,
   signupContainer,
   loginContainer,

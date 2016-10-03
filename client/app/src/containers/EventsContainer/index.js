@@ -31,10 +31,12 @@ class EventsContainer extends Component { // eslint-disable-line react/prefer-st
             <LoadingIndicator isLoading={loading} />
           :
             <List>
-              {events.map((event, i) =>
-                <ListItem key={i}>
-                  <EventInfo event={event} />
-                </ListItem>
+              {events
+                .sort((a, b) => new Date(b.startDate) - new Date(a.startDate))
+                .map((event, i) =>
+                  <ListItem key={i}>
+                    <EventInfo event={event} />
+                  </ListItem>
               )}
             </List>
           }
