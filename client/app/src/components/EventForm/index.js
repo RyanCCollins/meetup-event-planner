@@ -22,6 +22,7 @@ const EventForm = ({
   typeInput,
   hostInput,
   locationInput,
+  messageInput,
   guestsInput,
   startDateInput,
   endDateInput,
@@ -112,6 +113,7 @@ const EventForm = ({
         {
           guestsInput !== '' &&
             <Button
+              tabIndex="0"
               className={styles.addButton}
               icon={<AddIcon />}
               onClick={() => {
@@ -121,12 +123,11 @@ const EventForm = ({
             />
         }
       </FormField>
-      <FormField>
+      <FormField
+        className={guestList && guestList.length < 0 ? styles.hidden : styles.none}
+      >
         {guestList && guestList.length > 0 &&
           <Box style={{ zIndex: 10 }}>
-            <Heading align="center" tag="h3">
-              Guests
-            </Heading>
             <List>
               {guestList.map((item, i) =>
                 <ListItem key={i}>
@@ -149,6 +150,14 @@ const EventForm = ({
             </List>
           </Box>
         }
+      </FormField>
+      <FormField
+        label="Message"
+        help="Optional message to the guests."
+        htmlFor="message-input"
+        error={messageInput.touched && messageInput.error ? messageInput.error : null}
+      >
+        <textarea {...messageInput} name="message" id="message-input" cols="40" rows="3" />
       </FormField>
     </FormFields>
     <Footer justify="center" pad={{ vertical: 'small' }}>

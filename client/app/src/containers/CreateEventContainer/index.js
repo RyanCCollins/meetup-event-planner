@@ -41,14 +41,18 @@ class CreateEvent extends Component {
       actions,
       submitEvent,
       fields,
+      guestList,
     } = this.props;
-    submitEvent({
+    const data = {
       name: fields.nameInput.value,
-      type: fields.typeInput.value,
+      message: fields.messageInput.value,
       start: fields.startDateInput.value,
       end: fields.endDateInput.value,
-      message: fields.messageInput.value,
-    })
+      type: fields.typeInput.value,
+      host: fields.hostInput.value,
+      guests: guestList.map((item) => ({ name: item })),
+    };
+    submitEvent(data)
       .then(() => {
         actions.createEventMessage('Event submitted successfully');
       })
@@ -161,15 +165,22 @@ const createEventQuery = gql`
 
 const createEventMutation = gql`
 mutation createEvent($name:String!, $message:String,
-  $start: String, $end: String, $type:Int, $host: HostInput) {
-  CreateEvent(input: { name: $name, message: $message,
-    start_date: $start, end_date: $end, host: $host, type: $type}) {
-      event {
-        id
-        name
+  $start: String, $end: String, $type:Int,
+    $host: HostInput, $guests: [GuestInput]) {
+      CreateEvent(input: { name: $name, message: $message, start_date: $start,
+        end_date: $end, host: $host, type: $type, guests: $guests}) {
+          event {
+            id
+            name
+            guests {
+              name
+            }
+            host {
+              name
+            }
+          }
+        }
       }
-    }
-  }
 `;
 
 const FormContainer = reduxForm({

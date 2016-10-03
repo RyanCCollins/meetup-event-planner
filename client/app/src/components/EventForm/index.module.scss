@@ -1,6 +1,19 @@
 .addButton {
   position: absolute;
   z-index: 10;
-  right: 38px;
-  top: 66px;
+  right: 45px;
+  top: 68px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.eventForm {
+  @media screen and (max-width: 480px) {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
 }

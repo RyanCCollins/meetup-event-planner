@@ -7,6 +7,7 @@ module EventMutations
     input_field :end_date, types.String
     input_field :type, types.Int
     input_field :host, HostInputType
+    input_field :guests, types[GuestInputType]
 
     return_field :event, EventType
     resolve -> (inputs, ctx) do
@@ -15,13 +16,16 @@ module EventMutations
         start_date: inputs[:start_date],
         end_date: inputs[:end_date],
         event_type: inputs[:type],
-        message: inputs[:message]
+        message: inputs[:message],
       )
-      host = Host.find_by(name: inputs[:host]["name"])
+      inputs[:guests].to_a.each do |guest|
+        event.guests << Guest.new(name: guest.to_h["name"])
+      end
+      host = Host.find_by(name: inputs[:host].to_h["name"])
       event.host = if host
                      host
                    else
-                     Host.new(name: inputs[:host]["name"])
+                     Host.new(name: inputs[:host].to_h["name"])
                    end
       event.save
       {
