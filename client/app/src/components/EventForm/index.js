@@ -14,6 +14,7 @@ import Heading from 'grommet-udacity/components/Heading';
 import List from 'grommet-udacity/components/List';
 import ListItem from 'grommet-udacity/components/ListItem';
 import CloseIcon from 'grommet/components/icons/base/Close';
+import AddIcon from 'grommet/components/icons/base/Add';
 
 const EventForm = ({
   onSubmit,
@@ -65,6 +66,7 @@ const EventForm = ({
           id="host-input"
           name="host"
           suggestions={pastHosts.map(i => i.name)}
+          onDOMChange={(e) => hostInput.onChange(e.target.value)}
           onSelect={({ _, suggestion }) => hostInput.onChange(suggestion)}
         />
       </FormField>
@@ -96,25 +98,51 @@ const EventForm = ({
         label="Guests"
         htmlFor="guests-input"
         help="Start Typing to Add A Guest"
+        style={{ position: 'relative' }}
         error={guestsInput.touched && guestsInput.error ? guestsInput.error : null}
       >
         <SearchInput
           {...guestsInput}
           id="guests-input"
           name="guests"
+          onDOMChange={(e) => guestsInput.onChange(e.target.value)}
           suggestions={pastGuests.map(i => i.name)}
           onSelect={({ _, suggestion }) => onAddGuest(suggestion)}
         />
+        {
+          guestsInput !== '' &&
+            <Button
+              className={styles.addButton}
+              icon={<AddIcon />}
+              onClick={() => {
+                onAddGuest(guestsInput.value);
+                guestsInput.onChange('');
+              }}
+            />
+        }
+      </FormField>
+      <FormField>
         {guestList && guestList.length > 0 &&
-          <Box>
+          <Box style={{ zIndex: 10 }}>
             <Heading align="center" tag="h3">
               Guests
             </Heading>
             <List>
               {guestList.map((item, i) =>
                 <ListItem key={i}>
-                  <Box justify="around">
-                    {item} <CloseIcon onClick={() => onRemoveGuest(i)} />
+                  <Box
+                    style={{ width: '100%' }}
+                    responsive={false}
+                    justify="around"
+                    align="start"
+                    direction="row"
+                  >
+                    <span
+                      style={{ flex: 1, height: 30, marginTop: 18 }}
+                    >
+                      {item}
+                    </span>
+                    <Button onClick={() => onRemoveGuest(i)} icon={<CloseIcon />} />
                   </Box>
                 </ListItem>
               )}

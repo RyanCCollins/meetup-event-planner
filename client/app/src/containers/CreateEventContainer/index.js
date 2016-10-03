@@ -19,6 +19,7 @@ export const formFields = [
   'hostInput',
   'locationInput',
   'guestsInput',
+  'messageInput',
 ];
 
 class CreateEvent extends Component {
@@ -37,9 +38,23 @@ class CreateEvent extends Component {
   }
   handleSubmit() {
     const {
-      createEventMessage,
-    } = this.props.actions;
-    createEventMessage('Haha amazing!!');
+      actions,
+      submitEvent,
+      fields,
+    } = this.props;
+    submitEvent({
+      name: fields.nameInput.value,
+      type: fields.typeInput.value,
+      start: fields.startDateInput.value,
+      end: fields.endDateInput.value,
+      message: fields.messageInput.value,
+    })
+      .then(() => {
+        actions.createEventMessage('Event submitted successfully');
+      })
+      .catch(err => {
+        actions.createEventError(err.message || 'An unknown error has occured');
+      });
   }
   handleAddingGuest(name) {
     const {
@@ -102,6 +117,8 @@ class CreateEvent extends Component {
 }
 
 CreateEvent.propTypes = {
+  submitEvent: PropTypes.func.isRequired,
+  mutate: PropTypes.func.isRequired,
   fields: PropTypes.object.isRequired,
   eventTypes: PropTypes.array,
   guests: PropTypes.object,
@@ -142,6 +159,19 @@ const createEventQuery = gql`
   }
 `;
 
+const createEventMutation = gql`
+mutation createEvent($name:String!, $message:String,
+  $start: String, $end: String, $type:Int, $host: HostInput) {
+  CreateEvent(input: { name: $name, message: $message,
+    start_date: $start, end_date: $end, host: $host, type: $type}) {
+      event {
+        id
+        name
+      }
+    }
+  }
+`;
+
 const FormContainer = reduxForm({
   form: 'CreateEvent',
   fields: formFields,
@@ -156,7 +186,17 @@ const ContainerWithData = graphql(createEventQuery, {
   }),
 })(FormContainer);
 
+const ContainerWithMutations = graphql(createEventMutation, {
+  props: ({ mutate }) => ({
+    submitEvent: (...params) => mutate({
+      variables: {
+        ...params,
+      },
+    }),
+  }),
+})(ContainerWithData);
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ContainerWithData);
+)(ContainerWithMutations);
