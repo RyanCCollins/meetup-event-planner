@@ -1,6 +1,6 @@
 class ApiController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_actions :authenticate_user_from_token!
+  before_action :authenticate_user_from_token!
   def new
   end
 
@@ -16,15 +16,26 @@ class ApiController < ApplicationController
   end
 
   def authenticate_user_from_token!
-    return authentication_error unless auth_token.include?(':')
-    user_id = auth_token.split(':').first
-    user = User.where(id: user_id).first
+    auth_token = request.headers['Authorization']
+    return authentication_error unless auth_token
+    authenticate_with_auth_token auth_token
+  end
+
+  def authenticate_with_auth_token(auth_token)
+    user = User.find_by(auth_token: auth_token)
     if user && Devise.secure_compare(user.auth_token, auth_token)
       sign_in user, store: false
     else
       authentication_error
     end
   end
+
+  # Authentication Failure
+  def authentication_error
+    # User's token is either invalid or not in the right format
+    render json: {error: t('application_controller.unauthorized')}, status: 401
+  end
+
   private
 
   def ensure_hash(query_variables)

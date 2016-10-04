@@ -21,3 +21,5 @@
 
 en:
   hello: "Hello world"
+  application_controller:
+    unauthorized: "You are not authorized to access this part of the app."

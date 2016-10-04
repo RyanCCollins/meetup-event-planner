@@ -10,4 +10,5 @@ EventType = GraphQL::ObjectType.define do
   field :host, HostType, 'The host of the event'
   field :guests, types[GuestType], 'The guests related to the event'
   field :location, types.String, 'The location of the event'
+  field :created_by, UserType, 'The user who created the Event'
 end

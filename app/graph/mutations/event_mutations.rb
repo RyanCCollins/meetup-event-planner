@@ -12,6 +12,7 @@ module EventMutations
     return_field :event, EventType
     resolve -> (inputs, ctx) do
       event = Event.new(
+        user: ctx[:current_user],
         name: inputs[:name],
         start_date: inputs[:start_date],
         end_date: inputs[:end_date],
