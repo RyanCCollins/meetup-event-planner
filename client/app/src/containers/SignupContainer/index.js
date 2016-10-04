@@ -6,7 +6,7 @@ import * as AppActions from 'components/App/actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import Section from 'grommet-udacity/components/Section';
-import { SignupForm, ToastMessage } from 'components';
+import { SignupForm, ToastMessage, LoadingIndicator } from 'components';
 import validation from './utils/validation';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -34,6 +34,7 @@ class Signup extends Component {
     const variables = {
       variables: SignupActionCreators.fieldsToData(fields),
     };
+    actions.signupSetLoading();
     mutate(variables)
       .then(res => {
         if (!res.data) {
@@ -57,6 +58,7 @@ class Signup extends Component {
       fields,
       error,
       message,
+      isLoading,
     } = this.props;
     return (
       <Section
@@ -66,6 +68,9 @@ class Signup extends Component {
         justify="center"
         className={styles.signup}
       >
+        {isLoading &&
+          <LoadingIndicator message="Submitting" isLoading={isLoading} />
+        }
         <SignupForm
           {...fields}
           onSubmit={this.handleSubmit}
@@ -94,18 +99,23 @@ Signup.propTypes = {
   error: PropTypes.string,
   message: PropTypes.string,
   actions: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
   message: state.signupContainer.message,
   error: state.signupContainer.error,
+  isLoading: state.signupContainer.isLoading,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(
-    { ...SignupActionCreators, ...AppActions },
+    Object.assign({},
+      SignupActionCreators,
+      AppActions
+    ),
     dispatch
   ),
 });

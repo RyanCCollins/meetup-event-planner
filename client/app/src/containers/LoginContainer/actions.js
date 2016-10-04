@@ -39,3 +39,7 @@ export const clearLoginToast = (type) =>
         break;
     }
   };
+
+export const loginSetLoading = () => ({
+  type: types.LOGIN_SET_LOADING,
+});

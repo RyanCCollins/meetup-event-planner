@@ -4,6 +4,7 @@ import update from 'react-addons-update';
 export const initialState = {
   error: null,
   message: null,
+  isLoading: false,
 };
 
 const loginReducer =
@@ -14,11 +15,17 @@ const loginReducer =
           error: {
             $set: action.error,
           },
+          isLoading: {
+            $set: false,
+          },
         });
       case types.LOGIN_SHOW_MESSAGE:
         return update(state, {
           message: {
             $set: action.message,
+          },
+          isLoading: {
+            $set: false,
           },
         });
       case types.LOGIN_CLEAR_ERROR:
@@ -31,6 +38,12 @@ const loginReducer =
         return update(state, {
           message: {
             $set: null,
+          },
+        });
+      case types.LOGIN_SET_LOADING:
+        return update(state, {
+          isLoading: {
+            $set: true,
           },
         });
       default:

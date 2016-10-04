@@ -5,7 +5,7 @@ import client from './apolloClient';
 
 import appState from 'components/App/reducer';
 import landingContainer from 'containers/LandingContainer/reducer';
-import loginContainer from 'containers/LandingContainer/reducer';
+import loginContainer from 'containers/LoginContainer/reducer';
 import signupContainer from 'containers/SignupContainer/reducer';
 import createEventContainer from 'containers/CreateEventContainer/reducer';
 

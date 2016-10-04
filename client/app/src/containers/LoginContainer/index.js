@@ -10,18 +10,20 @@ import LoginForm from 'grommet-udacity/components/LoginForm';
 import Box from 'grommet-udacity/components/Box';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { AuthFormFooter } from 'components';
+import { AuthFormFooter, LoadingIndicator, ToastMessage } from 'components';
 
 class Login extends Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClosingToast = this.handleClosingToast.bind(this);
   }
   handleSubmit({ username, password }) {
     const {
       mutate,
       actions,
     } = this.props;
+    actions.loginSetLoading();
     mutate({ variables: { email: username, password } })
       .then(result => {
         const token = result.data.SignIn.token;
@@ -29,13 +31,30 @@ class Login extends Component {
           throw new Error('An error has occured while signing in.  Please try again.');
         }
         actions.setAuthToken(token);
-        actions.showLoginMessage('You were successfully logged in. Redirecting to the profile page.')
+        actions.loginShowMessage(
+          'You were successfully logged in. Redirecting to the profile page.'
+        );
+        setTimeout(() => {
+          const { router } = this.context;
+          router.push('/user/profile');
+        }, 2000);
       })
       .catch(err => {
-        actions.showLoginError(err.message || 'An unknown error has occured.');
+        actions.loginShowError(err.message || 'An unknown error has occured.');
       });
   }
+  handleClosingToast(type) {
+    const {
+      clearLoginToast,
+    } = this.props.actions;
+    clearLoginToast(type);
+  }
   render() {
+    const {
+      error,
+      message,
+      isLoading,
+    } = this.props;
     return (
       <Section
         pad={{ horizontal: 'large' }}
@@ -49,6 +68,9 @@ class Login extends Component {
           align="center"
           pad={{ horizontal: 'small', vertical: 'small' }}
         >
+          {isLoading &&
+            <LoadingIndicator message="Submitting" isLoading={isLoading} />
+          }
           <LoginForm
             title="Meetup Events"
             secondaryText="Enter your credentials to Login"
@@ -58,6 +80,19 @@ class Login extends Component {
             }
             onSubmit={this.handleSubmit}
           />
+          {error &&
+            <ToastMessage
+              message={error}
+              status="critical"
+              onClose={() => this.handleClosingToast('error')}
+            />
+          }
+          {message &&
+            <ToastMessage
+              message={message}
+              onClose={() => this.handleClosingToast('message')}
+            />
+          }
         </Box>
       </Section>
     );
@@ -67,18 +102,29 @@ class Login extends Component {
 Login.propTypes = {
   mutate: PropTypes.func.isRequired,
   actions: PropTypes.object.isRequired,
+  error: PropTypes.string,
+  message: PropTypes.string,
+  isLoading: PropTypes.bool.isRequired,
+};
+
+Login.contextTypes = {
+  router: PropTypes.func.isRequired,
 };
 
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
   error: state.loginContainer.error,
   message: state.loginContainer.message,
+  isLoading: state.loginContainer.isLoading,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(
-    { ...LoginActionCreators, ...AppActions },
+    Object.assign({},
+      LoginActionCreators,
+      AppActions
+    ),
     dispatch
   ),
 });
@@ -88,7 +134,7 @@ const Container = cssModules(Login, styles);
 const signinUserMutation = gql`
   mutation signInUser($email: String!, $password: String!) {
     SignIn(input: { email: $email, password: $password }) {
-      auth_token
+      token: auth_token
     }
   }
 `;

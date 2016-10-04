@@ -46,3 +46,8 @@ export const fieldsToData = (fields) => ({
   password: fields.passwordInput.value,
   passwordConfirmation: fields.passwordConfirmationInput.value,
 });
+
+
+export const signupSetLoading = () => ({
+  type: types.SIGNUP_SET_LOADING,
+});

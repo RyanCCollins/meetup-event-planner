@@ -1,9 +1,14 @@
 import { createStore, compose, applyMiddleware } from 'redux';
-import { syncHistoryWithStore } from 'react-router-redux';
+import {
+  syncHistoryWithStore,
+  routerActions,
+  routerMiddleware,
+} from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { browserHistory } from 'react-router';
 import createLogger from 'redux-logger';
 import rootReducer from './reducers';
+import { UserAuthWrapper as userAuthWrapper } from 'redux-auth-wrapper';
 const isClient = typeof document !== 'undefined';
 const isDeveloping = process.env.NODE_ENV !== 'production';
 import client from './apolloClient';
@@ -25,7 +30,8 @@ const initialState = {
 /* Commonly used middlewares and enhancers */
 /* See: http://redux.js.org/docs/advanced/Middleware.html*/
 const loggerMiddleware = createLogger();
-const middlewares = [thunk, client.middleware()];
+const routingMiddleware = routerMiddleware(browserHistory);
+const middlewares = [thunk, client.middleware(), routingMiddleware];
 
 if (isDeveloping && isClient) {
   middlewares.push(loggerMiddleware);
@@ -59,6 +65,13 @@ const store = createStore(
 
 /* See: https://github.com/reactjs/react-router-redux/issues/305 */
 export const history = syncHistoryWithStore(browserHistory, store);
+
+export const userIsAuthenticated = userAuthWrapper({
+  authSelector: state => state.appState.authToken,
+  redirectAction: routerActions.replace,
+  failureRedirectPath: '/login',
+  wrapperDisplayName: 'userIsAuthenticated',
+});
 
 /* Hot reloading of reducers.  How futuristic!! */
 if (module.hot) {

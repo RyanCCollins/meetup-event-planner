@@ -2,13 +2,11 @@ import React from 'react';
 import { Router, Route, IndexRoute } from 'react-router';
 import { ApolloProvider } from 'react-apollo';
 import client from './apolloClient';
-import store, { history } from './store';
-/* eslint-disable */
+import store, { history, userIsAuthenticated } from './store';
 import App from 'components/App';
 import * as Pages from 'pages';
-/* eslint-enable */
 
-const routes = (
+const RouterApp = () => (
   <ApolloProvider store={store} client={client}>
     <Router
       history={history} // Scroll to top on route transitions
@@ -20,11 +18,12 @@ const routes = (
         <Route path="/login" component={Pages.LoginPage} />
         <Route path="/events" component={Pages.EventsPage} />
         <Route path="/events/:eventId" component={Pages.EventPage} />
-        <Route path="/create-event" component={Pages.CreateEventPage} />
+        <Route path="/create-event" component={userIsAuthenticated(Pages.CreateEventPage)} />
+        <Route path="/user/profile" component={userIsAuthenticated(Pages.ProfilePage)} />
         <Route path="*" component={Pages.NotFoundPage} />
       </Route>
     </Router>
   </ApolloProvider>
 );
 
-export default routes;
+export default RouterApp;

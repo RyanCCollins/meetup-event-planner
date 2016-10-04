@@ -29,6 +29,7 @@ class Main extends Component {
 Main.propTypes = {
   children: React.children,
   actions: PropTypes.object.isRequired,
+  token: PropTypes.string,
 };
 
 // Map the global state to global props here.
