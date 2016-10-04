@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as SignupActionCreators from './actions';
+import * as AppActions from 'components/App/actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import Section from 'grommet-udacity/components/Section';
@@ -23,11 +24,26 @@ class Signup extends Component {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSubmit(params) {
+  handleSubmit() {
     const {
-      onSubmit,
+      fields,
+      actions,
+      mutate,
     } = this.props;
-    onSubmit(params);
+    const variables = {
+      variables: SignupActionCreators.fieldsToData(fields),
+    };
+    mutate(variables)
+      .then(res => {
+        if (!res.data) {
+          throw new Error('An error has occured.');
+        }
+        console.log(res.data);
+        actions.signupShowMessage('Thanks for signing up! Just a moment while we tidy up.');
+      })
+      .catch(err => {
+        actions.signupShowError(err.message || 'An unknown error has occured');
+      });
   }
   render() {
     const {
@@ -52,29 +68,51 @@ class Signup extends Component {
 
 Signup.propTypes = {
   fields: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  mutate: PropTypes.func.isRequired,
+  error: PropTypes.string,
+  message: PropTypes.string,
+  actions: PropTypes.object.isRequired,
 };
 
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
-  //
+  message: state.signupContainer.message,
+  error: state.signupContainer.error,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(
-    SignupActionCreators,
+    { ...SignupActionCreators, ...AppActions },
     dispatch
   ),
 });
 
 const Container = cssModules(Signup, styles);
 
+const createUserMutation = gql`
+  mutation signUpUser($name: String!, $email:String!,
+    $password: String!, $passwordConfirmation: String!) {
+      SignUp(input: { name: $name, email: $email,
+        password: $password, password_confirmation: $passwordConf }) {
+          user {
+            id
+            bio
+            email
+            name
+            token: auth_token
+          }
+        }
+      }
+`;
+
+const ContainerWithMutations = graphql(createUserMutation)(Container);
+
 const FormContainer = reduxForm({
   form: 'Signup',
   fields: formFields,
   validate: validation,
-})(Container);
+})(ContainerWithMutations);
 
 export default connect(
   mapStateToProps,

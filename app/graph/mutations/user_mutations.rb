@@ -7,7 +7,7 @@ module UserMutations
     input_field :password, !types.String
     input_field :password_confirmation, !types.String
 
-    return_field :user, UserType
+    return_field :user, AuthUserType
     resolve -> (args, ctx) {
       @user = User.create(
         name: args[:name],
