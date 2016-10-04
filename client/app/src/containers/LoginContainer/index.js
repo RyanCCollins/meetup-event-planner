@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as LoginActionCreators from './actions';
@@ -7,6 +7,8 @@ import styles from './index.module.scss';
 import Section from 'grommet-udacity/components/Section';
 import LoginForm from 'grommet-udacity/components/LoginForm';
 import Box from 'grommet-udacity/components/Box';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import { AuthFormFooter } from 'components';
 
 class Login extends Component {
@@ -46,6 +48,10 @@ class Login extends Component {
   }
 }
 
+Login.propTypes = {
+  mutate: PropTypes.func.isRequired,
+};
+
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
   errors: state.loginContainer.errors,
@@ -61,7 +67,17 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Container = cssModules(Login, styles);
 
+const signinUserMutation = gql`
+  mutation signInUser($email: String!, $password: String!) {
+    SignIn(input: { email: $email, password: $password }) {
+      auth_token
+    }
+  }
+`;
+
+const ContainerWithMutation = graphql(signinUserMutation)(Container);
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Container);
+)(ContainerWithMutation);
