@@ -6,7 +6,7 @@ import * as AppActions from 'components/App/actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import Section from 'grommet-udacity/components/Section';
-import { SignupForm } from 'components';
+import { SignupForm, ToastMessage } from 'components';
 import validation from './utils/validation';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -23,6 +23,7 @@ class Signup extends Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClosingToast = this.handleClosingToast.bind(this);
   }
   handleSubmit() {
     const {
@@ -38,16 +39,24 @@ class Signup extends Component {
         if (!res.data) {
           throw new Error('An error has occured.');
         }
-        console.log(res.data);
+        actions.createUser(res.data.Signup.user);
         actions.signupShowMessage('Thanks for signing up! Just a moment while we tidy up.');
       })
       .catch(err => {
         actions.signupShowError(err.message || 'An unknown error has occured');
       });
   }
+  handleClosingToast(type) {
+    const {
+      clearSignupToast,
+    } = this.props.actions;
+    clearSignupToast(type);
+  }
   render() {
     const {
       fields,
+      error,
+      message,
     } = this.props;
     return (
       <Section
@@ -61,6 +70,19 @@ class Signup extends Component {
           {...fields}
           onSubmit={this.handleSubmit}
         />
+        {error &&
+          <ToastMessage
+            message={error}
+            status="critical"
+            onClose={() => this.handleClosingToast('error')}
+          />
+        }
+        {message &&
+          <ToastMessage
+            message={message}
+            onClose={() => this.handleClosingToast('message')}
+          />
+        }
       </Section>
     );
   }
@@ -94,7 +116,7 @@ const createUserMutation = gql`
   mutation signUpUser($name: String!, $email:String!,
     $password: String!, $passwordConfirmation: String!) {
       SignUp(input: { name: $name, email: $email,
-        password: $password, password_confirmation: $passwordConf }) {
+        password: $password, password_confirmation: $passwordConfirmation }) {
           user {
             id
             bio

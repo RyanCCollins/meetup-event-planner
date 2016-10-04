@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as LoginActionCreators from './actions';
+import * as AppActions from 'components/App/actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import Section from 'grommet-udacity/components/Section';
@@ -16,8 +17,23 @@ class Login extends Component {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSubmit() {
-
+  handleSubmit({ username, password }) {
+    const {
+      mutate,
+      actions,
+    } = this.props;
+    mutate({ variables: { email: username, password } })
+      .then(result => {
+        const token = result.data.SignIn.token;
+        if (!token) {
+          throw new Error('An error has occured while signing in.  Please try again.');
+        }
+        actions.setAuthToken(token);
+        actions.showLoginMessage('You were successfully logged in. Redirecting to the profile page.')
+      })
+      .catch(err => {
+        actions.showLoginError(err.message || 'An unknown error has occured.');
+      });
   }
   render() {
     return (
@@ -50,17 +66,19 @@ class Login extends Component {
 
 Login.propTypes = {
   mutate: PropTypes.func.isRequired,
+  actions: PropTypes.object.isRequired,
 };
 
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
-  errors: state.loginContainer.errors,
+  error: state.loginContainer.error,
+  message: state.loginContainer.message,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(
-    LoginActionCreators,
+    { ...LoginActionCreators, ...AppActions },
     dispatch
   ),
 });

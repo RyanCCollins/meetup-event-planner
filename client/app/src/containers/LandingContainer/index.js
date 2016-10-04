@@ -4,12 +4,17 @@ import { bindActionCreators } from 'redux';
 import * as LandingActionCreators from './actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
+import Heading from 'grommet-udacity/components/Heading';
+import Box from 'grommet-udacity/components/Box';
 
 class Landing extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div className={styles.landing}>
-      </div>
+      <Box className={styles.landing}>
+        <Heading align="center" tag="h1">
+          Meetup Event Planner
+        </Heading>
+      </Box>
     );
   }
 }
