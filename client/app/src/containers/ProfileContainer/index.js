@@ -18,6 +18,7 @@ class Profile extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleCancelEditing = this.handleCancelEditing.bind(this);
     this.handleEditingAvatar = this.handleEditingAvatar.bind(this);
+    this.handleEditingEmail = this.handleEditingEmail.bind(this);
   }
   handleClearError() {
     const {
@@ -48,6 +49,12 @@ class Profile extends Component {
       profileEditBio,
     } = this.props.actions;
     profileEditBio(e.target.value);
+  }
+  handleEditingEmail(e) {
+    const {
+      profileEditEmail,
+    } = this.props.actions;
+    profileEditEmail(e.target.value);
   }
   handleSaving() {
     const {
@@ -81,10 +88,9 @@ class Profile extends Component {
       user,
       loading,
       submissionError,
-      isEditingBio,
       bioInput,
-      isEditingAvatar,
       avatarInput,
+      isEditing,
     } = this.props;
     return (
       <div className={styles.profile}>
@@ -101,13 +107,13 @@ class Profile extends Component {
         {user &&
           <UserProfile
             user={user}
+            isEditing={isEditing}
+            onEditEmail={this.handleEditingEmail}
             onCancel={this.handleCancelEditing}
             onEditBio={this.handleEditingBio}
             onClickToEdit={this.handleClick}
-            isEditingBio={isEditingBio}
             onSaveEdit={this.handleSaving}
             bioInput={bioInput}
-            isEditingAvatar={isEditingAvatar}
             onEditAvatar={this.handleEditingAvatar}
             avatarInput={avatarInput}
           />
@@ -123,23 +129,22 @@ Profile.propTypes = {
   user: PropTypes.object,
   error: PropTypes.string,
   loading: PropTypes.bool.isRequired,
-  isEditingBio: PropTypes.bool.isRequired,
+  isEditing: PropTypes.bool.isRequired,
   bioInput: PropTypes.string,
   submissionError: PropTypes.string,
   updateQueries: PropTypes.func.isRequired,
   refetch: PropTypes.func.isRequired,
-  isEditingAvatar: PropTypes.bool.isRequired,
   avatarInput: PropTypes.string,
 };
 
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
   user: state.authReducer.user,
-  isEditingBio: state.profileContainer.isEditingBio,
   bioInput: state.profileContainer.bioInput,
   submissionError: state.profileContainer.error,
-  isEditingAvatar: state.profileContainer.isEditingAvatar,
+  isEditing: state.profileContainer.isEditing,
   avatarInput: state.profileContainer.avatarInput,
+  emailInput: state.profileContainer.emailInput,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}
@@ -221,7 +226,7 @@ const ContainerWithMutation = graphql(updateProfileMutation, {
           variables: { authToken, profile },
         })
         .then(mutationResult => {
-          ownProps.actions.setUser(mutationResult.data.UpdateProfile.authUser);
+          ownProps.actions.setPersistentUser(mutationResult.data.UpdateProfile.user);
           resolve(mutationResult);
         })
         .catch(err => reject(err))

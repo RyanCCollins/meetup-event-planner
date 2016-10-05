@@ -2,12 +2,12 @@ import * as types from './constants';
 import update from 'react-addons-update';
 
 export const initialState = {
-  isEditingBio: false,
+  isEditing: false,
   bioInput: null,
   error: null,
   isLoading: false,
-  isEditingAvatar: false,
   avatarInput: null,
+  emailInput: null,
 };
 
 const profileReducer =
@@ -25,6 +25,12 @@ const profileReducer =
             $set: action.bio,
           },
         });
+      case types.PROFILE_EDIT_EMAIL:
+        return update(state, {
+          emailInput: {
+            $set: action.email,
+          },
+        });
       case types.PROFILE_SUBMISSION_INITIATION:
         return update(state, {
           isLoading: {
@@ -33,7 +39,7 @@ const profileReducer =
         });
       case types.PROFILE_SUBMISSION_SUCCESS:
         return update(state, {
-          isEditingBio: {
+          isEditing: {
             $set: false,
           },
           bioInput: {
@@ -41,9 +47,6 @@ const profileReducer =
           },
           avatarInput: {
             $set: null,
-          },
-          isEditingAvatar: {
-            $set: false,
           },
           isLoading: {
             $set: false,
@@ -51,7 +54,7 @@ const profileReducer =
         });
       case types.PROFILE_SUBMISSION_FAILURE:
         return update(state, {
-          isEditingBio: {
+          isEditing: {
             $set: false,
           },
           bioInput: {
@@ -59,9 +62,6 @@ const profileReducer =
           },
           avatarInput: {
             $set: null,
-          },
-          isEditingAvatar: {
-            $set: false,
           },
           isLoading: {
             $set: false,
@@ -78,14 +78,11 @@ const profileReducer =
         });
       case types.PROFILE_CANCEL_EDITING:
         return update(state, {
-          isEditingBio: {
+          isEditing: {
             $set: false,
           },
           bioInput: {
             $set: null,
-          },
-          isEditingAvatar: {
-            $set: false,
           },
           avatarInput: {
             $set: null,
@@ -93,10 +90,7 @@ const profileReducer =
         });
       case types.PROFILE_START_EDITING:
         return update(state, {
-          isEditingBio: {
-            $set: true,
-          },
-          isEditingAvatar: {
+          isEditing: {
             $set: true,
           },
         });

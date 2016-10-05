@@ -10,19 +10,21 @@ import Button from 'grommet-udacity/components/Button';
 import List from 'grommet-udacity/components/List';
 import ListItem from 'grommet-udacity/components/ListItem';
 import FormField from 'grommet-udacity/components/FormField';
+import Footer from 'grommet-udacity/components/Footer';
 import Menu from 'grommet-udacity/components/Menu';
 
 const UserProfile = ({
   user,
   onEditBio,
-  isEditingBio,
+  isEditing,
   bioInput,
   onSaveEdit,
   onClickToEdit,
   onCancel,
-  isEditingAvatar,
   onEditAvatar,
   avatarInput,
+  onEditEmail,
+  emailInput,
 }) => (
   <Section className={styles.userProfile}>
     <Box
@@ -35,12 +37,12 @@ const UserProfile = ({
           {`Hello, ${user.name}!`}
         </Heading>
         <Section
-          className={isEditingAvatar ? '' : styles.transformAvatar}
+          className={isEditing ? '' : styles.transformAvatar}
           pad={{ vertical: 'medium' }}
           align="center"
           justify="center"
         >
-          {isEditingAvatar ?
+          {isEditing ?
             <Box size="medium" align="center">
               <FormField label="Edit Avatar URL">
                 <input
@@ -50,18 +52,6 @@ const UserProfile = ({
                   id="avatar-input"
                 />
               </FormField>
-              <Menu inline direction="row">
-                <Button
-                  label="Save"
-                  style={{ marginTop: 10 }}
-                  onClick={onSaveEdit}
-                />
-                <Button
-                  label="Cancel"
-                  style={{ marginTop: 10 }}
-                  onClick={onCancel}
-                />
-              </Menu>
             </Box>
           :
             <img
@@ -76,23 +66,11 @@ const UserProfile = ({
           }
         </Section>
         <Section pad={{ vertical: 'medium' }} align="center" justify="center">
-          {isEditingBio ?
+          {isEditing ?
             <Box size="medium" align="center">
               <FormField label="Edit Bio">
                 <textarea onChange={onEditBio} value={bioInput || user.bio} id="bio-input" />
               </FormField>
-              <Menu inline direction="row">
-                <Button
-                  label="Save"
-                  style={{ marginTop: 10 }}
-                  onClick={onSaveEdit}
-                />
-                <Button
-                  label="Cancel"
-                  style={{ marginTop: 10 }}
-                  onClick={onCancel}
-                />
-              </Menu>
             </Box>
           :
             <Paragraph onClick={onClickToEdit}>
@@ -101,10 +79,39 @@ const UserProfile = ({
           }
         </Section>
         <Section pad={{ vertical: 'medium' }} align="center" justify="center">
-          <Heading tag="h3" align="center">
-            {user.email}
-          </Heading>
+          {isEditing ?
+            <Box size="medium" align="center">
+              <FormField label="Edit Email">
+                <input
+                  className={`grommetux-text-input grommetux-input ${styles.input}`}
+                  onChange={onEditEmail}
+                  value={emailInput || user.email}
+                  id="email-input"
+                />
+              </FormField>
+            </Box>
+          :
+            <Heading tag="h3" align="center">
+              {user.email}
+            </Heading>
+          }
         </Section>
+        {isEditing &&
+          <Footer align="center" justify="center">
+            <Menu inline direction="row">
+              <Button
+                label="Save"
+                style={{ marginTop: 10 }}
+                onClick={onSaveEdit}
+              />
+              <Button
+                label="Cancel"
+                style={{ marginTop: 10 }}
+                onClick={onCancel}
+              />
+            </Menu>
+          </Footer>
+        }
       </Article>
       <Article className={styles.panel}>
         <Section pad={{ vertical: 'medium' }} align="center" justify="center">
@@ -134,12 +141,13 @@ const UserProfile = ({
 );
 
 UserProfile.propTypes = {
+  onEditEmail: PropTypes.func.isRequired,
+  isEditing: PropTypes.bool.isRequired,
+  emailInput: PropTypes.string.isRequired,
   onEditBio: PropTypes.func.isRequired,
-  isEditingBio: PropTypes.bool.isRequired,
   onSaveEdit: PropTypes.func.isRequired,
   onClickToEdit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  isEditingAvatar: PropTypes.bool.isRequired,
   onEditAvatar: PropTypes.func.isRequired,
   avatarInput: PropTypes.string,
 };

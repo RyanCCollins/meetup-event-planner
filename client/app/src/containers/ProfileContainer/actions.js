@@ -34,3 +34,8 @@ export const profileEditAvatar = (avatar) => ({
   type: types.PROFILE_EDIT_AVATAR,
   avatar,
 });
+
+export const profileEditEmail = (email) => ({
+  type: types.PROFILE_EDIT_EMAIL,
+  email,
+});
