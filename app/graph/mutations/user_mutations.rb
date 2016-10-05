@@ -28,15 +28,18 @@ module UserMutations
     input_field :email, !types.String
     input_field :password, !types.String
 
-    return_field :auth_token, types.String
+    return_field :user, AuthUserType
     resolve -> (args, ctx) {
       @user = User.find_for_database_authentication(email: args[:email])
-      auth_token = if @user.valid_password?(args[:password])
-        @user.auth_token
+      if @user.valid_password?(args[:password])
+        {
+          user: @user
+        }
+      else
+        {
+          
+        }
       end
-      {
-        auth_token: auth_token
-      }
     }
   end
   UpdateProfile = GraphQL::Relay::Mutation.define do
@@ -45,7 +48,7 @@ module UserMutations
     input_field :auth_token, !types.String
     input_field :profile, ProfileInputType
 
-    return_field :authUser, AuthUserType
+    return_field :user, AuthUserType
     resolve -> (args, ctx) {
       @user = User.find_by(auth_token: args[:auth_token])
       @user.name = args[:profile][:name] if args[:profile][:name]
@@ -54,7 +57,7 @@ module UserMutations
       @user.email = args[:profile][:email] if args[:profile][:email]
       @user.save!
       {
-        authUser: @user
+        user: @user
       }
     }
   end

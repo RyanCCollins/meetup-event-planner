@@ -54,15 +54,18 @@ const UserProfile = ({
               </FormField>
             </Box>
           :
+          <Box
+            onClick={onClickToEdit}
+          >
             <img
               className={styles.avatar}
-              onClick={onClickToEdit}
               src={user.avatar ?
                 user.avatar
               :
                 'http://bit.ly/2dqCGdd'
               }
             />
+          </Box>
           }
         </Section>
         <Section pad={{ vertical: 'medium' }} align="center" justify="center">
@@ -73,9 +76,13 @@ const UserProfile = ({
               </FormField>
             </Box>
           :
-            <Paragraph onClick={onClickToEdit}>
-              {user.bio ? user.bio : 'Click to add a bio.'}
-            </Paragraph>
+            <Box
+              onClick={onClickToEdit}
+            >
+            <Paragraph className={styles.isButton}>
+                {user.bio ? user.bio : 'Click to add a bio.'}
+              </Paragraph>
+            </Box>
           }
         </Section>
         <Section pad={{ vertical: 'medium' }} align="center" justify="center">
@@ -91,9 +98,17 @@ const UserProfile = ({
               </FormField>
             </Box>
           :
-            <Heading tag="h3" align="center">
-              {user.email}
-            </Heading>
+            <Box
+              onClick={onClickToEdit}
+            >
+              <Heading
+                className={styles.isButton}
+                tag="h3"
+                align="center"
+              >
+                {user.email}
+              </Heading>
+            </Box>
           }
         </Section>
         {isEditing &&

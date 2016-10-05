@@ -10,6 +10,7 @@
   border: 1px solid #dbe2e8;
   margin: 0 auto;
   position: relative;
+  z-index: 20;
 }
 
 .input {
@@ -34,4 +35,8 @@
   top: -100px;
   left: 0;
   width: 100%;
+}
+
+.isButton {
+  cursor: pointer;
 }
