@@ -16,6 +16,7 @@ class Profile extends Component {
     this.handleEditingBio = this.handleEditingBio.bind(this);
     this.handleSavingBio = this.handleSavingBio.bind(this);
     this.handleClickBio = this.handleClickBio.bind(this);
+    this.handleCancelEditing = this.handleCancelEditing.bind(this);
   }
   handleClearError() {
     const {
@@ -23,17 +24,20 @@ class Profile extends Component {
     } = this.props.actions;
     profileClearError();
   }
-  handleClickBio() {
+  handleCancelEditing(event) {
     const {
       profileCancelEditing,
+    } = this.props.actions;
+    if (!event.target.tagName.toUpperCase() === 'TEXTAREA') {
+      profileCancelEditing();
+    }
+  }
+  handleClickBio() {
+    const {
       profileStartEditing,
     } = this.props.actions;
     profileStartEditing();
-    window.addEventListener('click', (event) => {
-      if (!event.target.tagName.toUpperCase() === 'TEXTAREA') {
-        profileCancelEditing();
-      }
-    });
+    window.addEventListener('click', this.handleCancelEditing);
   }
   handleEditingBio(e) {
     const {
@@ -49,7 +53,7 @@ class Profile extends Component {
       authToken,
       refetch,
     } = this.props;
-    window.removeEventListener('click');
+    window.removeEventListener('click', this.handleCancelEditing);
     const profile = {
       bio: bioInput,
     };
@@ -152,6 +156,10 @@ const fetchUserData = gql`
     email
     name
     avatar
+    events {
+      name
+      id
+    }
   }
 `;
 
@@ -185,6 +193,10 @@ const updateProfileMutation = gql`
     email
     name
     avatar
+    events {
+      name
+      id
+    }
   }
 `;
 

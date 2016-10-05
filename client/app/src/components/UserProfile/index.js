@@ -6,6 +6,8 @@ import Heading from 'grommet-udacity/components/Heading';
 import Paragraph from 'grommet-udacity/components/Paragraph';
 import Box from 'grommet-udacity/components/Box';
 import Button from 'grommet-udacity/components/Button';
+import List from 'grommet-udacity/components/List';
+import ListItem from 'grommet-udacity/components/ListItem';
 
 const UserProfile = ({
   user,
@@ -50,6 +52,24 @@ const UserProfile = ({
           </Paragraph>
         }
       </Box>
+      <Section pad={{ vertical: 'medium' }} align="center" justify="center">
+        <Heading tag="h2">
+          Event History
+        </Heading>
+        {user.events && user.events.length > 0 ?
+          <List>
+            {user.events.map((item, i) =>
+              <ListItem key={i}>
+                {item.name}
+              </ListItem>
+            )}
+          </List>
+        :
+          <Heading tag="h3">
+            No Events Attended Yet
+          </Heading>
+        }
+      </Section>
     </Box>
   </Section>
 );

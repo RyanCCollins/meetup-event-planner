@@ -19,7 +19,16 @@ const Navbar = ({
         <Anchor href="/events" className="active">
           Events
         </Anchor>
-        {!isAuthenticated &&
+        {isAuthenticated ?
+          <Menu direction="row" align="center" responsive={false}>
+            <Anchor href="/user/profile" className="active">
+              Profile
+            </Anchor>
+            <Anchor href="/logout" className="active">
+              Logout
+            </Anchor>
+          </Menu>
+        :
           <span>
             <Anchor href="/login" className="active">
               Login

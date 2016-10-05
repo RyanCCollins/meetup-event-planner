@@ -18,6 +18,14 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClosingToast = this.handleClosingToast.bind(this);
   }
+  componentDidMount() {
+    const {
+      authToken,
+    } = this.props;
+    if (authToken) {
+      this.context.router.push('/user/profile');
+    }
+  }
   handleSubmit({ username, password }) {
     const {
       mutate,
@@ -30,14 +38,14 @@ class Login extends Component {
         if (!token) {
           throw new Error('An error has occured while signing in.  Please try again.');
         }
-        actions.setPersistantAuthToken(token);
+        actions.createUser({ token });
         actions.loginShowMessage(
           'You were successfully logged in. Redirecting to the profile page.'
         );
         setTimeout(() => {
           const { router } = this.context;
           router.push('/user/profile');
-        }, 2000);
+        }, 1000);
       })
       .catch(err => {
         actions.loginShowError(err.message || 'An unknown error has occured.');
@@ -101,6 +109,7 @@ class Login extends Component {
 
 Login.propTypes = {
   mutate: PropTypes.func.isRequired,
+  authToken: PropTypes.string,
   actions: PropTypes.object.isRequired,
   error: PropTypes.string,
   message: PropTypes.string,
@@ -113,6 +122,7 @@ Login.contextTypes = {
 
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
+  authToken: state.appState.authToken,
   error: state.loginContainer.error,
   message: state.loginContainer.message,
   isLoading: state.loginContainer.isLoading,

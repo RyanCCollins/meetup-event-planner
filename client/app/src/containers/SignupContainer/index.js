@@ -37,10 +37,10 @@ class Signup extends Component {
     actions.signupSetLoading();
     mutate(variables)
       .then(res => {
-        if (!res.data) {
+        if (!res.data.data.SignUp.user) {
           throw new Error('An error has occured.');
         }
-        actions.createUser(res.data.Signup.user);
+        actions.createUser(res.data.SignUp.user);
         actions.signupShowMessage('Thanks for signing up! Just a moment while we tidy up.');
       })
       .catch(err => {

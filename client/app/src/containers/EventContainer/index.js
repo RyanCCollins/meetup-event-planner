@@ -7,11 +7,7 @@ import styles from './index.module.scss';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import Section from 'grommet-udacity/components/Section';
-import Heading from 'grommet-udacity/components/Heading';
 import Box from 'grommet-udacity/components/Box';
-import Paragraph from 'grommet-udacity/components/Paragraph';
-import Article from 'grommet-udacity/components/Article';
-import CalendarIcon from 'grommet-udacity/components/icons/base/Calendar';
 import { ToastMessage, LoadingIndicator, SingleEvent } from 'components';
 
 class Event extends Component { // eslint-disable-line react/prefer-stateless-function
@@ -23,12 +19,14 @@ class Event extends Component { // eslint-disable-line react/prefer-stateless-fu
     } = this.props;
     return (
       <Section className={styles.event}>
-        {
-          error &&
-          <ToastMessage status="critical" message={error} onClose={(e) => e} />
+        {error &&
+          <ToastMessage
+            status="critical"
+            message={error}
+            onClose={(e) => e}
+          />
         }
-        {
-          loading ?
+        {loading ?
             <LoadingIndicator isLoading={loading} />
           :
             <Box align="center" justify="center">

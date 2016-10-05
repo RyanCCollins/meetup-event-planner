@@ -10,7 +10,7 @@ class ApiController < ApplicationController
     result = MeetupEventPlannerSchema.execute(
       query_string,
       variables: query_variables,
-      context: { current_user: current_user }
+      context: { }
     )
     render json: result
   end

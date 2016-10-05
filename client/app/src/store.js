@@ -69,7 +69,9 @@ const store = createStore(
 export const history = syncHistoryWithStore(browserHistory, store);
 
 export const userIsAuthenticated = userAuthWrapper({
-  authSelector: state => state.appState.authToken,
+  authSelector: (state) => ({
+    authToken: state.appState.authToken,
+  }),
   redirectAction: routerActions.replace,
   failureRedirectPath: '/login',
   wrapperDisplayName: 'userIsAuthenticated',

@@ -9,6 +9,8 @@ import Article from 'grommet-udacity/components/Article';
 import CalendarIcon from 'grommet-udacity/components/icons/base/Calendar';
 import LocationIcon from 'grommet/components/icons/base/Location';
 import ClockIcon from 'grommet/components/icons/base/Clock';
+import Footer from 'grommet/components/Footer';
+import Button from 'grommet-udacity/components/Button';
 import List from 'grommet/components/List';
 import ListItem from 'grommet/components/ListItem';
 import moment from 'moment';
@@ -29,30 +31,32 @@ const SingleEvent = ({
           <Heading align="center">
             {event.name}
           </Heading>
-        </Section>
-        <Section>
           <Heading align="center" tag="h4">
             {`Hosted by ${event.host.name}`}
           </Heading>
-          <Box justify="center" align="center" direction="row">
+        </Section>
+        <Section>
+          <Box justify="center" align="center" direction="column">
             <LocationIcon className={styles.icon} />
-            <Heading tag="h4">
+            <Heading tag="h4" align="center">
               {`${event.location}`}
             </Heading>
           </Box>
-          <Box justify="center" align="center" direction="row">
+          <Box justify="center" align="center" direction="column">
             <ClockIcon className={styles.icon} />
             <Heading align="center" tag="h5">
               {`From: ${moment(event.start).format('LLL')}`}
             </Heading>
-          </Box>
-          <Box justify="center" align="center" direction="row">
-            <ClockIcon className={styles.icon} />
             <Heading align="center" tag="h5">
               {`To: ${moment(event.end).format('LLL')}`}
             </Heading>
           </Box>
-          <Paragraph size="large" style={{ padding: 40 }}>
+        </Section>
+        <Section>
+          <Heading tag="h3" align="center">
+            About
+          </Heading>
+          <Paragraph size="large" className={styles.paragraph}>
             {event.message}
           </Paragraph>
         </Section>
@@ -60,17 +64,21 @@ const SingleEvent = ({
           <Heading tag="h3" align="center">
             Guest List
           </Heading>
-          <List>
-            {event.guests.map((guest, i) =>
-              <ListItem key={i}>
-                {guest.name}
-              </ListItem>
-            )}
-          </List>
+          <Box justify="center" align="center" direction="column">
+            <List>
+              {event.guests.map((guest, i) =>
+                <ListItem key={i}>
+                  {guest.name}
+                </ListItem>
+              )}
+            </List>
+          </Box>
         </Section>
+        <Footer align="center" justify="center" pad={{ vertical: 'medium' }}>
+          <Button onClick={e => e} label="RSVP" />
+        </Footer>
       </Article>
     </Section>
-    {JSON.stringify(event, null)}
   </Box>
 );
 

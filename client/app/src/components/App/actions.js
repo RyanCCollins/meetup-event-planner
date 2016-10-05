@@ -8,7 +8,7 @@ export const setAuthTokenSuccess = (token) => ({
 export const setAuthTokenFailure = (error) => ({
   type: types.SET_AUTH_TOKEN_FAILURE,
   error,
-})
+});
 
 // setUser :: Object -> {Action}
 export const setUser = (user) => ({
@@ -20,40 +20,21 @@ export const createUser = (user) => (dispatch) => {
   dispatch(
     setUser(user)
   );
-  localStorage.set('auth_token', user.token);
+  localStorage.setItem('auth_token', user.token);
   dispatch(
-    setAuthToken(user.token)
+    setAuthTokenSuccess(user.token)
   );
 };
 
-export const setPersistantAuthToken = (authToken) => (dispatch) => {
-  async function persistToken() {
-    try {
-      const token = await localStorage.set('auth_token', authToken);
-      dispatch(
-        setAuthTokenSuccess(token)
-      );
-    } catch (err) {
-      dispatch(
-        setAuthTokenFailure(err)
-      );
-    }
-  }
-  persistToken();
-};
-
 export const loadPersistedAuthToken = () => (dispatch) => {
-  async function loadAuthToken() {
-    try {
-      const token = await localStorage.get('auth_token');
-      dispatch(
-        setAuthTokenSuccess(token)
-      );
-    } catch (err) {
-      dispatch(
-        setAuthTokenFailure(err)
-      );
-    }
+  const token = localStorage.getItem('auth_token');
+  if (token) {
+    dispatch(
+      setAuthTokenSuccess(token)
+    );
+  } else {
+    dispatch(
+      setAuthTokenFailure('No auth token found')
+    );
   }
-  loadAuthToken();
 };
