@@ -33,10 +33,10 @@ QueryType = GraphQL::ObjectType.define do
       Event.defined_enums["event_type"].map { |k, _| k }.to_a
     end
   end
-  field :currentUser do
-    type UserType
-    resolve -> (obj, args, ctx) {
-      ctx[:current_user]
-    }
+  field :authUser, AuthUserType do
+    argument :auth_token, !types.String
+    resolve -> (obj, args, ctx) do
+      User.find_by(auth_token: args[:auth_token])
+    end
   end
 end

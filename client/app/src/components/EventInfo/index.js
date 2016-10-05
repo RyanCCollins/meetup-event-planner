@@ -43,7 +43,7 @@ const EventInfo = ({
     <Footer justify="center">
       <Button
         href={`/events/${event.id}`}
-        label="RSVP"
+        label="View Details"
         icon={<ScheduleNewIcon />}
         onClick={e => e}
       />

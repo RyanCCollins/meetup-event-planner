@@ -9,7 +9,10 @@ import gql from 'graphql-tag';
 import Section from 'grommet-udacity/components/Section';
 import Heading from 'grommet-udacity/components/Heading';
 import Box from 'grommet-udacity/components/Box';
-import { ToastMessage, LoadingIndicator } from 'components';
+import Paragraph from 'grommet-udacity/components/Paragraph';
+import Article from 'grommet-udacity/components/Article';
+import CalendarIcon from 'grommet-udacity/components/icons/base/Calendar';
+import { ToastMessage, LoadingIndicator, SingleEvent } from 'components';
 
 class Event extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -28,10 +31,8 @@ class Event extends Component { // eslint-disable-line react/prefer-stateless-fu
           loading ?
             <LoadingIndicator isLoading={loading} />
           :
-            <Box>
-              <Heading align="center">
-                {event.name}
-              </Heading>
+            <Box align="center" justify="center">
+              <SingleEvent event={event} />
             </Box>
         }
       </Section>
@@ -86,7 +87,7 @@ const singleEventQuery = gql`
 `;
 
 const ContainerWithData = graphql(singleEventQuery, {
-  options: ({ ownProps }) => ({
+  options: (ownProps) => ({
     variables: {
       id: ownProps.params.eventId,
     },

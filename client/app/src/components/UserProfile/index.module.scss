@@ -1,0 +1,13 @@
+.userProfile {
+
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}

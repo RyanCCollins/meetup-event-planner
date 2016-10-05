@@ -30,7 +30,7 @@ class Login extends Component {
         if (!token) {
           throw new Error('An error has occured while signing in.  Please try again.');
         }
-        actions.setAuthToken(token);
+        actions.setPersistantAuthToken(token);
         actions.loginShowMessage(
           'You were successfully logged in. Redirecting to the profile page.'
         );
