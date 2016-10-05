@@ -1,40 +1,38 @@
 import * as types from './constants';
 
-export const setAuthTokenSuccess = (token) => ({
-  type: types.SET_AUTH_TOKEN_SUCCESS,
-  token,
-});
-
-export const setAuthTokenFailure = (error) => ({
-  type: types.SET_AUTH_TOKEN_FAILURE,
-  error,
-});
-
-// setUser :: Object -> {Action}
-export const setUser = (user) => ({
-  type: types.SET_USER,
+export const authenticateUser = (user) => ({
+  type: types.AUTHENTICATE_USER,
   user,
 });
 
-export const createUser = (user) => (dispatch) => {
+export const invalidateUser = () => ({
+  type: types.INVALIDATE_USER,
+});
+
+export const logoutUser = () => (dispatch) => {
+  localStorage.setItem('user', null);
   dispatch(
-    setUser(user)
-  );
-  localStorage.setItem('auth_token', user.token);
-  dispatch(
-    setAuthTokenSuccess(user.token)
+    invalidateUser()
   );
 };
 
-export const loadPersistedAuthToken = () => (dispatch) => {
-  const token = localStorage.getItem('auth_token');
-  if (token) {
+export const setPersistentUser = (user) => (dispatch) => {
+  localStorage.setItem('user', JSON.stringify(user));
+  dispatch(
+    authenticateUser(user)
+  );
+};
+
+export const loadPersistedUser = () => (dispatch) => {
+  const user = localStorage.getItem('user');
+  if (user) {
+    const parsedUser = JSON.parse(user);
     dispatch(
-      setAuthTokenSuccess(token)
+      authenticateUser(parsedUser)
     );
   } else {
     dispatch(
-      setAuthTokenFailure('No auth token found')
+      invalidateUser()
     );
   }
 };

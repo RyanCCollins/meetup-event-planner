@@ -20,6 +20,7 @@ const RouterApp = () => (
         <Route path="/events/:eventId" component={Pages.EventPage} />
         <Route path="/create-event" component={userIsAuthenticated(Pages.CreateEventPage)} />
         <Route path="/user/profile" component={userIsAuthenticated(Pages.ProfilePage)} />
+        <Route path="/logout" component={Pages.LogoutPage} />
         <Route path="*" component={Pages.NotFoundPage} />
       </Route>
     </Router>

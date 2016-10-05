@@ -20,13 +20,15 @@ class EventsContainer extends Component { // eslint-disable-line react/prefer-st
       loading,
     } = this.props;
     return (
-      <Section>
-        <Box align="center">
+      <Box align="center">
+        <Section align="center" justify="center">
           <CalendarIcon size="large" />
           <Heading align="center">
             Events
           </Heading>
-          <Button href="/create-event" label="Create Event" onClick={e => e} />
+        </Section>
+        <Button href="/create-event" label="Create Event" onClick={e => e} />
+        <Section>
           {loading ?
             <LoadingIndicator isLoading={loading} />
           :
@@ -40,8 +42,8 @@ class EventsContainer extends Component { // eslint-disable-line react/prefer-st
               )}
             </List>
           }
-        </Box>
-      </Section>
+        </Section>
+      </Box>
     );
   }
 }

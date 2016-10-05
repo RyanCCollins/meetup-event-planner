@@ -29,3 +29,8 @@ export const profileClearError = () => ({
 export const profileCancelEditing = () => ({
   type: types.PROFILE_CANCEL_EDITING,
 });
+
+export const profileEditAvatar = (avatar) => ({
+  type: types.PROFILE_EDIT_AVATAR,
+  avatar,
+});

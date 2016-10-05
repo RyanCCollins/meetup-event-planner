@@ -1,4 +1,5 @@
 /* Assemble all pages for export */
+export LogoutPage from './LogoutPage/index';
 export ProfilePage from './ProfilePage/index';
 export CreateEventPage from './CreateEventPage/index';
 export EventPage from './EventPage/index';

@@ -7,18 +7,18 @@ import { Navbar } from 'components';
 class Main extends Component {
   componentDidMount() {
     const {
-      loadPersistedAuthToken,
+      loadPersistedUser,
     } = this.props.actions;
-    loadPersistedAuthToken();
+    loadPersistedUser();
   }
   render() {
     const {
-      authToken,
+      user,
     } = this.props;
     return (
       <div>
         <Navbar
-          isAuthenticated={typeof authToken !== 'undefined' && authToken !== ''}
+          isAuthenticated={user && user.authToken != null} // eslint-disable-line
         />
         {React.cloneElement(this.props.children, this.props)}
       </div>
@@ -29,14 +29,14 @@ class Main extends Component {
 Main.propTypes = {
   children: React.children,
   actions: PropTypes.object.isRequired,
-  authToken: PropTypes.string,
+  user: PropTypes.object,
 };
 
 // Map the global state to global props here.
 // See: https://egghead.io/lessons/javascript-redux-generating-containers-with-connect-from-react-redux-visibletodolist
 // mapStateToProps :: {State} -> {Action}
 const mapStateToProps = (state) => ({
-  authToken: state.appState.authToken,
+  user: state.authReducer.user,
 });
 
 // Map the dispatch and bind the action creators.

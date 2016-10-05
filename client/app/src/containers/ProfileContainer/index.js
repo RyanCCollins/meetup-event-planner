@@ -14,9 +14,10 @@ class Profile extends Component {
     super();
     this.handleClearError = this.handleClearError.bind(this);
     this.handleEditingBio = this.handleEditingBio.bind(this);
-    this.handleSavingBio = this.handleSavingBio.bind(this);
-    this.handleClickBio = this.handleClickBio.bind(this);
+    this.handleSaving = this.handleSaving.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.handleCancelEditing = this.handleCancelEditing.bind(this);
+    this.handleEditingAvatar = this.handleEditingAvatar.bind(this);
   }
   handleClearError() {
     const {
@@ -24,20 +25,23 @@ class Profile extends Component {
     } = this.props.actions;
     profileClearError();
   }
-  handleCancelEditing(event) {
+  handleCancelEditing() {
     const {
       profileCancelEditing,
     } = this.props.actions;
-    if (!event.target.tagName.toUpperCase() === 'TEXTAREA') {
-      profileCancelEditing();
-    }
+    profileCancelEditing();
   }
-  handleClickBio() {
+  handleClick() {
     const {
       profileStartEditing,
     } = this.props.actions;
     profileStartEditing();
-    window.addEventListener('click', this.handleCancelEditing);
+  }
+  handleEditingAvatar(e) {
+    const {
+      profileEditAvatar,
+    } = this.props.actions;
+    profileEditAvatar(e.target.value);
   }
   handleEditingBio(e) {
     const {
@@ -45,20 +49,21 @@ class Profile extends Component {
     } = this.props.actions;
     profileEditBio(e.target.value);
   }
-  handleSavingBio() {
+  handleSaving() {
     const {
       updateProfile,
       bioInput,
+      avatarInput,
       actions,
-      authToken,
+      user,
       refetch,
     } = this.props;
-    window.removeEventListener('click', this.handleCancelEditing);
     const profile = {
       bio: bioInput,
+      avatar: avatarInput,
     };
     const variables = {
-      authToken,
+      authToken: user.authToken,
       profile,
     };
     actions.profileSubmissionInitiation();
@@ -73,12 +78,13 @@ class Profile extends Component {
   }
   render() {
     const {
-      authUser,
+      user,
       loading,
-      error,
       submissionError,
       isEditingBio,
       bioInput,
+      isEditingAvatar,
+      avatarInput,
     } = this.props;
     return (
       <div className={styles.profile}>
@@ -92,14 +98,18 @@ class Profile extends Component {
             onClose={this.handleClearError}
           />
         }
-        {authUser &&
+        {user &&
           <UserProfile
-            user={authUser}
+            user={user}
+            onCancel={this.handleCancelEditing}
             onEditBio={this.handleEditingBio}
-            onClickBio={this.handleClickBio}
+            onClickToEdit={this.handleClick}
             isEditingBio={isEditingBio}
-            onSaveBio={this.handleSavingBio}
+            onSaveEdit={this.handleSaving}
             bioInput={bioInput}
+            isEditingAvatar={isEditingAvatar}
+            onEditAvatar={this.handleEditingAvatar}
+            avatarInput={avatarInput}
           />
         }
       </div>
@@ -110,8 +120,7 @@ class Profile extends Component {
 Profile.propTypes = {
   actions: PropTypes.object.isRequired,
   updateProfile: PropTypes.func.isRequired,
-  authToken: PropTypes.string.isRequired,
-  authUser: PropTypes.object,
+  user: PropTypes.object,
   error: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   isEditingBio: PropTypes.bool.isRequired,
@@ -119,15 +128,18 @@ Profile.propTypes = {
   submissionError: PropTypes.string,
   updateQueries: PropTypes.func.isRequired,
   refetch: PropTypes.func.isRequired,
+  isEditingAvatar: PropTypes.bool.isRequired,
+  avatarInput: PropTypes.string,
 };
 
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
-  authUser: state.appState.user,
-  authToken: state.appState.authToken,
+  user: state.authReducer.user,
   isEditingBio: state.profileContainer.isEditingBio,
   bioInput: state.profileContainer.bioInput,
   submissionError: state.profileContainer.error,
+  isEditingAvatar: state.profileContainer.isEditingAvatar,
+  avatarInput: state.profileContainer.avatarInput,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}
@@ -181,7 +193,7 @@ const ContainerWithData = graphql(fetchUserData, {
 const updateProfileMutation = gql`
   mutation updateProfile($profile: ProfileInput, $authToken: String!) {
     UpdateProfile(input: { profile: $profile, auth_token: $authToken }) {
-      authUser {
+      user {
         ...authUserData
       }
     }
@@ -193,6 +205,7 @@ const updateProfileMutation = gql`
     email
     name
     avatar
+    authToken: auth_token
     events {
       name
       id

@@ -2,28 +2,25 @@ import update from 'react-addons-update';
 import * as types from './constants';
 
 export const initialState = {
-  authToken: null,
-  user: null,
+  user: {
+    authToken: null,
+  },
 };
 
-const appReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.SET_AUTH_TOKEN_SUCCESS:
-      return update(state, {
-        authToken: {
-          $set: action.token,
-        },
-      });
-    case types.SET_AUTH_TOKEN_FAILURE:
-      return update(state, {
-        authToken: {
-          $set: null,
-        },
-      });
-    case types.SET_USER:
+    case types.AUTHENTICATE_USER:
       return update(state, {
         user: {
           $set: action.user,
+        },
+      });
+    case types.INVALIDATE_USER:
+      return update(state, {
+        user: {
+          $set: {
+            authToken: null,
+          },
         },
       });
     default:
@@ -31,4 +28,4 @@ const appReducer = (state = initialState, action) => {
   }
 };
 
-export default appReducer;
+export default authReducer;

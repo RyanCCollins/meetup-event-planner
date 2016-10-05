@@ -20,9 +20,9 @@ class Login extends Component {
   }
   componentDidMount() {
     const {
-      authToken,
+      user,
     } = this.props;
-    if (authToken) {
+    if (user.authToken != null) { // eslint-disable-line
       this.context.router.push('/user/profile');
     }
   }
@@ -34,11 +34,11 @@ class Login extends Component {
     actions.loginSetLoading();
     mutate({ variables: { email: username, password } })
       .then(result => {
-        const token = result.data.SignIn.token;
-        if (!token) {
+        const user = result.data.SignIn.user;
+        if (!user) {
           throw new Error('An error has occured while signing in.  Please try again.');
         }
-        actions.createUser({ token });
+        actions.setPersistentUser(user);
         actions.loginShowMessage(
           'You were successfully logged in. Redirecting to the profile page.'
         );
@@ -109,7 +109,7 @@ class Login extends Component {
 
 Login.propTypes = {
   mutate: PropTypes.func.isRequired,
-  authToken: PropTypes.string,
+  user: PropTypes.object,
   actions: PropTypes.object.isRequired,
   error: PropTypes.string,
   message: PropTypes.string,
@@ -122,7 +122,7 @@ Login.contextTypes = {
 
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
-  authToken: state.appState.authToken,
+  user: state.authReducer.user,
   error: state.loginContainer.error,
   message: state.loginContainer.message,
   isLoading: state.loginContainer.isLoading,
@@ -144,7 +144,22 @@ const Container = cssModules(Login, styles);
 const signinUserMutation = gql`
   mutation signInUser($email: String!, $password: String!) {
     SignIn(input: { email: $email, password: $password }) {
-      token: auth_token
+      user {
+        ...authUserData
+      }
+    }
+  }
+
+  fragment authUserData on AuthUser {
+    id
+    bio
+    email
+    name
+    avatar
+    authToken: auth_token
+    events {
+      name
+      id
     }
   }
 `;

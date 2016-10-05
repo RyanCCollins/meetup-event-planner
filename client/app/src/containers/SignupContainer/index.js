@@ -36,12 +36,18 @@ class Signup extends Component {
     };
     actions.signupSetLoading();
     mutate(variables)
-      .then(res => {
-        if (!res.data.data.SignUp.user) {
+      .then(result => {
+        const {
+          user,
+        } = result.data.SignUp;
+        if (!user) {
           throw new Error('An error has occured.');
         }
-        actions.createUser(res.data.SignUp.user);
+        actions.setPersistentUser(user);
         actions.signupShowMessage('Thanks for signing up! Just a moment while we tidy up.');
+        setTimeout(() => {
+          this.context.router.push('/user/profile');
+        }, 2000);
       })
       .catch(err => {
         actions.signupShowError(err.message || 'An unknown error has occured');
@@ -71,10 +77,6 @@ class Signup extends Component {
         {isLoading &&
           <LoadingIndicator message="Submitting" isLoading={isLoading} />
         }
-        <SignupForm
-          {...fields}
-          onSubmit={this.handleSubmit}
-        />
         {error &&
           <ToastMessage
             message={error}
@@ -88,6 +90,10 @@ class Signup extends Component {
             onClose={() => this.handleClosingToast('message')}
           />
         }
+        <SignupForm
+          {...fields}
+          onSubmit={this.handleSubmit}
+        />
       </Section>
     );
   }
@@ -100,6 +106,10 @@ Signup.propTypes = {
   message: PropTypes.string,
   actions: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
+};
+
+Signup.contextTypes = {
+  router: PropTypes.func.isRequired,
 };
 
 // mapStateToProps :: {State} -> {Props}
@@ -128,14 +138,22 @@ const createUserMutation = gql`
       SignUp(input: { name: $name, email: $email,
         password: $password, password_confirmation: $passwordConfirmation }) {
           user {
-            id
-            bio
-            email
-            name
-            token: auth_token
+            ...authUserData
           }
         }
       }
+    fragment authUserData on AuthUser {
+      id
+      bio
+      email
+      name
+      avatar
+      authToken: auth_token
+      events {
+        name
+        id
+      }
+    }
 `;
 
 const ContainerWithMutations = graphql(createUserMutation)(Container);

@@ -6,11 +6,19 @@ export const initialState = {
   bioInput: null,
   error: null,
   isLoading: false,
+  isEditingAvatar: false,
+  avatarInput: null,
 };
 
 const profileReducer =
   (state = initialState, action) => {
     switch (action.type) {
+      case types.PROFILE_EDIT_AVATAR:
+        return update(state, {
+          avatarInput: {
+            $set: action.avatar,
+          },
+        });
       case types.PROFILE_EDIT_BIO:
         return update(state, {
           bioInput: {
@@ -31,6 +39,12 @@ const profileReducer =
           bioInput: {
             $set: null,
           },
+          avatarInput: {
+            $set: null,
+          },
+          isEditingAvatar: {
+            $set: false,
+          },
           isLoading: {
             $set: false,
           },
@@ -42,6 +56,12 @@ const profileReducer =
           },
           bioInput: {
             $set: null,
+          },
+          avatarInput: {
+            $set: null,
+          },
+          isEditingAvatar: {
+            $set: false,
           },
           isLoading: {
             $set: false,
@@ -64,10 +84,19 @@ const profileReducer =
           bioInput: {
             $set: null,
           },
+          isEditingAvatar: {
+            $set: false,
+          },
+          avatarInput: {
+            $set: null,
+          },
         });
       case types.PROFILE_START_EDITING:
         return update(state, {
           isEditingBio: {
+            $set: true,
+          },
+          isEditingAvatar: {
             $set: true,
           },
         });

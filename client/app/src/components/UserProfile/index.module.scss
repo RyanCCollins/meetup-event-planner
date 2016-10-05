@@ -1,7 +1,3 @@
-.userProfile {
-
-}
-
 .avatar {
   width: 100px;
   height: 100px;
@@ -10,4 +6,32 @@
   overflow: hidden;
   cursor: pointer;
   transition: all .3s ease-in-out;
+  border-radius: 50%;
+  border: 1px solid #dbe2e8;
+  margin: 0 auto;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+}
+
+.panel {
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(167, 157, 144, 0.52);
+  width: 100%;
+  margin-bottom: 80px;
+  position: relative;
+  padding: 60px 0 !important;
+}
+
+.transformAvatar {
+  display: inline-block;
+  line-height: 1;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
 }

@@ -1,7 +1,5 @@
 .container {
-  height: 100vh;
+  min-height: calc(100vh - 74px);
   width: 100%;
-}
-.profile {
-
+  background-color: #ECEFF1;
 }

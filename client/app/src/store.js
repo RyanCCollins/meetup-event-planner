@@ -17,11 +17,11 @@ import { initialState as landingContainer } from 'containers/LandingContainer/re
 import { initialState as signupContainer } from 'containers/SignupContainer/reducer';
 import { initialState as loginContainer } from 'containers/LoginContainer/reducer';
 import { initialState as createEventContainer } from 'containers/CreateEventContainer/reducer';
-import { initialState as appState } from 'components/App/reducer';
+import { initialState as authReducer } from 'components/App/reducer';
 import { initialState as profileContainer } from 'containers/ProfileContainer/reducer';
 
 const initialState = {
-  appState,
+  authReducer,
   landingContainer,
   signupContainer,
   profileContainer,
@@ -69,11 +69,9 @@ const store = createStore(
 export const history = syncHistoryWithStore(browserHistory, store);
 
 export const userIsAuthenticated = userAuthWrapper({
-  authSelector: (state) => ({
-    authToken: state.appState.authToken,
-  }),
+  authSelector: state => state.authReducer.user,
   redirectAction: routerActions.replace,
-  failureRedirectPath: '/login',
+  failureRedirectPath: '/',
   wrapperDisplayName: 'userIsAuthenticated',
 });
 
