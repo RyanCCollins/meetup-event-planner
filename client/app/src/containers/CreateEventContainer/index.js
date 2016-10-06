@@ -169,10 +169,11 @@ const createEventQuery = gql`
 `;
 
 const createEventMutation = gql`
-mutation createEvent($name: String!, $message: String,
+mutation createEvent($authToken: String!, $name: String!, $message: String,
   $start: String!, $end: String!, $type:String!,
     $host: HostInput, $guests: [GuestInput]) {
-      CreateEvent(input: { name: $name, message: $message, start_date: $start,
+      CreateEvent(input: { auth_token: $authToken, name: $name,
+        message: $message, start_date: $start,
         end_date: $end, host: $host, type: $type, guests: $guests}) {
           event {
             id
