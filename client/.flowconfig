@@ -1,0 +1,9 @@
+[ignore]
+.*/node_modules/fbjs/.*
+.*/node_modules/editions/.*
+
+[include]
+
+[libs]
+
+[options]

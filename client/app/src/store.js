@@ -13,16 +13,16 @@ const isClient = typeof document !== 'undefined';
 const isDeveloping = process.env.NODE_ENV !== 'production';
 import client from './apolloClient';
 
-import { initialState as landingContainer } from 'containers/LandingContainer/reducer';
 import { initialState as signupContainer } from 'containers/SignupContainer/reducer';
 import { initialState as loginContainer } from 'containers/LoginContainer/reducer';
+import { initialState as eventsContainer } from 'containers/EventsContainer/reducer';
 import { initialState as createEventContainer } from 'containers/CreateEventContainer/reducer';
 import { initialState as authReducer } from 'components/App/reducer';
 import { initialState as profileContainer } from 'containers/ProfileContainer/reducer';
 
 const initialState = {
   authReducer,
-  landingContainer,
+  eventsContainer,
   signupContainer,
   profileContainer,
   loginContainer,
@@ -71,7 +71,7 @@ export const history = syncHistoryWithStore(browserHistory, store);
 export const userIsAuthenticated = userAuthWrapper({
   authSelector: state => state.authReducer.user,
   redirectAction: routerActions.replace,
-  failureRedirectPath: '/',
+  failureRedirectPath: '/login',
   wrapperDisplayName: 'userIsAuthenticated',
 });
 

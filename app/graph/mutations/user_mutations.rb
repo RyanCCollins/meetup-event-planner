@@ -37,7 +37,7 @@ module UserMutations
         }
       else
         {
-          
+          user: {}
         }
       end
     }

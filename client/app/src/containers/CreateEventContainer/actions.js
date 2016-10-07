@@ -52,7 +52,8 @@ export const createEventRemoveGuest = (index) => ({
   index,
 });
 
-export const fieldsToData = (fields, guestList) => ({
+export const fieldsToData = (fields, guestList, user) => ({
+  authToken: user.authToken,
   name: fields.nameInput.value,
   message: fields.messageInput.value,
   start: fields.startDateInput.value,

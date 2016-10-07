@@ -35,7 +35,7 @@ const EventInfo = ({
       {parseDates(event.startDate, event.endDate)}
     </Heading>
     <Heading align="end" tag="h5">
-      {`${event.guests.length} are attending`}
+      {`${event.guests.length} people are attending`}
     </Heading>
     <Paragraph>
       {event.message}

@@ -3,11 +3,18 @@ QueryType = GraphQL::ObjectType.define do
   description 'The query root of this schema.'
 
   # Get all events
-  field :events, types[EventType] do
-    argument :limit, types.Int
+  field :eventsCount, types.Int do
     resolve -> (obj, args, ctx) {
-      events = Event.all
-      args[:limit] && events = events.limit(args[:limit])
+      Event.all.count
+    }
+  end
+  field :events, types[EventType] do
+    argument :first, types.Int
+    resolve -> (obj, args, ctx) {
+      events = Event.all.sort_by(&:start_date).reverse
+      if args[:first]
+        events = events.first(args[:first])
+      end
       events
     }
   end

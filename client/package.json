@@ -145,6 +145,7 @@
     "eslint-config-airbnb": "^4.0.0",
     "eslint-loader": "^1.1.1",
     "eslint-plugin-react": "^3.11.3",
+    "flow-bin": "^0.33.0",
     "npm-install-webpack-plugin": "^4.0.3",
     "null-loader": "0.1.1",
     "plop": "1.5.0",

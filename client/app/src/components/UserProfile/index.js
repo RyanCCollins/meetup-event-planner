@@ -12,6 +12,7 @@ import ListItem from 'grommet-udacity/components/ListItem';
 import FormField from 'grommet-udacity/components/FormField';
 import Footer from 'grommet-udacity/components/Footer';
 import Menu from 'grommet-udacity/components/Menu';
+import Anchor from 'grommet-udacity/components/Anchor';
 
 const UserProfile = ({
   user,
@@ -79,7 +80,7 @@ const UserProfile = ({
             <Box
               onClick={onClickToEdit}
             >
-            <Paragraph className={styles.isButton}>
+              <Paragraph className={styles.isButton}>
                 {user.bio ? user.bio : 'Click to add a bio.'}
               </Paragraph>
             </Box>
@@ -137,7 +138,9 @@ const UserProfile = ({
             <List>
               {user.events.map((item, i) =>
                 <ListItem key={i}>
-                  {item.name}
+                  <Anchor href={`/events/${item.id}`}>
+                    {item.name}
+                  </Anchor>
                 </ListItem>
               )}
             </List>

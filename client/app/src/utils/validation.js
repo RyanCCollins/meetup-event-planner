@@ -1,3 +1,5 @@
+/* @flow */
+
 const isIntegerRE = /^\+?(0|[1-9]\d*)$/;
 const numberRE = /^(?=.*[0-9]).+$/;
 const twoWordsRE = /^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/;

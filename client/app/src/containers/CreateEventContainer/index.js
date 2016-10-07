@@ -43,9 +43,10 @@ class CreateEvent extends Component {
       mutate,
       fields,
       guestList,
+      user,
     } = this.props;
     const variables = {
-      variables: CreateEventActionCreators.fieldsToData(fields, guestList),
+      variables: CreateEventActionCreators.fieldsToData(fields, guestList, user),
     };
     mutate(variables)
       .then(res => {
@@ -122,6 +123,7 @@ class CreateEvent extends Component {
 }
 
 CreateEvent.propTypes = {
+  user: PropTypes.object.isRequired,
   submitEvent: PropTypes.func.isRequired,
   mutate: PropTypes.func.isRequired,
   fields: PropTypes.object.isRequired,
@@ -141,6 +143,7 @@ CreateEvent.contextTypes = {
 
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
+  user: state.authReducer.user,
   error: state.createEventContainer.error,
   message: state.createEventContainer.message,
   guestList: state.createEventContainer.guestList,

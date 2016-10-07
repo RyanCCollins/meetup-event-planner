@@ -13,11 +13,24 @@ import Button from 'grommet-udacity/components/Button';
 import Heading from 'grommet-udacity/components/Heading';
 import CalendarIcon from 'grommet-udacity/components/icons/base/Calendar';
 
-class EventsContainer extends Component { // eslint-disable-line react/prefer-stateless-function
+class EventsContainer extends Component {
+  constructor() {
+    super();
+    this.handleMore = this.handleMore.bind(this);
+  }
+  handleMore() {
+    const {
+      actions,
+      refetch,
+    } = this.props;
+    actions.eventsIncrementCurrent();
+    refetch();
+  }
   render() {
     const {
       events,
       loading,
+      eventsCount,
     } = this.props;
     return (
       <Box align="center">
@@ -29,17 +42,20 @@ class EventsContainer extends Component { // eslint-disable-line react/prefer-st
         </Section>
         <Button href="/create-event" label="Create Event" onClick={e => e} />
         <Section>
-          {loading ?
+          {loading &&
             <LoadingIndicator isLoading={loading} />
-          :
-            <List>
-              {events
-                .sort((a, b) => new Date(b.startDate) - new Date(a.startDate))
-                .map((event, i) =>
+          }
+          {events && events.length > 0 &&
+            <List
+              onMore={() => events.length + 1 >= eventsCount ? null : this.handleMore()}
+            >
+              <Box align="center" justify="center">
+                {events.map((event, i) =>
                   <ListItem key={i}>
                     <EventInfo event={event} />
                   </ListItem>
-              )}
+                )}
+              </Box>
             </List>
           }
         </Section>
@@ -50,12 +66,16 @@ class EventsContainer extends Component { // eslint-disable-line react/prefer-st
 
 EventsContainer.propTypes = {
   loading: PropTypes.bool.isRequired,
+  eventsCount: PropTypes.number,
   events: PropTypes.array,
+  current: PropTypes.number.isRequired,
+  refetch: PropTypes.func.isRequired,
+  actions: PropTypes.object.isRequired,
 };
 
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
-  // myProp: state.myProp,
+  current: state.eventsContainer.current,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}
@@ -67,8 +87,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const getEventsQuery = gql`
-  query getEvents($limit: Int) {
-    events(limit: $limit) {
+  query getEvents($first: Int) {
+    events(first: $first) {
       id
       name
       type: event_type
@@ -84,18 +104,21 @@ const getEventsQuery = gql`
         name
       }
     }
+    eventsCount
   }
 `;
 
 const ContainerWithData = graphql(getEventsQuery, {
-  options: () => ({
+  options: (ownProps) => ({
     variables: {
-      limit: 20,
+      first: ownProps.current,
     },
   }),
-  props: ({ data: { events, loading } }) => ({
+  props: ({ data: { events, eventsCount, loading, refetch } }) => ({
     loading,
     events,
+    eventsCount,
+    refetch,
   }),
 })(EventsContainer);
 
