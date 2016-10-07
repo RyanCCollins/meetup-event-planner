@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ "$RAILS_DEPLOYMENT" == "true" ]; then
+  bundle exec puma -C config/puma.rb  -p $PORT
+else
+  node client/server.js
+fi

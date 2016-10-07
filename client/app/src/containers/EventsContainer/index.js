@@ -11,6 +11,7 @@ import List from 'grommet-udacity/components/List';
 import ListItem from 'grommet-udacity/components/ListItem';
 import Button from 'grommet-udacity/components/Button';
 import Heading from 'grommet-udacity/components/Heading';
+import Hero from 'grommet-udacity/components/Hero';
 import CalendarIcon from 'grommet-udacity/components/icons/base/Calendar';
 
 class EventsContainer extends Component {
@@ -33,15 +34,20 @@ class EventsContainer extends Component {
       eventsCount,
     } = this.props;
     return (
-      <Box align="center">
-        <Section align="center" justify="center">
-          <CalendarIcon size="large" />
-          <Heading align="center">
-            Events
-          </Heading>
-        </Section>
-        <Button href="/create-event" label="Create Event" onClick={e => e} />
+      <Box align="center" align="center">
+        <Hero size="small" justify="center" align="center">
+          <Box style={{ width: '100%' }} align="center" justify="center">
+            <CalendarIcon align="center" size="large" />
+            <Heading align="center">
+              Meetup Events
+            </Heading>
+            <Button href="/create-event" label="Create Event" onClick={e => e} />
+          </Box>
+        </Hero>
         <Section>
+          <Heading align="center">
+            Event List
+          </Heading>
           {loading &&
             <LoadingIndicator isLoading={loading} />
           }

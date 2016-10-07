@@ -18,7 +18,7 @@ class Landing extends Component { // eslint-disable-line react/prefer-stateless-
     } = this.props;
     return (
       <Section align="center" justify="center" className={styles.landing}>
-        <Hero backgroundImage="https://www.knewton.com/wp-content/uploads/George-meetup.jpg">
+        <Hero backgroundImage="http://s3.amazonaws.com/content.officeleasecenter.com/production/ckeditor_assets/pictures/1672/original_codecademy.jpg">
           <Headline
             strong
             size="large"
