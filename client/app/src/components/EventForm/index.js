@@ -10,7 +10,7 @@ import Select from 'grommet-udacity/components/Select';
 import Footer from 'grommet-udacity/components/Footer';
 import Button from 'grommet-udacity/components/Button';
 import Box from 'grommet-udacity/components/Box';
-import Heading from 'grommet-udacity/components/Heading';
+import Geosuggest from 'react-geosuggest';
 import List from 'grommet-udacity/components/List';
 import ListItem from 'grommet-udacity/components/ListItem';
 import CloseIcon from 'grommet/components/icons/base/Close';
@@ -74,6 +74,9 @@ const EventForm = ({
           }}
           onSelect={({ _, suggestion }) => hostInput.onChange(suggestion)}
         />
+      </FormField>
+      <FormField>
+        <Geosuggest {...locationInput} />
       </FormField>
       <FormField
         label="Start Date"
