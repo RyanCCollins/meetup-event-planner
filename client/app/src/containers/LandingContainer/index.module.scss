@@ -1,8 +1,36 @@
 .landing {
-  padding-top: 30px !important;
+  padding-top: 0 !important;
 }
 
 .buttonBox {
   height: 150px;
   margin-top: 30px;
+}
+
+.heroTitle {
+  text-shadow: 2px 2px 0 #169dc1;
+}
+
+.article {
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(167, 157, 144, 0.52);
+  width: 100%;
+  margin-bottom: 80px;
+  position: relative;
+  padding: 60px 0 !important;
+  max-width: 900px;
+  @media screen and (min-width: 800px) {
+    min-width: 700px;
+  }
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+  padding: 4px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
 }

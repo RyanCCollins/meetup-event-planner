@@ -6,7 +6,10 @@ import Heading from 'grommet-udacity/components/Heading';
 import Box from 'grommet-udacity/components/Box';
 import Section from 'grommet-udacity/components/Section';
 import Button from 'grommet-udacity/components/Button';
-import CalendarIcon from 'grommet-udacity/components/icons/base/Calendar';
+import Hero from 'grommet-udacity/components/Hero';
+import Headline from 'grommet-udacity/components/Headline';
+import Paragraph from 'grommet-udacity/components/Paragraph';
+import Article from 'grommet-udacity/components/Article';
 
 class Landing extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -15,18 +18,66 @@ class Landing extends Component { // eslint-disable-line react/prefer-stateless-
     } = this.props;
     return (
       <Section align="center" justify="center" className={styles.landing}>
-        <CalendarIcon size="large" />
-        <Heading align="center" tag="h1">
-          Meetup Event Planner
-        </Heading>
-        <Heading align="center" tag="h3">
-          Serving all of your Meetup Needs
-        </Heading>
-        <Box direction="column" justify="between" className={styles.buttonBox}>
-          <Button label="View Events" href="/events" />
-          {!user.authToken && <Button label="Sign Up" href="/signup" />}
-          {!user.authToken && <Button label="Log In" href="/login" />}
-        </Box>
+        <Hero backgroundImage="https://www.knewton.com/wp-content/uploads/George-meetup.jpg">
+          <Headline
+            strong
+            size="large"
+            className={styles.heroTitle}
+          >
+            Meetup Event Planner
+          </Headline>
+        </Hero>
+        <Section>
+          <Box
+            align="center"
+            justify="center"
+            className={styles.article}
+            pad={{ horizontal: 'large', vertical: 'large' }}
+          >
+            <Heading tag="h1" align="center">
+              Meetup Events
+            </Heading>
+            <Article align="center">
+              <Paragraph>
+                Welcome to the meetup event planner application!
+              </Paragraph>
+              <Paragraph>
+                This application is a demo app built with React, GraphQL and Ruby on Rails.
+                It was built as the second project for the SWND and showcases best practices for
+                building interactive web forms.
+              </Paragraph>
+              <Heading tag="h3" align="center">
+                About the Developer
+              </Heading>
+              <Box
+                size="medium"
+                pad={{ horizontal: 'medium', vertical: 'medium' }}
+                align="center"
+                justify="center"
+              >
+                <img
+                  className={styles.avatar}
+                  src="https://github.com/RyanCCollins/cdn/blob/master/misc/ryanc.jpg?raw=true"
+                />
+                <Heading tag="h3" align="center">
+                  Ryan Collins
+                </Heading>
+                <Heading tag="h4" align="center">
+                  Full Stack and UI Engineer
+                </Heading>
+                <Heading tag="h5" align="center">
+                  Experienced engineer specializing in implementing cutting-edge technologies
+                  in a multitude of domains, including Front End web, UI / UX, et. al.
+                </Heading>
+              </Box>
+            </Article>
+            <Box direction="column" justify="between" className={styles.buttonBox}>
+              <Button label="View Events" href="/events" />
+              {!user.authToken && <Button label="Sign Up" href="/signup" />}
+              {!user.authToken && <Button label="Log In" href="/login" />}
+            </Box>
+          </Box>
+        </Section>
       </Section>
     );
   }
