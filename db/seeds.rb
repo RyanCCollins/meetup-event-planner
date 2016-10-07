@@ -2,37 +2,26 @@
   Host.create(name: FFaker::Name.name)
 end
 
+5.times do
+  Guest.create(
+    name: FFaker::Name.name
+  )
+end
+
 User.create(
   name: 'GraphQL User',
   email: 'user@graphql.org',
   password: 'GraphQLUser123'
 )
 
-5.times do
-  User.create(
-    name: FFaker::Name.name,
-    email: FFaker::Internet.email,
-    password: FFaker::Internet.password
-  )
-end
-
-10.times do
-  name = [
-    FFaker::BaconIpsum.word,
-    FFaker::BaconIpsum.word
-  ].map(&:capitalize).join(' ')
-  type = [0, 1, 2, 3, 4]
-  event = Event.create(
-    name: name,
-    user: User.all.sample,
-    event_type: type.sample,
-    start_date: FFaker::Time.date,
-    end_date: FFaker::Time.date,
-    location: "#{FFaker::Address.street_address}, #{FFaker::Address.city}, #{FFaker::Address.us_state_abbr} #{FFaker::Address.zip_code}",
-    host: Host.all.sample,
-    message: FFaker::BaconIpsum.paragraph
-  )
-  5.times do
-    Guest.create(event: event, name: FFaker::Name.name)
-  end
-end
+Event.create(
+  name: 'Alumni App Release Party',
+  user: User.first,
+  event_type: 4,
+  start_date: '10/06/2016 5:00PM',
+  end_date: '10/06/2016 7:00PM',
+  host: Host.create(name: 'Ryan Collins'),
+  guests: Guest.all,
+  message: 'Join us to celebrate the release of the alumni web application.  We will have an online celebration as well as an in-person meetup at Udacity headquarters.',
+  location: '2465 Latham Street, 3rd Floor., Mountain View, CA 94040'
+)

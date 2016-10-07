@@ -9,11 +9,11 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'graphql'
 gem 'graphql-relay', '~>0.9'
 gem 'graphiql-rails'
+gem 'ffaker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'ffaker'
 end
 
 group :development do

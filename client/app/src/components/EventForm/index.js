@@ -75,8 +75,15 @@ const EventForm = ({
           onSelect={({ _, suggestion }) => hostInput.onChange(suggestion)}
         />
       </FormField>
-      <FormField>
-        <Geosuggest {...locationInput} />
+      <FormField
+        error={locationInput.touched && locationInput.error ? locationInput.error : null}
+        label="Location"
+        className={styles.locationInput}
+      >
+        <Geosuggest
+          placeholder="Start typing!"
+          {...locationInput}
+        />
       </FormField>
       <FormField
         label="Start Date"
