@@ -6,11 +6,21 @@ import * as AppActions from 'components/App/actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import Section from 'grommet-udacity/components/Section';
-import LoginForm from 'grommet-udacity/components/LoginForm';
 import Box from 'grommet-udacity/components/Box';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { AuthFormFooter, LoadingIndicator, ToastMessage } from 'components';
+import { reduxForm } from 'redux-form';
+import validation from './utils/validation';
+import {
+  LoadingIndicator,
+  ToastMessage,
+  LoginForm,
+} from 'components';
+
+const fields = [
+  'emailInput',
+  'passwordInput',
+];
 
 class Login extends Component {
   constructor() {
@@ -62,6 +72,7 @@ class Login extends Component {
       error,
       message,
       isLoading,
+      fields,
     } = this.props;
     return (
       <Section
@@ -80,12 +91,7 @@ class Login extends Component {
             <LoadingIndicator message="Submitting" isLoading={isLoading} />
           }
           <LoginForm
-            title="Meetup Events"
-            secondaryText="Enter your credentials to Login"
-            rememberMe
-            forgotPassword={
-              <AuthFormFooter text="Not a member?" link="/signup" />
-            }
+            {...fields}
             onSubmit={this.handleSubmit}
           />
           {error &&
@@ -114,6 +120,7 @@ Login.propTypes = {
   error: PropTypes.string,
   message: PropTypes.string,
   isLoading: PropTypes.bool.isRequired,
+  fields: PropTypes.object.isRequired,
 };
 
 Login.contextTypes = {
@@ -166,7 +173,13 @@ const signinUserMutation = gql`
 
 const ContainerWithMutation = graphql(signinUserMutation)(Container);
 
+const FormContainer = reduxForm({
+  form: 'Login',
+  fields,
+  validate: validation,
+})(ContainerWithMutation);
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ContainerWithMutation);
+)(FormContainer);

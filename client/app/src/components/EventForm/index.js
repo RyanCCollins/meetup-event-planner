@@ -16,6 +16,9 @@ import ListItem from 'grommet-udacity/components/ListItem';
 import CloseIcon from 'grommet/components/icons/base/Close';
 import AddIcon from 'grommet/components/icons/base/Add';
 
+const calculatedError = (input) =>
+  input.dirty || input.touched && input.error ? input.error : null;
+
 const EventForm = ({
   onSubmit,
   nameInput,
@@ -36,24 +39,24 @@ const EventForm = ({
   <Form onSubmit={onSubmit} className={styles.eventForm}>
     <FormFields>
       <FormField
-        label="Name"
+        label="Name *"
         htmlFor="name-input"
         help="Name it something fun!!"
-        error={nameInput.touched && nameInput.error ? nameInput.error : null}
+        error={nameInput.dirty || nameInput.touched && nameInput.error ? nameInput.error : null}
       >
         <input {...nameInput} type="text" id="name-input" name="event-name" />
       </FormField>
       <FormField
-        label="Type"
+        label="Type *"
         help="What type of event is it?"
-        error={typeInput.touched && typeInput.error ? typeInput.error : null}
+        error={!typeInput.valid && typeInput.error ? typeInput.error : null}
         htmlFor="type-input"
       >
         <Select
           {...typeInput}
           id="type-input"
           value={{ value: typeInput.value.option, label: typeInput.value.option }}
-          options={eventTypes.map(i => `${i.charAt(0)}${i.slice(1)}`)}
+          options={eventTypes.map(i => `${i.charAt(0).toUpperCase()}${i.slice(1)}`)}
           onSelect={({ _, suggestion }) => typeInput.onChange(suggestion.option)}
         />
       </FormField>
@@ -61,50 +64,51 @@ const EventForm = ({
         label="Host"
         htmlFor="host-input"
         help="Who is hosting this shindig?"
-        error={hostInput.touched && hostInput.error ? hostInput.error : null}
+        error={calculatedError(hostInput)}
       >
         <SearchInput
           {...hostInput}
           id="host-input"
           name="host"
           suggestions={pastHosts.map(i => i.name)}
-          onDOMChange={(e) => {
-            hostInput.touched = true;
-            hostInput.onChange(e.target.value);
-          }}
+          onDOMChange={(e) => hostInput.onChange(e.target.value)}
           onSelect={({ _, suggestion }) => hostInput.onChange(suggestion)}
         />
       </FormField>
       <FormField
-        error={locationInput.touched && locationInput.error ? locationInput.error : null}
+        error={calculatedError(locationInput)}
         label="Location"
         className={styles.locationInput}
+        htmlFor="location-input"
       >
         <Geosuggest
+          id="location-input"
           placeholder="Start typing!"
           {...locationInput}
         />
       </FormField>
       <FormField
         label="Start Date"
-        error={startDateInput.touched && startDateInput.error ? startDateInput.error : null}
+        htmlFor="start-date-input"
+        error={calculatedError(startDateInput)}
         help="When does it start? Set a Date and Time"
       >
         <DateTime
           {...startDateInput}
-          id="start-date-field"
+          id="start-date-input"
           format="MM/DD/YYYY h:mm a"
           step="30"
         />
       </FormField>
       <FormField
         label="End Date"
-        error={endDateInput.touched && endDateInput.error ? endDateInput.error : null}
+        htmlFor="end-date-input"
+        error={calculatedError(endDateInput)}
         help="When does it end? Set a Date and Time"
       >
         <DateTime
           {...endDateInput}
-          id="end-date-field"
+          id="end-date-input"
           format="MM/DD/YYYY h:mm a"
           step="30"
         />
@@ -114,7 +118,7 @@ const EventForm = ({
         htmlFor="guests-input"
         help="Start Typing to Add A Guest"
         style={{ position: 'relative' }}
-        error={guestsInput.touched && guestsInput.error ? guestsInput.error : null}
+        error={guestList.length < 1 ? guestsInput.error : null}
       >
         <SearchInput
           {...guestsInput}
@@ -122,19 +126,18 @@ const EventForm = ({
           name="guests"
           onDOMChange={(e) => guestsInput.onChange(e.target.value)}
           suggestions={pastGuests.map(i => i.name)}
-          onSelect={({ _, suggestion }) => onAddGuest(suggestion)}
+          onSelect={({ _, suggestion }) => guestsInput.onChange(suggestion)}
         />
-        {
-          guestsInput !== '' &&
-            <Button
-              tabIndex="0"
-              className={styles.addButton}
-              icon={<AddIcon />}
-              onClick={() => {
-                onAddGuest(guestsInput.value);
-                guestsInput.onChange('');
-              }}
-            />
+        {guestsInput.valid &&
+          <Button
+            tabIndex="0"
+            className={styles.addButton}
+            icon={<AddIcon />}
+            onClick={() => {
+              onAddGuest(guestsInput.value);
+              guestsInput.onChange('');
+            }}
+          />
         }
       </FormField>
       <FormField
@@ -169,7 +172,7 @@ const EventForm = ({
         label="Message"
         help="Optional message to the guests."
         htmlFor="message-input"
-        error={messageInput.touched && messageInput.error ? messageInput.error : null}
+        error={calculatedError(messageInput)}
       >
         <textarea {...messageInput} name="message" id="message-input" cols="40" rows="3" />
       </FormField>

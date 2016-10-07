@@ -1,4 +1,5 @@
 /* Assemble all components for export */
+export LoginForm from './LoginForm';
 export SingleEvent from './SingleEvent';
 export UserProfile from './UserProfile';
 export ToastMessage from './ToastMessage';

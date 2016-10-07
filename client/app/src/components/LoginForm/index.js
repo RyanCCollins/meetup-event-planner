@@ -11,16 +11,14 @@ import Box from 'grommet-udacity/components/Box';
 import { AuthFormFooter } from 'components';
 import calculatedError from 'utils/error';
 
-const SignupForm = ({
-  onSubmit,
-  nameInput,
-  emailInput,
+const LoginForm = ({
   passwordInput,
-  passwordConfirmationInput,
+  emailInput,
+  onSubmit,
 }) => (
   <Box
     size="large"
-    className={styles.signupForm}
+    className={styles.loginForm}
     pad={{ horizontal: 'small', vertical: 'small' }}
   >
     <Form>
@@ -28,23 +26,9 @@ const SignupForm = ({
         Meetup Event Planner
       </Heading>
       <Heading align="center" tag="h5">
-        Signup
+        Login
       </Heading>
       <FormFields>
-        <FormField
-          help="What should we call you?"
-          error={calculatedError(nameInput)}
-          label="Name"
-          htmlFor="nameInput"
-          className={styles.formField}
-        >
-          <input
-            {...nameInput}
-            id="nameInput"
-            type="text"
-            className={styles.input}
-          />
-        </FormField>
         <FormField
           help="How should we get in touch with you?"
           error={calculatedError(emailInput)}
@@ -71,30 +55,19 @@ const SignupForm = ({
             className={styles.input}
           />
         </FormField>
-        <FormField
-          help="Confirm your password"
-          label="Password Confirmation"
-          className={styles.formField}
-          error={calculatedError(passwordConfirmationInput)}
-        >
-          <input
-            {...passwordConfirmationInput}
-            id="passwordConfirmationInput"
-            type="password"
-            className={styles.input}
-          />
-        </FormField>
       </FormFields>
       <Footer pad={{ vertical: 'medium' }} align="center">
         <Button onClick={onSubmit} fill label="Submit" primary />
       </Footer>
-      <AuthFormFooter text="Already a member?" link="/login" />
+      <AuthFormFooter text="Need an Account?" link="/signup" />
     </Form>
   </Box>
 );
 
-SignupForm.propTypes = {
+LoginForm.propTypes = {
+  passwordInput: PropTypes.object.isRequired,
+  emailInput: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default cssModules(SignupForm, styles);
+export default cssModules(LoginForm, styles);
