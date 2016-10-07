@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module RailsGraphqlBoilerplate
   class Application < Rails::Application
     config.api_only = false
+    config.secret_key_base = ENV["SECRET_KEY_BASE"]
     config.autoload_paths << Rails.root.join('app/graph')
     config.autoload_paths << Rails.root.join('app/graph/types')
     config.autoload_paths << Rails.root.join('app/graph/fields')
