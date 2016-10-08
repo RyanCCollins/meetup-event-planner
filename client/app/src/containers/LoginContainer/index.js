@@ -76,10 +76,10 @@ class Login extends Component {
   }
   render() {
     const {
-      error,
       message,
       isLoading,
       fields,
+      errorMessage,
     } = this.props;
     return (
       <Section
@@ -101,9 +101,9 @@ class Login extends Component {
             {...fields}
             onSubmit={this.handleSubmit}
           />
-          {error &&
+          {errorMessage &&
             <ToastMessage
-              message={error}
+              message={errorMessage}
               status="critical"
               onClose={() => this.handleClosingToast('error')}
             />
@@ -124,7 +124,7 @@ Login.propTypes = {
   mutate: PropTypes.func.isRequired,
   user: PropTypes.object,
   actions: PropTypes.object.isRequired,
-  error: PropTypes.string,
+  errorMessage: PropTypes.string,
   message: PropTypes.string,
   isLoading: PropTypes.bool.isRequired,
   fields: PropTypes.object.isRequired,
@@ -137,7 +137,7 @@ Login.contextTypes = {
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
   user: state.authReducer.user,
-  error: state.loginContainer.error,
+  errorMessage: state.loginContainer.error,
   message: state.loginContainer.message,
   isLoading: state.loginContainer.isLoading,
 });
