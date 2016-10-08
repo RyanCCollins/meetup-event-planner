@@ -33,11 +33,13 @@ const LoginForm = ({
           help="How should we get in touch with you?"
           error={calculatedError(emailInput)}
           label="Email"
+          htmlFor="emailInput"
           className={styles.formField}
         >
           <input
             {...emailInput}
             id="emailInput"
+            name="email"
             type="email"
             className={styles.input}
           />
@@ -46,10 +48,12 @@ const LoginForm = ({
           help="Gotta be secure"
           error={calculatedError(passwordInput)}
           label="Password"
+          htmlFor="passwordInput"
           className={styles.formField}
         >
           <input
             {...passwordInput}
+            name="password"
             id="passwordInput"
             type="password"
             className={styles.input}
