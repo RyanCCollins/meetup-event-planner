@@ -58,6 +58,7 @@ export const fieldsToData = (fields, guestList, user) => ({
   message: fields.messageInput.value,
   start: fields.startDateInput.value,
   end: fields.endDateInput.value,
+  location: fields.locationInput.value,
   type: fields.typeInput.value.option,
   host: {
     name: fields.hostInput.value,

@@ -18,6 +18,7 @@ module EventMutations
         end_date: inputs[:end_date],
         event_type: inputs[:type].downcase!,
         message: inputs[:message],
+        location: inputs[:location]
       )
       inputs[:guests].to_a.each do |guest|
         event.guests << Guest.new(name: guest.to_h["name"])

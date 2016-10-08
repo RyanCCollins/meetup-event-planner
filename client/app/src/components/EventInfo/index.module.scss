@@ -4,6 +4,10 @@
   margin-bottom: 30px;
   padding: 30px !important;
   border-radius: 5px;
+  @media screen and (min-width: 550px) {
+    min-width: 580px;
+    max-width: 100vw;
+  }
 }
 
 .eventHeading {
