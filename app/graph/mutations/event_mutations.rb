@@ -44,7 +44,7 @@ module EventMutations
     input_field :auth_token, !types.String
 
     return_field :event, EventType
-    resolve (inputs, ctx) -> {
+    resolve -> (inputs, ctx) do
       event = Event.find_by(id: inputs[:event_id])
       user = User.find_by(auth_token: inputs[:auth_token])
       guest = Guest.find_by(name: user.name) || Guest.create(name: user.name)
@@ -53,6 +53,6 @@ module EventMutations
       {
         event: event
       }
-    }
+    end
   end
 end
