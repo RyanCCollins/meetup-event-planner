@@ -40,7 +40,7 @@ module EventMutations
     end
   end
   RSVP = GraphQL::Relay::Mutation.define do
-    input_field :event_id, !types.String
+    input_field :event_id, !types.Int
     input_field :auth_token, !types.String
 
     return_field :event, EventType
