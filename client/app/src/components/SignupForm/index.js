@@ -34,13 +34,15 @@ const SignupForm = ({
         <FormField
           help="What should we call you?"
           error={calculatedError(nameInput)}
-          label="Name"
+          label="Name *"
           htmlFor="nameInput"
           className={styles.formField}
         >
           <input
             {...nameInput}
+            required
             id="nameInput"
+            name="name"
             type="text"
             className={styles.input}
           />
@@ -48,12 +50,15 @@ const SignupForm = ({
         <FormField
           help="How should we get in touch with you?"
           error={calculatedError(emailInput)}
-          label="Email"
+          label="Email *"
+          htmlFor="emailInput"
           className={styles.formField}
         >
           <input
             {...emailInput}
+            required
             id="emailInput"
+            name="email"
             type="email"
             className={styles.input}
           />
@@ -61,26 +66,32 @@ const SignupForm = ({
         <FormField
           help="Make it secure"
           error={calculatedError(passwordInput)}
-          label="Password"
+          label="Password *"
+          htmlFor="passwordInput"
           className={styles.formField}
         >
           <input
             {...passwordInput}
+            required
             id="passwordInput"
+            name="password"
             type="password"
             className={styles.input}
           />
         </FormField>
         <FormField
           help="Confirm your password"
-          label="Password Confirmation"
+          label="Password Confirmation *"
+          htmlFor="passwordConfirmationInput"
           className={styles.formField}
           error={calculatedError(passwordConfirmationInput)}
         >
           <input
             {...passwordConfirmationInput}
+            required
             id="passwordConfirmationInput"
             type="password"
+            name="password"
             className={styles.input}
           />
         </FormField>
