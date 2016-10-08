@@ -1,27 +1,70 @@
 # Meetup Event Planner
 
-## Getting Started
-The app consists of a Rails / GraphQL API and React / Redux SPA Front End.
+## Background
+The app consists of a Rails / GraphQL API and React / Redux SPA Front End.  
 
-### Installing
-TBD
+See here for [an article](https://medium.com/@ryancollinsio/b261f6cfea93) about this app.
+
+## Getting Started
+The repo contains two projects, seperated by subtrees.  The server bootstraps at the root level, whereas the Front End begins in the `./client` directory.
+
+## Installing
+The package.json file includes over a dozen npm scripts to make most tasks a breeze.
+
+Installation can be achieved by running
+```
+npm run setup
+```
+
+To get the development server running, please run
+```
+npm run start
+```
+
+### Scripts
+Scripts can be referenced from the [Scalable React Boilerplate](https://github.com/RyanCCollins/scalable-react-boilerplate) Project repo.
+
+If you just want to serve the minified and chunked bundles, which might be faster, you can run
+```
+npm run serve:bundle
+```
+
+In production, the client connects to the heroku server.  You can run the server locally with the following command.
+```
+NODE_ENV=development node server
+```
+
+#### Testing
+The test suite contains over 70 tests and can be run with
+```
+npm run test
+```
 
 ## Deployment
-TDB
+The app is deployed to Heroku and has a CI suite running with Codeship.  It is running Express JS and GraphQL on the server for Front end and GraphQL on Rails for the back end
 
-## Built With
-- Rails
-- GraphQL
-- Redux
-- React
-
-## Authors
-
-* **Ryan Collins**
+# Built With
+- [GraphQL](http://graphql.org/learn/)
+- [GraphQL Ruby](https://github.com/rmosolgo/graphql-ruby)
+- [ApolloClient](https://github.com/apollostack/apollo-client)
+- [React](https://facebook.github.io/react/)
+- [Redux](https://github.com/reactjs/redux)
+- [Grommet UX](https://github.com/RyanCCollins/grommet)
+- [Scalable React Boilerplate](https://github.com/RyanCCollins/scalable-react-boilerplate)
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
+## Troubleshooting
+When working with a team on a project that uses Node, it is important that everyone use the same version of node and npm.
+In the case of this project, we are using Node version 5.2.0.
+
+Instructions for installing NVM and setting your node version for the project can be [found here](https://gist.github.com/RyanCCollins/1a5686ff9dd51b72eb2d4dc70aa6c1f4).
+
+If you get an error message, such as "Unexpected token import", that means that your Babel installation is not working right.  Please see [here](https://github.com/babel/babel/issues) for potential troubleshooting steps.
+
 ## Acknowledgments
-TBD
+Many thanks to the Grommet UX teams and the teams building React, Redux, GraphQL and Apollo.  Also thank to the grapql-ruby team!
+
+## Screen Shots
