@@ -13,8 +13,8 @@ import Box from 'grommet-udacity/components/Box';
 import Geosuggest from 'react-geosuggest';
 import List from 'grommet-udacity/components/List';
 import ListItem from 'grommet-udacity/components/ListItem';
-import CloseIcon from 'grommet/components/icons/base/Close';
-import AddIcon from 'grommet/components/icons/base/Add';
+import CloseIcon from 'grommet-udacity/components/icons/base/Close';
+import AddIcon from 'grommet-udacity/components/icons/base/Add';
 import uniq from 'lodash/uniq';
 
 const calculatedError = (input) =>
@@ -45,7 +45,13 @@ const EventForm = ({
         help="Name it something fun!!"
         error={nameInput.dirty || nameInput.touched && nameInput.error ? nameInput.error : null}
       >
-        <input {...nameInput} type="text" id="name-input" name="event-name" />
+        <input
+          {...nameInput}
+          required
+          type="text"
+          id="name-input"
+          name="event-name"
+         />
       </FormField>
       <FormField
         label="Type *"
@@ -55,6 +61,7 @@ const EventForm = ({
       >
         <Select
           {...typeInput}
+          required
           id="type-input"
           value={{ value: typeInput.value.option, label: typeInput.value.option }}
           options={eventTypes.map(i => `${i.charAt(0).toUpperCase()}${i.slice(1)}`)}
@@ -69,8 +76,10 @@ const EventForm = ({
       >
         <SearchInput
           {...hostInput}
+          required
           id="host-input"
           name="host"
+          required
           suggestions={uniq(pastHosts.map(i => i.name))}
           onDOMChange={(e) => hostInput.onChange(e.target.value)}
           onSelect={({ suggestion }) => hostInput.onChange(suggestion)}
@@ -83,6 +92,7 @@ const EventForm = ({
         htmlFor="location-input"
       >
         <Geosuggest
+          required
           id="location-input"
           placeholder="Start typing!"
           {...locationInput}
@@ -96,6 +106,7 @@ const EventForm = ({
       >
         <DateTime
           {...startDateInput}
+          required
           id="start-date-input"
           format="MM/DD/YYYY h:mm a"
           step="30"
@@ -109,6 +120,7 @@ const EventForm = ({
       >
         <DateTime
           {...endDateInput}
+          required
           id="end-date-input"
           format="MM/DD/YYYY h:mm a"
           step="30"
@@ -123,6 +135,7 @@ const EventForm = ({
       >
         <SearchInput
           {...guestsInput}
+          required
           id="guests-input"
           name="guests"
           onDOMChange={(e) => guestsInput.onChange(e.target.value)}
@@ -180,7 +193,13 @@ const EventForm = ({
         htmlFor="message-input"
         error={calculatedError(messageInput)}
       >
-        <textarea {...messageInput} name="message" id="message-input" cols="40" rows="3" />
+        <textarea 
+          {...messageInput}
+          name="message"
+          id="message-input"
+          cols="40"
+          rows="3"
+        />
       </FormField>
     </FormFields>
     <Footer justify="center" pad={{ vertical: 'small' }}>
