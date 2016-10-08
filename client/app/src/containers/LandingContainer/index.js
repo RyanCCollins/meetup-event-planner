@@ -73,8 +73,8 @@ class Landing extends Component { // eslint-disable-line react/prefer-stateless-
             </Article>
             <Box direction="column" justify="between" className={styles.buttonBox}>
               <Button label="View Events" href="/events" />
-              {!user.authToken && <Button label="Sign Up" href="/signup" />}
-              {!user.authToken && <Button label="Log In" href="/login" />}
+              {user && !user.authToken && <Button label="Sign Up" href="/signup" />}
+              {user && !user.authToken && <Button label="Log In" href="/login" />}
             </Box>
           </Box>
         </Section>
