@@ -43,7 +43,7 @@ const LoginForm = ({
           />
         </FormField>
         <FormField
-          help="Make it secure"
+          help="Gotta be secure"
           error={calculatedError(passwordInput)}
           label="Password"
           className={styles.formField}

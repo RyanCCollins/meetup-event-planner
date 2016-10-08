@@ -16,7 +16,7 @@ module EventMutations
         name: inputs[:name],
         start_date: inputs[:start_date],
         end_date: inputs[:end_date],
-        event_type: inputs[:type],
+        event_type: inputs[:type].downcase!,
         message: inputs[:message],
       )
       inputs[:guests].to_a.each do |guest|

@@ -1,3 +1,11 @@
 .loginForm {
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 24px;
+}
+
+.formField {
+  max-width: 430px;
 }

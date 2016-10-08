@@ -11,14 +11,14 @@ import moment from 'moment';
 
 const formatString = 'MMMM Do YYYY, h:mm:ss a';
 const parseDates = (a, b) =>
-  `From ${moment(a).format(formatString)} to ${moment(b).format(formatString)}`
+  `From ${moment(a).format(formatString)} to ${moment(b).format(formatString)}`;
 
 const EventInfo = ({
   event,
 }) => (
   <Box
     colorIndex="light-1"
-    size="large"
+    size="auto"
     pad={{ horizontal: 'large', vertical: 'medium' }}
     className={styles.eventInfo}
   >

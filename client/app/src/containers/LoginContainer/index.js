@@ -17,7 +17,7 @@ import {
   LoginForm,
 } from 'components';
 
-const fields = [
+export const formFields = [
   'emailInput',
   'passwordInput',
 ];
@@ -36,13 +36,20 @@ class Login extends Component {
       this.context.router.push('/user/profile');
     }
   }
-  handleSubmit({ username, password }) {
+  handleSubmit() {
     const {
       mutate,
       actions,
+      fields,
     } = this.props;
     actions.loginSetLoading();
-    mutate({ variables: { email: username, password } })
+    mutate({
+      variables:
+      {
+        email: fields.emailInput.value,
+        password: fields.passwordInput.value,
+      },
+    })
       .then(result => {
         const user = result.data.SignIn.user;
         if (!user) {
@@ -175,7 +182,7 @@ const ContainerWithMutation = graphql(signinUserMutation)(Container);
 
 const FormContainer = reduxForm({
   form: 'Login',
-  fields,
+  fields: formFields,
   validate: validation,
 })(ContainerWithMutation);
 

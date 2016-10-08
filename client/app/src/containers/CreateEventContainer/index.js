@@ -56,7 +56,7 @@ class CreateEvent extends Component {
         actions.createEventMessage('Event submitted successfully. Redirecting back to event page.');
         setTimeout(() => {
           this.context.router.push('/events');
-        }, 4000);
+        }, 2000);
       })
       .catch(err => {
         actions.createEventError(err.message || 'An unknown error has occured');
@@ -81,7 +81,7 @@ class CreateEvent extends Component {
       hosts,
       loading,
       eventTypes,
-      error,
+      errorMessage,
       message,
       guestList,
     } = this.props;
@@ -104,10 +104,10 @@ class CreateEvent extends Component {
             onSubmit={this.handleSubmit}
           />
         }
-        {error &&
+        {errorMessage &&
           <ToastMessage
+            message={errorMessage}
             status="critical"
-            message={error}
             onClose={() => this.handleClear('error')}
           />
         }
@@ -131,7 +131,7 @@ CreateEvent.propTypes = {
   guests: PropTypes.object,
   hosts: PropTypes.object,
   loading: PropTypes.bool.isRequired,
-  error: PropTypes.string,
+  errorMessage: PropTypes.string,
   message: PropTypes.string,
   actions: PropTypes.object.isRequired,
   guestList: PropTypes.array,
@@ -144,7 +144,7 @@ CreateEvent.contextTypes = {
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
   user: state.authReducer.user,
-  error: state.createEventContainer.error,
+  errorMessage: state.createEventContainer.error,
   message: state.createEventContainer.message,
   guestList: state.createEventContainer.guestList,
 });
