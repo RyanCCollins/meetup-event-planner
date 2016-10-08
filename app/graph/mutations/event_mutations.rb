@@ -7,6 +7,7 @@ module EventMutations
     input_field :end_date, !types.String
     input_field :type, !types.String
     input_field :host, HostInputType
+    input_field :location, !types.String 
     input_field :auth_token, !types.String
     input_field :guests, types[GuestInputType]
 
