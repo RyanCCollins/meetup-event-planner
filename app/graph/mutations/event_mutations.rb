@@ -7,16 +7,18 @@ module EventMutations
     input_field :end_date, !types.String
     input_field :type, !types.String
     input_field :host, HostInputType
-    input_field :location, !types.String 
+    input_field :location, !types.String
     input_field :auth_token, !types.String
     input_field :guests, types[GuestInputType]
 
     return_field :event, EventType
     resolve -> (inputs, ctx) do
+      start_date = Date.strptime(inputs[:start_date], '%m/%d/%Y').to_datetime
+      end_date = Date.strptime(inputs[:end_date], '%m/%d/%Y').to_datetime
       event = Event.new(
         name: inputs[:name],
-        start_date: inputs[:start_date],
-        end_date: inputs[:end_date],
+        start_date: start_date,
+        end_date: end_date,
         event_type: inputs[:type].downcase!,
         message: inputs[:message],
         location: inputs[:location]

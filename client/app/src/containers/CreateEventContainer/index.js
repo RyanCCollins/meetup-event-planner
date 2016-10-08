@@ -93,16 +93,18 @@ class CreateEvent extends Component {
         {loading ?
           <LoadingIndicator isLoading={loading} />
         :
-          <EventForm
-            {...fields}
-            onAddGuest={this.handleAddingGuest}
-            onRemoveGuest={this.handleRemovingGuest}
-            guestList={guestList}
-            eventTypes={eventTypes}
-            pastHosts={hosts}
-            pastGuests={guests}
-            onSubmit={this.handleSubmit}
-          />
+          <Section>
+            <EventForm
+              {...fields}
+              onAddGuest={this.handleAddingGuest}
+              onRemoveGuest={this.handleRemovingGuest}
+              guestList={guestList}
+              eventTypes={eventTypes}
+              pastHosts={hosts}
+              pastGuests={guests}
+              onSubmit={this.handleSubmit}
+            />
+          </Section>
         }
         {errorMessage &&
           <ToastMessage
@@ -174,7 +176,7 @@ const createEventQuery = gql`
 const createEventMutation = gql`
 mutation createEvent($authToken: String!, $name: String!, $message: String,
   $start: String!, $end: String!, $type:String!,
-    $host: HostInput, $guests: [GuestInput], $location: String) {
+    $host: HostInput, $guests: [GuestInput], $location: String!) {
       CreateEvent(input: { auth_token: $authToken, name: $name,
         message: $message, start_date: $start, location: $location,
         end_date: $end, host: $host, type: $type, guests: $guests}) {
