@@ -39,4 +39,20 @@ module EventMutations
       }
     end
   end
+  RSVP = GraphQL::Relay::Mutation.define do
+    input_field :event_id, types.String!
+    input_field :auth_token, !types.String
+
+    return_field :event, EventType
+    resolve (inputs, ctx) -> {
+      event = Event.find_by(id: inputs[:event_id])
+      user = User.find_by(auth_token: inputs[:auth_token])
+      guest = Guest.find_by(name: user.name) || Guest.create(name: user.name)
+      event.guests << guest
+      event.save!
+      {
+        event: event
+      }
+    }
+  end
 end

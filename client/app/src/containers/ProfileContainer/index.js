@@ -8,6 +8,7 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ToastMessage, LoadingIndicator, UserProfile } from 'components';
 import * as AppActions from 'components/App/actions';
+import Box from 'grommet-udacity/components/Box';
 
 class Profile extends Component {
   constructor() {
@@ -93,7 +94,7 @@ class Profile extends Component {
       isEditing,
     } = this.props;
     return (
-      <div className={styles.profile}>
+      <Box>
         {loading &&
           <LoadingIndicator isLoading={loading} />
         }
@@ -105,20 +106,22 @@ class Profile extends Component {
           />
         }
         {user &&
-          <UserProfile
-            user={user}
-            isEditing={isEditing}
-            onEditEmail={this.handleEditingEmail}
-            onCancel={this.handleCancelEditing}
-            onEditBio={this.handleEditingBio}
-            onClickToEdit={this.handleClick}
-            onSaveEdit={this.handleSaving}
-            bioInput={bioInput}
-            onEditAvatar={this.handleEditingAvatar}
-            avatarInput={avatarInput}
-          />
+          <Box className={styles.profile}>
+            <UserProfile
+              user={user}
+              isEditing={isEditing}
+              onEditEmail={this.handleEditingEmail}
+              onCancel={this.handleCancelEditing}
+              onEditBio={this.handleEditingBio}
+              onClickToEdit={this.handleClick}
+              onSaveEdit={this.handleSaving}
+              bioInput={bioInput}
+              onEditAvatar={this.handleEditingAvatar}
+              avatarInput={avatarInput}
+            />
+          </Box>
         }
-      </div>
+      </Box>
     );
   }
 }

@@ -106,6 +106,7 @@
     "jest": "^15.1.1",
     "jest-cli": "^15.1.1",
     "json-loader": "^0.5.4",
+    "lodash": "^4.16.4",
     "lru-memoize": "^1.0.1",
     "minimist": "^1.2.0",
     "moment": "^2.15.1",

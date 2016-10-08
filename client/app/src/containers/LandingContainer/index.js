@@ -38,10 +38,10 @@ class Landing extends Component { // eslint-disable-line react/prefer-stateless-
               Meetup Events
             </Heading>
             <Article align="center">
-              <Paragraph>
+              <Paragraph className={styles.paragraph}>
                 Welcome to the meetup event planner application!
               </Paragraph>
-              <Paragraph>
+              <Paragraph className={styles.paragraph}>
                 This application is a demo app built with React, GraphQL and Ruby on Rails.
                 It was built as the second project for the SWND and showcases best practices for
                 building interactive web forms.

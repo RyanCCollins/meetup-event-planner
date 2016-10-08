@@ -17,6 +17,7 @@ import moment from 'moment';
 
 const SingleEvent = ({
   event,
+  onRsvp,
 }) => (
   <Box align="center" justify="center">
     <Section justify="center">
@@ -75,7 +76,7 @@ const SingleEvent = ({
           </Box>
         </Section>
         <Footer align="center" justify="center" pad={{ vertical: 'medium' }}>
-          <Button onClick={e => e} label="RSVP" />
+          <Button onClick={onRsvp} label="RSVP" />
         </Footer>
       </Article>
     </Section>
@@ -83,7 +84,8 @@ const SingleEvent = ({
 );
 
 SingleEvent.propTypes = {
-
+  event: PropTypes.object.isRequired,
+  onRsvp: PropTypes.func.isRequired,
 };
 
 export default cssModules(SingleEvent, styles);

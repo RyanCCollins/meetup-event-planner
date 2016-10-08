@@ -15,6 +15,7 @@ import List from 'grommet-udacity/components/List';
 import ListItem from 'grommet-udacity/components/ListItem';
 import CloseIcon from 'grommet/components/icons/base/Close';
 import AddIcon from 'grommet/components/icons/base/Add';
+import uniq from 'lodash/uniq';
 
 const calculatedError = (input) =>
   input.dirty || input.touched && input.error ? input.error : null;
@@ -57,11 +58,11 @@ const EventForm = ({
           id="type-input"
           value={{ value: typeInput.value.option, label: typeInput.value.option }}
           options={eventTypes.map(i => `${i.charAt(0).toUpperCase()}${i.slice(1)}`)}
-          onSelect={({ _, suggestion }) => typeInput.onChange(suggestion.option)}
+          onSelect={({ suggestion }) => typeInput.onChange(suggestion.option)}
         />
       </FormField>
       <FormField
-        label="Host"
+        label="Host *"
         htmlFor="host-input"
         help="Who is hosting this shindig?"
         error={calculatedError(hostInput)}
@@ -70,14 +71,14 @@ const EventForm = ({
           {...hostInput}
           id="host-input"
           name="host"
-          suggestions={pastHosts.map(i => i.name)}
+          suggestions={uniq(pastHosts.map(i => i.name))}
           onDOMChange={(e) => hostInput.onChange(e.target.value)}
-          onSelect={({ _, suggestion }) => hostInput.onChange(suggestion)}
+          onSelect={({ suggestion }) => hostInput.onChange(suggestion)}
         />
       </FormField>
       <FormField
         error={calculatedError(locationInput)}
-        label="Location"
+        label="Location *"
         className={styles.locationInput}
         htmlFor="location-input"
       >
@@ -88,7 +89,7 @@ const EventForm = ({
         />
       </FormField>
       <FormField
-        label="Start Date"
+        label="Start Date *"
         htmlFor="start-date-input"
         error={calculatedError(startDateInput)}
         help="When does it start? Set a Date and Time"
@@ -101,7 +102,7 @@ const EventForm = ({
         />
       </FormField>
       <FormField
-        label="End Date"
+        label="End Date *"
         htmlFor="end-date-input"
         error={calculatedError(endDateInput)}
         help="When does it end? Set a Date and Time"
@@ -114,7 +115,7 @@ const EventForm = ({
         />
       </FormField>
       <FormField
-        label="Guests"
+        label="Guests *"
         htmlFor="guests-input"
         help="Start Typing to Add A Guest"
         style={{ position: 'relative' }}
@@ -125,8 +126,12 @@ const EventForm = ({
           id="guests-input"
           name="guests"
           onDOMChange={(e) => guestsInput.onChange(e.target.value)}
-          suggestions={pastGuests.map(i => i.name)}
-          onSelect={({ _, suggestion }) => guestsInput.onChange(suggestion)}
+          suggestions={uniq(pastGuests.map(i => i.name))}
+          onSelect={({ suggestion }) => {
+            guestsInput.onChange(suggestion);
+            onAddGuest(suggestion);
+            guestsInput.onChange('');
+          }}
         />
         {guestsInput.valid &&
           <Button
@@ -141,7 +146,8 @@ const EventForm = ({
         }
       </FormField>
       <FormField
-        className={guestList && guestList.length < 0 ? styles.hidden : styles.none}
+        label={guestList && guestList.length > 0 ? 'Guest List' : ''}
+        className={styles.guestListField}
       >
         {guestList && guestList.length > 0 &&
           <Box style={{ zIndex: 10 }}>

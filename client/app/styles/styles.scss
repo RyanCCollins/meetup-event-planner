@@ -24,6 +24,10 @@ input, textarea {
   }
 }
 
+textarea {
+  resize: none !important;
+}
+
 .grommetux-form-field {
   max-width: 430px;
   @media screen and (max-width: 480px) {
