@@ -15,11 +15,12 @@ const LoginForm = ({
   passwordInput,
   emailInput,
   onSubmit,
+  invalid,
 }) => (
   <Box
-    size="large"
+    size={{ width: { max: 'large' } }}
     className={styles.loginForm}
-    pad={{ horizontal: 'small', vertical: 'small' }}
+    pad={{ horizontal: 'large' }}
   >
     <Form>
       <Heading strong align="center">
@@ -39,6 +40,7 @@ const LoginForm = ({
           <input
             {...emailInput}
             required
+            autoFocus
             id="emailInput"
             name="email"
             type="email"
@@ -63,7 +65,7 @@ const LoginForm = ({
         </FormField>
       </FormFields>
       <Footer pad={{ vertical: 'medium' }} align="center">
-        <Button onClick={onSubmit} fill label="Submit" primary />
+        <Button onClick={invalid ? null : onSubmit} fill label="Submit" primary />
       </Footer>
       <AuthFormFooter text="Need an Account?" link="/signup" />
     </Form>
@@ -74,6 +76,7 @@ LoginForm.propTypes = {
   passwordInput: PropTypes.object.isRequired,
   emailInput: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  invalid: PropTypes.bool.isRequired,
 };
 
 export default cssModules(LoginForm, styles);

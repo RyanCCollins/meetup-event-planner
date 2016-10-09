@@ -6,7 +6,6 @@ import * as AppActions from 'components/App/actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import Section from 'grommet-udacity/components/Section';
-import Box from 'grommet-udacity/components/Box';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { reduxForm } from 'redux-form';
@@ -80,6 +79,7 @@ class Login extends Component {
       isLoading,
       fields,
       errorMessage,
+      invalid,
     } = this.props;
     return (
       <Section
@@ -88,33 +88,27 @@ class Login extends Component {
         justify="center"
         className={styles.login}
       >
-        <Box
-          className={styles.loginFormWrapper}
-          colorIndex="light-1"
-          align="center"
-          pad={{ horizontal: 'small', vertical: 'small' }}
-        >
-          {isLoading &&
-            <LoadingIndicator message="Submitting" isLoading={isLoading} />
-          }
-          <LoginForm
-            {...fields}
-            onSubmit={this.handleSubmit}
+        {isLoading &&
+          <LoadingIndicator message="Submitting" isLoading={isLoading} />
+        }
+        <LoginForm
+          {...fields}
+          invalid={invalid}
+          onSubmit={this.handleSubmit}
+        />
+        {errorMessage &&
+          <ToastMessage
+            message={errorMessage}
+            status="critical"
+            onClose={() => this.handleClosingToast('error')}
           />
-          {errorMessage &&
-            <ToastMessage
-              message={errorMessage}
-              status="critical"
-              onClose={() => this.handleClosingToast('error')}
-            />
-          }
-          {message &&
-            <ToastMessage
-              message={message}
-              onClose={() => this.handleClosingToast('message')}
-            />
-          }
-        </Box>
+        }
+        {message &&
+          <ToastMessage
+            message={message}
+            onClose={() => this.handleClosingToast('message')}
+          />
+        }
       </Section>
     );
   }
@@ -128,6 +122,7 @@ Login.propTypes = {
   message: PropTypes.string,
   isLoading: PropTypes.bool.isRequired,
   fields: PropTypes.object.isRequired,
+  invalid: PropTypes.bool.isRequired,
 };
 
 Login.contextTypes = {

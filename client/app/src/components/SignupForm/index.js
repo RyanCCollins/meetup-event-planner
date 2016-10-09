@@ -17,11 +17,14 @@ const SignupForm = ({
   emailInput,
   passwordInput,
   passwordConfirmationInput,
+  bioInput,
+  employerInput,
+  invalid,
 }) => (
   <Box
-    size="large"
+    size={{ width: { max: 'large' } }}
     className={styles.signupForm}
-    pad={{ horizontal: 'small', vertical: 'small' }}
+    pad={{ horizontal: 'large' }}
   >
     <Form>
       <Heading strong align="center">
@@ -41,6 +44,7 @@ const SignupForm = ({
           <input
             {...nameInput}
             required
+            autoFocus
             id="nameInput"
             name="name"
             type="text"
@@ -95,9 +99,37 @@ const SignupForm = ({
             className={styles.input}
           />
         </FormField>
+        <FormField
+          label="Bio"
+          className={styles.formField}
+          help="Optional Bio for Profile"
+          htmlFor="bio-input"
+        >
+          <textarea
+            {...bioInput}
+            id="bio-input"
+            name="bio"
+            type="text"
+            rows="3"
+            cols="40"
+          />
+        </FormField>
+        <FormField
+          label="Employer"
+          className={styles.formField}
+          help="Optional Employer Field"
+          htmlFor="bio-input"
+        >
+          <input
+            {...employerInput}
+            name="organization"
+            id="employer-input"
+            type="text"
+          />
+        </FormField>
       </FormFields>
       <Footer pad={{ vertical: 'medium' }} align="center">
-        <Button onClick={onSubmit} fill label="Submit" primary />
+        <Button onClick={invalid ? null : onSubmit} fill label="Submit" primary />
       </Footer>
       <AuthFormFooter text="Already a member?" link="/login" />
     </Form>
@@ -106,6 +138,13 @@ const SignupForm = ({
 
 SignupForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  nameInput: PropTypes.object.isRequired,
+  emailInput: PropTypes.object.isRequired,
+  passwordInput: PropTypes.object.isRequired,
+  passwordConfirmationInput: PropTypes.object.isRequired,
+  bioInput: PropTypes.object.isRequired,
+  employerInput: PropTypes.object.isRequired,
+  invalid: PropTypes.bool.isRequired,
 };
 
 export default cssModules(SignupForm, styles);

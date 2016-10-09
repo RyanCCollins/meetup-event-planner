@@ -34,10 +34,9 @@ const locationInput = [
   validation.valueRequired,
 ];
 
-const guestsInput = [
-  validation.minLength(3),
-  validation.containsTwoWords,
-  validation.valueRequired,
+const guestInput = [
+  validation.minLength(1),
+  validation.maxLength(20),
 ];
 
 // Create the validator
@@ -47,8 +46,8 @@ const createEventValidation = validation.createValidator({
   endDateInput,
   typeInput,
   hostInput,
-  guestsInput,
   locationInput,
+  guestInput,
 });
 
 /* Memoize and export */

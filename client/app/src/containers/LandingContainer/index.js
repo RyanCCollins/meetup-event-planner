@@ -18,26 +18,39 @@ class Landing extends Component { // eslint-disable-line react/prefer-stateless-
     } = this.props;
     return (
       <Section align="center" justify="center" className={styles.landing}>
-        <Hero backgroundImage="http://s3.amazonaws.com/content.officeleasecenter.com/production/ckeditor_assets/pictures/1672/original_codecademy.jpg">
-          <Headline
-            strong
-            size="large"
-            className={styles.heroTitle}
+        <Hero
+          responsive={false}
+          separator
+          backgroundImage="http://s3.amazonaws.com/content.officeleasecenter.com/production/ckeditor_assets/pictures/1672/original_codecademy.jpg"
+        >
+          <Box
+            align="center"
+            justify="center"
+            pad="none"
+            className={styles.headlineBox}
+            size={{ width: { max: 'large' } }}
           >
-            Meetup Event Planner
-          </Headline>
+            <Headline
+              strong
+              size="large"
+              className={styles.heroTitle}
+            >
+              Meetup Event Planner
+            </Headline>
+          </Box>
         </Hero>
         <Section>
           <Box
             align="center"
             justify="center"
-            className={styles.article}
+            className={styles.articleBox}
+            size={{ width: { max: 'large' } }}
             pad={{ horizontal: 'large', vertical: 'large' }}
           >
             <Heading tag="h1" align="center">
               Meetup Events
             </Heading>
-            <Article align="center">
+            <Article align="center" className={styles.article}>
               <Paragraph className={styles.paragraph}>
                 Welcome to the meetup event planner application!
               </Paragraph>
@@ -46,7 +59,7 @@ class Landing extends Component { // eslint-disable-line react/prefer-stateless-
                 It was built as the second project for the SWND and showcases best practices for
                 building interactive web forms.
               </Paragraph>
-              <Heading tag="h3" align="center">
+              <Heading tag="h3" align="center" className={styles.paragraph}>
                 About the Developer
               </Heading>
               <Box

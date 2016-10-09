@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from './actions';
-import { Navbar } from 'components';
+import { Navbar, AppFooter } from 'components';
 
 class Main extends Component {
   componentDidMount() {
@@ -21,6 +21,7 @@ class Main extends Component {
           isAuthenticated={user && user.authToken != null} // eslint-disable-line
         />
         {React.cloneElement(this.props.children, this.props)}
+        <AppFooter />
       </div>
     );
   }

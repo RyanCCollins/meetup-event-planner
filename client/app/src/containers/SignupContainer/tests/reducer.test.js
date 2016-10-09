@@ -1,11 +1,6 @@
 import expect from 'expect';
 import * as types from '../constants';
 import signupReducer, { initialState } from '../reducer';
-export const SIGNUP_SHOW_ERROR = 'SIGNUP_SHOW_ERROR';
-export const SIGNUP_SHOW_MESSAGE = 'SIGNUP_SHOW_MESSAGE';
-export const SIGNUP_CLEAR_ERROR = 'SIGNUP_CLEAR_ERROR';
-export const SIGNUP_CLEAR_MESSAGE = 'SIGNUP_CLEAR_MESSAGE';
-export const SIGNUP_SET_LOADING = 'SIGNUP_SET_LOADING';
 
 describe('signupReducer', () => {
   it('returns the initial state', () => {
@@ -40,6 +35,45 @@ describe('signupReducer', () => {
       signupReducer(stateBefore, {
         type: types.SIGNUP_SHOW_MESSAGE,
         message,
+      })
+    ).toEqual(stateAfter);
+  });
+  it('should handle reducer for SIGNUP_CLEAR_ERROR', () => {
+    const stateBefore = {
+      error: 'An error has occured',
+    };
+    const stateAfter = {
+      error: null,
+    };
+    expect(
+      signupReducer(stateBefore, {
+        type: types.SIGNUP_CLEAR_ERROR,
+      })
+    ).toEqual(stateAfter);
+  });
+  it('should handle reducer for SIGNUP_CLEAR_MESSAGE', () => {
+    const stateBefore = {
+      message: 'Thank you for signing up',
+    };
+    const stateAfter = {
+      message: null,
+    };
+    expect(
+      signupReducer(stateBefore, {
+        type: types.SIGNUP_CLEAR_MESSAGE,
+      })
+    ).toEqual(stateAfter);
+  });
+  it('should handle reducer for SIGNUP_SET_LOADING', () => {
+    const stateBefore = {
+      isLoading: false,
+    };
+    const stateAfter = {
+      isLoading: true,
+    };
+    expect(
+      signupReducer(stateBefore, {
+        type: types.SIGNUP_SET_LOADING,
       })
     ).toEqual(stateAfter);
   });

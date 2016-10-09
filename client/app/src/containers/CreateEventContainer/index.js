@@ -84,6 +84,7 @@ class CreateEvent extends Component {
       errorMessage,
       message,
       guestList,
+      invalid,
     } = this.props;
     return (
       <Section className={styles.createEvent}>
@@ -96,6 +97,7 @@ class CreateEvent extends Component {
           <Section>
             <EventForm
               {...fields}
+              invalid={invalid}
               onAddGuest={this.handleAddingGuest}
               onRemoveGuest={this.handleRemovingGuest}
               guestList={guestList}
@@ -130,13 +132,14 @@ CreateEvent.propTypes = {
   mutate: PropTypes.func.isRequired,
   fields: PropTypes.object.isRequired,
   eventTypes: PropTypes.array,
-  guests: PropTypes.object,
-  hosts: PropTypes.object,
+  guests: PropTypes.array,
+  hosts: PropTypes.array,
   loading: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
   message: PropTypes.string,
   actions: PropTypes.object.isRequired,
   guestList: PropTypes.array,
+  invalid: PropTypes.bool.isRequired,
 };
 
 CreateEvent.contextTypes = {

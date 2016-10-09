@@ -17,14 +17,25 @@ const Navbar = ({
           <img className={styles.logo} src={LogoImage} alt="logo"/>
         </Anchor>
       </Title>
-      <Menu direction="row" align="center" responsive={false}>
+      <Menu
+        direction="row"
+        align="center"
+        className={styles.rightNav}
+        responsive
+      >
         <Anchor href="/events" className="active">
           Events
         </Anchor>
         {isAuthenticated ?
-          <Menu direction="row" align="center" responsive={false}>
+          <Menu
+            direction="row"
+            align="center"
+          >
             <Anchor href="/user/profile" className="active">
               Profile
+            </Anchor>
+            <Anchor href="/create-event" className="active">
+              Create Event
             </Anchor>
             <Anchor href="/logout" className="active">
               Logout

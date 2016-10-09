@@ -36,6 +36,7 @@ const EventForm = ({
   guestList,
   onAddGuest,
   onRemoveGuest,
+  invalid,
 }) => (
   <Form onSubmit={onSubmit} className={styles.eventForm}>
     <FormFields>
@@ -48,10 +49,11 @@ const EventForm = ({
         <input
           {...nameInput}
           required
+          autoFocus
           type="text"
           id="name-input"
           name="event-name"
-         />
+        />
       </FormField>
       <FormField
         label="Type *"
@@ -152,8 +154,10 @@ const EventForm = ({
             className={styles.addButton}
             icon={<AddIcon />}
             onClick={() => {
-              onAddGuest(guestsInput.value);
-              guestsInput.onChange('');
+              if (guestsInput.value !== null || guestsInput.value !== '') {
+                onAddGuest(guestsInput.value);
+                guestsInput.onChange('');
+              }
             }}
           />
         }
@@ -193,7 +197,7 @@ const EventForm = ({
         htmlFor="message-input"
         error={calculatedError(messageInput)}
       >
-        <textarea 
+        <textarea
           {...messageInput}
           name="message"
           id="message-input"
@@ -203,7 +207,7 @@ const EventForm = ({
       </FormField>
     </FormFields>
     <Footer justify="center" pad={{ vertical: 'small' }}>
-      <Button label="Submit" onClick={onSubmit} />
+      <Button label="Submit" onClick={invalid ? null : onSubmit} />
     </Footer>
   </Form>
 );
@@ -211,6 +215,19 @@ const EventForm = ({
 EventForm.propTypes = {
   onAddGuest: PropTypes.func.isRequired,
   onRemoveGuest: PropTypes.func.isRequired,
+  nameInput: PropTypes.object.isRequired,
+  typeInput: PropTypes.object.isRequired,
+  hostInput: PropTypes.object.isRequired,
+  locationInput: PropTypes.object.isRequired,
+  messageInput: PropTypes.object.isRequired,
+  guestsInput: PropTypes.object.isRequired,
+  startDateInput: PropTypes.object.isRequired,
+  endDateInput: PropTypes.object.isRequired,
+  pastGuests: PropTypes.array.isRequired,
+  pastHosts: PropTypes.array.isRequired,
+  eventTypes: PropTypes.array.isRequired,
+  guestList: PropTypes.array,
+  invalid: PropTypes.bool.isRequired,
 };
 
 export default cssModules(EventForm, styles);

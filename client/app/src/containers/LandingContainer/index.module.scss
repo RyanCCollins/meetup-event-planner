@@ -12,10 +12,11 @@
 }
 
 .paragraph {
-  padding: 10px;
+  padding: 30px;
+  max-width: 576px;
 }
 
-.article {
+.articleBox {
   background: #fff;
   box-shadow: 0 2px 4px 0 rgba(167, 157, 144, 0.52);
   width: 100%;
@@ -23,9 +24,12 @@
   position: relative;
   padding: 60px 0 !important;
   max-width: 900px;
-  @media screen and (min-width: 800px) {
-    min-width: 700px;
-  }
+  box-sizing : border-box;
+}
+
+.article {
+  max-width: 100vw;
+  box-sizing: border-box;
 }
 
 .avatar {
@@ -37,4 +41,11 @@
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 50%;
+}
+
+.headlineBox {
+  max-width: 90vw;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 24px;
 }

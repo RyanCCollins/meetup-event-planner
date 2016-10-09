@@ -17,6 +17,8 @@ export const formFields = [
   'emailInput',
   'passwordInput',
   'passwordConfirmationInput',
+  'bioInput',
+  'employerInput',
 ];
 
 class Signup extends Component {
@@ -65,6 +67,7 @@ class Signup extends Component {
       error,
       message,
       isLoading,
+      invalid,
     } = this.props;
     return (
       <Section
@@ -92,6 +95,7 @@ class Signup extends Component {
         }
         <SignupForm
           {...fields}
+          invalid={invalid}
           onSubmit={this.handleSubmit}
         />
       </Section>
@@ -106,6 +110,7 @@ Signup.propTypes = {
   message: PropTypes.string,
   actions: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  invalid: PropTypes.bool.isRequired,
 };
 
 Signup.contextTypes = {

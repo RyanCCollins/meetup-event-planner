@@ -5,6 +5,8 @@
   margin-bottom: 80px;
   position: relative;
   min-width: 500px;
+  max-width: 100vw;
+  box-sizing: border-box;
   @media screen and (max-width: 500px) {
     min-width: 300px;
     width: 100%;
