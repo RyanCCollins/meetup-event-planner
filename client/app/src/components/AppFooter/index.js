@@ -22,7 +22,7 @@ const AppFooter = () => (
       className={styles.flexOne}
     >
       <Heading tag="h3">
-        <Anchor href="https://medium.com/react-weekly">
+        <Anchor href="http://meetup-event-planner.herokuapp.com/">
           Meetup Event Planner
         </Anchor>
       </Heading>
