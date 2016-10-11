@@ -34,7 +34,7 @@ const LoginForm = ({
         Login
       </Heading>
       {isShowingPasswordTips &&
-        <Tip target="passwordInput" onClose={onPasswordBlur}>
+        <Tip size="medium" target="passwordInput" onClose={onPasswordBlur}>
           <Box size="medium">
             <Heading tag="h4" align="center">
               Secure Password Tips
