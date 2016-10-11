@@ -19,8 +19,20 @@ input, textarea {
   @media screen and (max-width: 480px) {
     max-width: 330px;
   }
-  @media screen and (max-width: 330px) {
-    max-width: 220px;
+  @media screen and (max-width: 430px) {
+    max-width: 300px;
+  }
+  @media screen and (max-width: 400px) {
+    max-width: 270px;
+  }
+  @media screen and (max-width: 370px) {
+    max-width: 240px;
+  }
+  @media screen and (max-width: 340px) {
+    max-width: 210px;
+  }
+  @media screen and (max-width: 310px) {
+    max-width: 180px;
   }
 }
 

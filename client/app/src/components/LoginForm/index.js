@@ -23,7 +23,6 @@ const LoginForm = ({
   onPasswordBlur,
 }) => (
   <Box
-    size={{ width: { max: 'large' } }}
     className={styles.loginForm}
     pad={{ horizontal: 'large' }}
   >

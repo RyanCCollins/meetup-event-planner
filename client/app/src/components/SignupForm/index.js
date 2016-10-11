@@ -22,7 +22,6 @@ const SignupForm = ({
   invalid,
 }) => (
   <Box
-    size={{ width: { max: 'large' } }}
     className={styles.signupForm}
     pad={{ horizontal: 'large' }}
   >
