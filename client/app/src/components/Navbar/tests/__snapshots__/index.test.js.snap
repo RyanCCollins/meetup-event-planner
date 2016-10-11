@@ -33,7 +33,7 @@ exports[`<Navbar /> should render with default props 1`] = `
         }
       }
       pad="none"
-      responsive={false}>
+      responsive={true}>
       <Anchor
         className="active"
         href="/events"

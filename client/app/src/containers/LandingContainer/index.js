@@ -1,3 +1,9 @@
+// Copyright ©️ 2016 - Ryan Collins
+// admin@ryancollins.io
+// http://www.ryancollins.io
+// Open sourced under the MIT license
+// See LICENSE.md file for details
+
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import cssModules from 'react-css-modules';
@@ -55,9 +61,13 @@ class Landing extends Component { // eslint-disable-line react/prefer-stateless-
                 Welcome to the meetup event planner application!
               </Paragraph>
               <Paragraph className={styles.paragraph}>
-                This application is a demo app built with React, GraphQL and Ruby on Rails.
-                It was built as the second project for the SWND and showcases best practices for
+                This is a demo app built with React, GraphQL and Ruby on Rails.
+                It was built as the first project for the SWND and showcases best practices for
                 building interactive web forms.
+              </Paragraph>
+              <Paragraph className={styles.paragraph}>
+                The application also showcases component-oriented design, immutable architecture,
+                state management, colocated GraphQL queries and much more!
               </Paragraph>
               <Heading tag="h3" align="center" className={styles.paragraph}>
                 About the Developer

@@ -1,9 +1,13 @@
+// Copyright ©️ 2016 - Ryan Collins
+// admin@ryancollins.io
+// http://www.ryancollins.io
+// Open sourced under the MIT license
+// See LICENSE.md file for details
+
 import React, { Component, PropTypes } from 'react';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as AppActions from 'components/App/actions';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import Section from 'grommet-udacity/components/Section';

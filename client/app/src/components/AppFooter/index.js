@@ -1,3 +1,9 @@
+// Copyright ©️ 2016 - Ryan Collins
+// admin@ryancollins.io
+// http://www.ryancollins.io
+// Open sourced under the MIT license
+// See LICENSE.md file for details
+
 import React from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
