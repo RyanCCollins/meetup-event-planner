@@ -1,5 +1,5 @@
 ## LandingContainer
-A container that does ...
+A container for the landing page
 
 ### Example Usage
 
@@ -9,3 +9,4 @@ A container that does ...
 
 
 ### Other Information
+See ./index.js for implementation details
