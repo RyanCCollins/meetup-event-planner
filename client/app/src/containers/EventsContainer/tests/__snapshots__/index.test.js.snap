@@ -1,6 +1,11 @@
-exports[`<Landing /> should render with default props 1`] = `
-<Landing
-  dispatch={[Function anonymous]}
+exports[`<Events /> should render with default props 1`] = `
+<Apollo(EventsContainer)
+  actions={
+    Object {
+      "eventsIncrementCurrent": [Function anonymous]
+    }
+  }
+  current={10}
   store={
     Object {
       "clearActions": [Function clearActions],
@@ -9,11 +14,6 @@ exports[`<Landing /> should render with default props 1`] = `
       "getState": [Function getState],
       "replaceReducer": [Function replaceReducer],
       "subscribe": [Function subscribe]
-    }
-  }
-  user={
-    Object {
-      "authToken": null
     }
   } />
 `;

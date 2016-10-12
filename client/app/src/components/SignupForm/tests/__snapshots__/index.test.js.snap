@@ -1,0 +1,287 @@
+exports[`<SignupForm /> should render with default props 1`] = `
+<Box
+  announce={false}
+  direction="column"
+  focusable={true}
+  pad={
+    Object {
+      "horizontal": "large"
+    }
+  }
+  responsive={true}
+  tag="div">
+  <Form
+    compact={false}
+    fill={false}
+    pad="none">
+    <Heading
+      align="center"
+      strong={true}
+      tag="h1">
+      Meetup Event Planner
+    </Heading>
+    <Heading
+      align="center"
+      tag="h5">
+      Signup
+    </Heading>
+    <undefined
+      children={
+        <function Box() {
+            (0, _classCallCheck3.default)(this, Box);
+            return (0, _possibleConstructorReturn3.default)(this, (Box.__proto__ || (0, _getPrototypeOf2.default)(Box)).apply(this, arguments));
+          }
+          announce={false}
+          direction="column"
+          focusable={true}
+          pad="none"
+          responsive={true}
+          size="medium"
+          tag="div">
+          <function Heading() {
+              (0, _classCallCheck3.default)(this, Heading);
+              return (0, _possibleConstructorReturn3.default)(this, (Heading.__proto__ || (0, _getPrototypeOf2.default)(Heading)).apply(this, arguments));
+            }
+            align="center"
+            tag="h4">
+            Secure Password Tips
+          </function Heading() {
+              (0, _classCallCheck3.default)(this, Heading);
+              return (0, _possibleConstructorReturn3.default)(this, (Heading.__proto__ || (0, _getPrototypeOf2.default)(Heading)).apply(this, arguments));
+            }>
+          <function Heading() {
+              (0, _classCallCheck3.default)(this, Heading);
+              return (0, _possibleConstructorReturn3.default)(this, (Heading.__proto__ || (0, _getPrototypeOf2.default)(Heading)).apply(this, arguments));
+            }
+            align="center"
+            tag="h5">
+            Password must have at least
+          </function Heading() {
+              (0, _classCallCheck3.default)(this, Heading);
+              return (0, _possibleConstructorReturn3.default)(this, (Heading.__proto__ || (0, _getPrototypeOf2.default)(Heading)).apply(this, arguments));
+            }>
+          <ul>
+            <li>
+              <function Paragraph() {
+                  (0, _classCallCheck3.default)(this, Paragraph);
+                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
+                }
+                className={undefined}>
+                1. Eight characters total
+              </function Paragraph() {
+                  (0, _classCallCheck3.default)(this, Paragraph);
+                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
+                }>
+            </li>
+            <li>
+              <function Paragraph() {
+                  (0, _classCallCheck3.default)(this, Paragraph);
+                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
+                }
+                className={undefined}>
+                2. One uppercase character
+              </function Paragraph() {
+                  (0, _classCallCheck3.default)(this, Paragraph);
+                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
+                }>
+            </li>
+            <li>
+              <function Paragraph() {
+                  (0, _classCallCheck3.default)(this, Paragraph);
+                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
+                }
+                className={undefined}>
+                3. One special character
+              </function Paragraph() {
+                  (0, _classCallCheck3.default)(this, Paragraph);
+                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
+                }>
+            </li>
+            <li>
+              <function Paragraph() {
+                  (0, _classCallCheck3.default)(this, Paragraph);
+                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
+                }
+                className={undefined}>
+                4. One numerical character
+              </function Paragraph() {
+                  (0, _classCallCheck3.default)(this, Paragraph);
+                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
+                }>
+            </li>
+          </ul>
+        </function Box() {
+            (0, _classCallCheck3.default)(this, Box);
+            return (0, _possibleConstructorReturn3.default)(this, (Box.__proto__ || (0, _getPrototypeOf2.default)(Box)).apply(this, arguments));
+          }>
+      }
+      isShowing={true}
+      onClose={[Function onInvalidateTip]} />
+    <FormFields>
+      <FormField
+        error="value Required"
+        help="What should we call you?"
+        htmlFor="nameInput"
+        label="Name *"
+        size="medium"
+        strong={false}>
+        <input
+          active={false}
+          autoFocus={true}
+          autofilled={false}
+          dirty={false}
+          error="value Required"
+          id="nameInput"
+          initialValue=""
+          invalid={true}
+          name="name"
+          pristine={true}
+          required={true}
+          touched={true}
+          type="text"
+          valid={false}
+          value=""
+          visited={true} />
+      </FormField>
+      <FormField
+        error={null}
+        help="How should we get in touch with you?"
+        htmlFor="emailInput"
+        label="Email *"
+        size="medium"
+        strong={false}>
+        <input
+          active={false}
+          autofilled={false}
+          dirty={false}
+          error="value Required"
+          id="emailInput"
+          initialValue=""
+          invalid={true}
+          name="email"
+          pristine={true}
+          required={true}
+          touched={false}
+          type="email"
+          valid={false}
+          value=""
+          visited={false} />
+      </FormField>
+      <FormField
+        error={null}
+        help="Make it secure"
+        htmlFor="passwordInput"
+        label="Password *"
+        size="medium"
+        strong={false}>
+        <input
+          active={false}
+          autofilled={false}
+          dirty={false}
+          error="value Required"
+          id="passwordInput"
+          initialValue=""
+          invalid={true}
+          name="password"
+          onBlur={[Function onPasswordBlur]}
+          onClick={[Function onPasswordFocus]}
+          onFocus={[Function onPasswordFocus]}
+          pristine={true}
+          required={true}
+          touched={false}
+          type="password"
+          valid={false}
+          value=""
+          visited={false} />
+      </FormField>
+      <FormField
+        error={null}
+        help="Confirm your password"
+        htmlFor="passwordConfirmationInput"
+        label="Password Confirmation *"
+        size="medium"
+        strong={false}>
+        <input
+          active={false}
+          autofilled={false}
+          dirty={false}
+          error="value Required"
+          id="passwordConfirmationInput"
+          initialValue=""
+          invalid={true}
+          name="password"
+          pristine={true}
+          required={true}
+          touched={false}
+          type="password"
+          valid={false}
+          value=""
+          visited={false} />
+      </FormField>
+      <FormField
+        help="Optional Bio for Profile"
+        htmlFor="bio-input"
+        label="Bio"
+        size="medium"
+        strong={false}>
+        <textarea
+          active={false}
+          autofilled={false}
+          cols="40"
+          dirty={false}
+          id="bio-input"
+          initialValue=""
+          invalid={false}
+          name="bio"
+          pristine={true}
+          rows="3"
+          touched={false}
+          type="text"
+          valid={true}
+          value=""
+          visited={false} />
+      </FormField>
+      <FormField
+        help="Optional Employer Field"
+        htmlFor="bio-input"
+        label="Employer"
+        size="medium"
+        strong={false}>
+        <input
+          active={false}
+          autofilled={false}
+          dirty={false}
+          id="employer-input"
+          initialValue=""
+          invalid={false}
+          name="organization"
+          pristine={true}
+          touched={false}
+          type="text"
+          valid={true}
+          value=""
+          visited={false} />
+      </FormField>
+    </FormFields>
+    <Footer
+      align="center"
+      direction="row"
+      pad={
+        Object {
+          "vertical": "medium"
+        }
+      }
+      responsive={false}>
+      <Button
+        fill={true}
+        label="Submit"
+        onClick={null}
+        primary={true}
+        type="button" />
+    </Footer>
+    <undefined
+      link="/login"
+      text="Already a member?" />
+  </Form>
+</Box>
+`;

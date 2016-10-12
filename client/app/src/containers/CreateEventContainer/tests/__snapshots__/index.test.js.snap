@@ -1,0 +1,33 @@
+exports[`<CreateEvent /> should render with default props 1`] = `
+<Apollo(Apollo(ConnectedForm))
+  actions={
+    Object {
+      "clearCreateEventError": [Function anonymous],
+      "clearCreateEventMessage": [Function anonymous],
+      "clearCreateEventToast": [Function anonymous],
+      "createEventAddGuest": [Function anonymous],
+      "createEventError": [Function anonymous],
+      "createEventMessage": [Function anonymous],
+      "createEventRemoveGuest": [Function anonymous],
+      "fieldsToData": [Function anonymous]
+    }
+  }
+  errorMessage={null}
+  guestList={Array []}
+  message={null}
+  store={
+    Object {
+      "clearActions": [Function clearActions],
+      "dispatch": [Function anonymous],
+      "getActions": [Function getActions],
+      "getState": [Function getState],
+      "replaceReducer": [Function replaceReducer],
+      "subscribe": [Function subscribe]
+    }
+  }
+  user={
+    Object {
+      "authToken": null
+    }
+  } />
+`;

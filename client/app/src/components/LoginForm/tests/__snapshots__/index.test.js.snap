@@ -1,0 +1,96 @@
+exports[`<LoginForm /> should render with default props 1`] = `
+<Box
+  announce={false}
+  direction="column"
+  focusable={true}
+  pad={
+    Object {
+      "horizontal": "large"
+    }
+  }
+  responsive={true}
+  tag="div">
+  <Form
+    compact={false}
+    fill={false}
+    pad="none">
+    <Heading
+      align="center"
+      strong={true}
+      tag="h1">
+      Meetup Event Planner
+    </Heading>
+    <Heading
+      align="center"
+      tag="h5">
+      Login
+    </Heading>
+    <FormFields>
+      <FormField
+        help="How should we get in touch with you?"
+        htmlFor="emailInput"
+        label="Email *"
+        size="medium"
+        strong={false}>
+        <input
+          active={false}
+          autoFocus={true}
+          autofilled={false}
+          dirty={true}
+          id="emailInput"
+          initialValue=""
+          invalid={false}
+          name="email"
+          pristine={false}
+          required={true}
+          touched={true}
+          type="email"
+          valid={true}
+          value="demo@udacity.com"
+          visited={true} />
+      </FormField>
+      <FormField
+        help="Gotta be secure"
+        htmlFor="passwordInput"
+        label="Password *"
+        size="medium"
+        strong={false}>
+        <input
+          active={false}
+          autofilled={false}
+          dirty={true}
+          id="passwordInput"
+          initialValue=""
+          invalid={false}
+          name="password"
+          pristine={false}
+          required={true}
+          touched={false}
+          type="password"
+          valid={true}
+          value="Password123!"
+          visited={false} />
+      </FormField>
+    </FormFields>
+    <Footer
+      align="center"
+      direction="row"
+      pad={
+        Object {
+          "vertical": "medium"
+        }
+      }
+      responsive={false}>
+      <Button
+        fill={true}
+        label="Submit"
+        onClick={null}
+        primary={true}
+        type="button" />
+    </Footer>
+    <undefined
+      link="/signup"
+      text="Need an Account?" />
+  </Form>
+</Box>
+`;

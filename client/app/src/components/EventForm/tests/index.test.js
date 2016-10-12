@@ -6,7 +6,7 @@ import {
   fields,
   mockFn,
   pastGuests,
-  guestsList,
+  guestList,
   pastHosts,
   eventTypes,
 } from './mock';
@@ -19,11 +19,11 @@ describe('<EventForm />', () => {
         invalid={false}
         onAddGuest={mockFn}
         onRemoveGuest={mockFn}
-        guestList={guestsList}
+        guestList={guestList}
         eventTypes={eventTypes}
         pastHosts={pastHosts}
         pastGuests={pastGuests}
-        onSubmit={this.handleSubmit}
+        onSubmit={mockFn}
       />
     );
     expect(shallowToJson(wrapper)).toMatchSnapshot();

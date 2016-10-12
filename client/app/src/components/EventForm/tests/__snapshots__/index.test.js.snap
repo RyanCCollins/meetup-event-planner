@@ -1,0 +1,358 @@
+exports[`<EventForm /> should render with default props 1`] = `
+<Form
+  compact={false}
+  fill={false}
+  onSubmit={[Function mockFn]}
+  pad="none">
+  <FormFields>
+    <FormField
+      error="Value Required"
+      help="Name it something fun!!"
+      htmlFor="name-input"
+      label="Name *"
+      size="medium"
+      strong={false}>
+      <input
+        active={false}
+        autoFocus={true}
+        autofilled={false}
+        dirty={false}
+        error="Value Required"
+        id="name-input"
+        initialValue=""
+        invalid={true}
+        name="event-name"
+        pristine={true}
+        required={true}
+        touched={true}
+        type="text"
+        valid={false}
+        value=""
+        visited={true} />
+    </FormField>
+    <FormField
+      error="Value Required"
+      help="What type of event is it?"
+      htmlFor="type-input"
+      label="Type *"
+      size="medium"
+      strong={false}>
+      <Select
+        active={false}
+        autofilled={false}
+        dirty={false}
+        error="Value Required"
+        id="type-input"
+        initialValue=""
+        invalid={true}
+        name="typeInput"
+        onSelect={[Function onSelect]}
+        options={
+          Array [
+            "Birthday",
+            "Conference",
+            "Office",
+            "Wedding",
+            "Other"
+          ]
+        }
+        pristine={true}
+        required={true}
+        touched={false}
+        valid={false}
+        value={
+          Object {
+            "label": undefined,
+            "value": undefined
+          }
+        }
+        visited={false} />
+    </FormField>
+    <FormField
+      error={null}
+      help="Who is hosting this shindig?"
+      htmlFor="host-input"
+      label="Host *"
+      size="medium"
+      strong={false}>
+      <SearchInput
+        active={false}
+        autofilled={false}
+        dirty={false}
+        error="Value Required"
+        id="host-input"
+        initialValue=""
+        invalid={true}
+        name="host"
+        onDOMChange={[Function onDOMChange]}
+        onSelect={[Function onSelect]}
+        pristine={true}
+        required={true}
+        suggestions={
+          Array [
+            "Miss Ayden Dach",
+            "Joaquin West"
+          ]
+        }
+        touched={false}
+        valid={false}
+        value=""
+        visited={false} />
+    </FormField>
+    <FormField
+      error={null}
+      htmlFor="location-input"
+      label="Location *"
+      size="medium"
+      strong={false}>
+      <Geosuggest
+        active={false}
+        autoActivateFirstSuggest={false}
+        autofilled={false}
+        bounds={null}
+        className=""
+        country={null}
+        dirty={false}
+        disabled={false}
+        error="Value Required"
+        fixtures={Array []}
+        getSuggestLabel={[Function getSuggestLabel]}
+        googleMaps={null}
+        id="location-input"
+        ignoreTab={false}
+        initialValue=""
+        inputClassName=""
+        invalid={true}
+        location={null}
+        name="locationInput"
+        onActivateSuggest={[Function onActivateSuggest]}
+        onBlur={[Function onBlur]}
+        onChange={[Function onChange]}
+        onFocus={[Function onFocus]}
+        onSuggestNoResults={[Function onSuggestNoResults]}
+        onSuggestSelect={[Function onSuggestSelect]}
+        placeholder="Start typing!"
+        pristine={true}
+        queryDelay={250}
+        radius={null}
+        required={true}
+        skipSuggest={[Function skipSuggest]}
+        style={
+          Object {
+            "input": Object {},
+            "suggestItem": Object {},
+            "suggests": Object {}
+          }
+        }
+        touched={false}
+        types={null}
+        valid={false}
+        value=""
+        visited={false} />
+    </FormField>
+    <FormField
+      error={null}
+      help="When does it start? Set a Date and Time"
+      htmlFor="start-date-input"
+      label="Start Date *"
+      size="medium"
+      strong={false}>
+      <DateTime
+        active={false}
+        autofilled={false}
+        dirty={false}
+        error="Value Required"
+        format="MM/DD/YYYY h:mm a"
+        id="start-date-input"
+        initialValue=""
+        invalid={true}
+        name="startDateInput"
+        pristine={true}
+        required={true}
+        step="30"
+        touched={false}
+        valid={false}
+        value=""
+        visited={false} />
+    </FormField>
+    <FormField
+      error={null}
+      help="When does it end? Set a Date and Time"
+      htmlFor="end-date-input"
+      label="End Date *"
+      size="medium"
+      strong={false}>
+      <DateTime
+        active={false}
+        autofilled={false}
+        dirty={false}
+        error="Value Required"
+        format="MM/DD/YYYY h:mm a"
+        id="end-date-input"
+        initialValue=""
+        invalid={true}
+        name="endDateInput"
+        pristine={true}
+        required={true}
+        step="30"
+        touched={false}
+        valid={false}
+        value=""
+        visited={false} />
+    </FormField>
+    <FormField
+      error={null}
+      help="Start Typing to Add A Guest"
+      htmlFor="guests-input"
+      label="Guests *"
+      size="medium"
+      strong={false}
+      style={
+        Object {
+          "position": "relative"
+        }
+      }>
+      <SearchInput
+        active={false}
+        autofilled={false}
+        dirty={false}
+        id="guests-input"
+        initialValue=""
+        invalid={false}
+        name="guests"
+        onDOMChange={[Function onDOMChange]}
+        onSelect={[Function onSelect]}
+        pristine={true}
+        required={true}
+        suggestions={
+          Array [
+            "Bilbo Baggins",
+            "David Harris"
+          ]
+        }
+        touched={false}
+        valid={true}
+        value=""
+        visited={false} />
+      <Button
+        icon={
+          <function Icon() {
+              (0, _classCallCheck3.default)(this, Icon);
+              return (0, _possibleConstructorReturn3.default)(this, (Icon.__proto__ || (0, _getPrototypeOf2.default)(Icon)).apply(this, arguments));
+            }
+            a11yTitleId="add-title"
+            responsive={true} />
+        }
+        onClick={[Function onClick]}
+        tabIndex="0"
+        type="button" />
+    </FormField>
+    <FormField
+      label="Guest List"
+      size="medium"
+      strong={false}>
+      <Box
+        announce={false}
+        direction="column"
+        focusable={true}
+        pad="none"
+        responsive={true}
+        style={
+          Object {
+            "zIndex": 10
+          }
+        }
+        tag="div">
+        <List
+          role="list">
+          <ListItem
+            align="center"
+            direction="row"
+            pad={
+              Object {
+                "horizontal": "medium",
+                "vertical": "small"
+              }
+            }
+            role="listitem"
+            separator="bottom">
+            <Box
+              align="start"
+              announce={false}
+              direction="row"
+              focusable={true}
+              justify="around"
+              pad="none"
+              responsive={false}
+              style={
+                Object {
+                  "width": "100%"
+                }
+              }
+              tag="div">
+              <span
+                style={
+                  Object {
+                    "flex": 1,
+                    "height": 30,
+                    "marginTop": 18
+                  }
+                }>
+                David Harris
+              </span>
+              <Button
+                icon={
+                  <function Icon() {
+                      (0, _classCallCheck3.default)(this, Icon);
+                      return (0, _possibleConstructorReturn3.default)(this, (Icon.__proto__ || (0, _getPrototypeOf2.default)(Icon)).apply(this, arguments));
+                    }
+                    a11yTitleId="close-title"
+                    responsive={true} />
+                }
+                onClick={[Function onClick]}
+                type="button" />
+            </Box>
+          </ListItem>
+        </List>
+      </Box>
+    </FormField>
+    <FormField
+      error={null}
+      help="Optional message to the guests."
+      htmlFor="message-input"
+      label="Message"
+      size="medium"
+      strong={false}>
+      <textarea
+        active={false}
+        autofilled={false}
+        cols="40"
+        dirty={false}
+        id="message-input"
+        initialValue=""
+        invalid={false}
+        name="message"
+        pristine={true}
+        rows="3"
+        touched={false}
+        valid={true}
+        value=""
+        visited={false} />
+    </FormField>
+  </FormFields>
+  <Footer
+    direction="row"
+    justify="center"
+    pad={
+      Object {
+        "vertical": "small"
+      }
+    }
+    responsive={false}>
+    <Button
+      label="Submit"
+      onClick={[Function mockFn]}
+      type="button" />
+  </Footer>
+</Form>
+`;

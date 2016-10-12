@@ -1,0 +1,43 @@
+exports[`<Profile /> should render with default props 1`] = `
+<Apollo(Apollo(Profile))
+  actions={
+    Object {
+      "authenticateUser": [Function anonymous],
+      "invalidateUser": [Function anonymous],
+      "loadPersistedUser": [Function anonymous],
+      "logoutUser": [Function anonymous],
+      "profileCancelEditing": [Function anonymous],
+      "profileClearError": [Function anonymous],
+      "profileEditAvatar": [Function anonymous],
+      "profileEditBio": [Function anonymous],
+      "profileEditEmail": [Function anonymous],
+      "profileEditEmployer": [Function anonymous],
+      "profileStartEditing": [Function anonymous],
+      "profileSubmissionFailure": [Function anonymous],
+      "profileSubmissionInitiation": [Function anonymous],
+      "profileSubmissionSuccess": [Function anonymous],
+      "setPersistentUser": [Function anonymous]
+    }
+  }
+  avatarInput={null}
+  bioInput={null}
+  emailInput={null}
+  employerInput={null}
+  isEditing={false}
+  store={
+    Object {
+      "clearActions": [Function clearActions],
+      "dispatch": [Function anonymous],
+      "getActions": [Function getActions],
+      "getState": [Function getState],
+      "replaceReducer": [Function replaceReducer],
+      "subscribe": [Function subscribe]
+    }
+  }
+  submissionError={null}
+  user={
+    Object {
+      "authToken": null
+    }
+  } />
+`;

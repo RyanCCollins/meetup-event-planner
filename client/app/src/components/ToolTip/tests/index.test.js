@@ -6,7 +6,21 @@ import React from 'react';
 describe('<ToolTip />', () => {
   it('should render with default props', () => {
     const wrapper = shallow(
-      <ToolTip />
+      <ToolTip
+        isShowing
+        onClose={e => e}
+      >
+        <div>
+          <ul>
+            <li>
+              Hello
+            </li>
+            <li>
+              Hello Again
+            </li>
+          </ul>
+        </div>
+      </ToolTip>
     );
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });

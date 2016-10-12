@@ -1,0 +1,36 @@
+exports[`<Login /> should render with default props 1`] = `
+<ConnectedForm
+  actions={
+    Object {
+      "authenticateUser": [Function anonymous],
+      "clearLoginToast": [Function anonymous],
+      "invalidateUser": [Function anonymous],
+      "loadPersistedUser": [Function anonymous],
+      "loginClearError": [Function anonymous],
+      "loginClearMessage": [Function anonymous],
+      "loginSetLoading": [Function anonymous],
+      "loginShowError": [Function anonymous],
+      "loginShowMessage": [Function anonymous],
+      "logoutUser": [Function anonymous],
+      "setPersistentUser": [Function anonymous]
+    }
+  }
+  errorMessage={null}
+  isLoading={false}
+  message={null}
+  store={
+    Object {
+      "clearActions": [Function clearActions],
+      "dispatch": [Function anonymous],
+      "getActions": [Function getActions],
+      "getState": [Function getState],
+      "replaceReducer": [Function replaceReducer],
+      "subscribe": [Function subscribe]
+    }
+  }
+  user={
+    Object {
+      "authToken": null
+    }
+  } />
+`;

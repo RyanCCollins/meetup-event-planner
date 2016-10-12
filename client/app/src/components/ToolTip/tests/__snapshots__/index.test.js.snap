@@ -1,1 +1,20 @@
-exports[`<ToolTip /> should render with default props 1`] = `<div />`;
+exports[`<ToolTip /> should render with default props 1`] = `
+<div>
+  <Tip
+    colorIndex="accent-1"
+    onClose={[Function onClose]}
+    size="medium"
+    target="passwordInput">
+    <div>
+      <ul>
+        <li>
+          Hello
+        </li>
+        <li>
+          Hello Again
+        </li>
+      </ul>
+    </div>
+  </Tip>
+</div>
+`;

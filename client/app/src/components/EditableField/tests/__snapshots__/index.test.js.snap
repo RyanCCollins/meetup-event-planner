@@ -11,8 +11,13 @@ exports[`<EditableField /> should render with default props 1`] = `
     announce={false}
     direction="column"
     focusable={true}
+    onClick={[Function onClickToEdit]}
     pad="none"
     responsive={true}
-    tag="div" />
+    tag="div">
+    <div>
+      Hi
+    </div>
+  </Box>
 </Section>
 `;
