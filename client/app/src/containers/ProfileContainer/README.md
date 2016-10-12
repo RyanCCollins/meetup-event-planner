@@ -1,5 +1,5 @@
 ## ProfileContainer
-A container that does ...
+A container that maps to the user profile
 
 ### Example Usage
 
@@ -9,3 +9,4 @@ A container that does ...
 
 
 ### Other Information
+See ./index.js for implementation details
