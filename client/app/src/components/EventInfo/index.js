@@ -7,11 +7,7 @@ import Paragraph from 'grommet-udacity/components/Paragraph';
 import Button from 'grommet-udacity/components/Button';
 import Footer from 'grommet-udacity/components/Footer';
 import ScheduleNewIcon from 'grommet-udacity/components/icons/base/ScheduleNew';
-import moment from 'moment';
-
-const formatString = 'MMMM Do YYYY, h:mm:ss a';
-const parseDates = (a, b) =>
-  `From ${moment(a).format(formatString)} to ${moment(b).format(formatString)}`;
+import parseDates from './utils/dates';
 
 const EventInfo = ({
   event,
