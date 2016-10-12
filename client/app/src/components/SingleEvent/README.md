@@ -1,5 +1,5 @@
 ## SingleEvent Component
-A component that ...
+A component for showing a single event
 
 ### Example
 
@@ -7,11 +7,5 @@ A component that ...
 <SingleEvent />
 ```
 
-### Props
-
-| Prop          | Type     | Default     | Possible Values
-| ------------- | -------- | ----------- | ---------------------------------------------
-| **myProp**    | String   |             | Any string value
-
-
 ### Other Information
+See ./index.js for implementation details
