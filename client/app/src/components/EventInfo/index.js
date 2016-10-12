@@ -52,7 +52,19 @@ const EventInfo = ({
 );
 
 EventInfo.propTypes = {
-  event: PropTypes.object.isRequired,
+  event: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    end: PropTypes.string.isRequired,
+    start: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+    host: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }),
+    guests: PropTypes.array.isRequired,
+  }),
 };
 
 export default cssModules(EventInfo, styles);

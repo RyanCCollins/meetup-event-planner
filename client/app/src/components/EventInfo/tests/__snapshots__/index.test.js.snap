@@ -1,0 +1,64 @@
+exports[`<EventInfo /> should render with default props 1`] = `
+<Box
+  announce={false}
+  colorIndex="light-1"
+  direction="column"
+  focusable={true}
+  pad={
+    Object {
+      "horizontal": "large",
+      "vertical": "medium"
+    }
+  }
+  responsive={true}
+  size="auto"
+  tag="div">
+  <Heading
+    align="start"
+    tag="h2">
+    Pool Party
+  </Heading>
+  <Heading
+    align="end"
+    tag="h4">
+    Birthday
+  </Heading>
+  <Heading
+    align="end"
+    tag="h5">
+    Hosted by 
+    Joaquin West
+  </Heading>
+  <Heading
+    align="end"
+    tag="h5">
+    From October 12th 2016, 12:59:24 pm to October 12th 2016, 12:59:24 pm
+  </Heading>
+  <Heading
+    align="end"
+    tag="h5">
+    1 people are attending
+  </Heading>
+  <Paragraph>
+    The best party
+  </Paragraph>
+  <Footer
+    direction="row"
+    justify="center"
+    responsive={false}>
+    <Button
+      href="/events/4"
+      icon={
+        <function Icon() {
+            (0, _classCallCheck3.default)(this, Icon);
+            return (0, _possibleConstructorReturn3.default)(this, (Icon.__proto__ || (0, _getPrototypeOf2.default)(Icon)).apply(this, arguments));
+          }
+          a11yTitleId="schedule-new-title"
+          responsive={true} />
+      }
+      label="View Details"
+      onClick={[Function onClick]}
+      type="button" />
+  </Footer>
+</Box>
+`;

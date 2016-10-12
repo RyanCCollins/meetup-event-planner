@@ -18,7 +18,7 @@ describe('Profile actions', () => {
       bio,
     };
     expect(
-      actions.profileEditBio()
+      actions.profileEditBio(bio)
     ).toEqual(expected);
   });
   it('should handle PROFILE_EDIT_AVATAR', () => {
@@ -28,7 +28,7 @@ describe('Profile actions', () => {
       avatar,
     };
     expect(
-      actions.profileEditAvatar()
+      actions.profileEditAvatar(avatar)
     ).toEqual(expected);
   });
   it('should handle PROFILE_EDIT_EMAIL', () => {
@@ -38,7 +38,7 @@ describe('Profile actions', () => {
       email,
     };
     expect(
-      actions.profileEditAvatar()
+      actions.profileEditEmail(email)
     ).toEqual(expected);
   });
   it('should handle PROFILE_SUBMISSION_INITIATION', () => {

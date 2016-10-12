@@ -1,0 +1,36 @@
+exports[`<Signup /> should render with default props 1`] = `
+<ConnectedForm
+  actions={
+    Object {
+      "authenticateUser": [Function anonymous],
+      "clearSignupToast": [Function anonymous],
+      "fieldsToData": [Function anonymous],
+      "invalidateTip": [Function anonymous],
+      "invalidateUser": [Function anonymous],
+      "loadPersistedUser": [Function anonymous],
+      "logoutUser": [Function anonymous],
+      "setPersistentUser": [Function anonymous],
+      "signupClearError": [Function anonymous],
+      "signupClearMessage": [Function anonymous],
+      "signupSetLoading": [Function anonymous],
+      "signupShowError": [Function anonymous],
+      "signupShowMessage": [Function anonymous],
+      "toggleSignupTips": [Function anonymous]
+    }
+  }
+  error={null}
+  isLoading={false}
+  isShowingTips={false}
+  message={null}
+  store={
+    Object {
+      "clearActions": [Function clearActions],
+      "dispatch": [Function anonymous],
+      "getActions": [Function getActions],
+      "getState": [Function getState],
+      "replaceReducer": [Function replaceReducer],
+      "subscribe": [Function subscribe]
+    }
+  }
+  tipIsValid={true} />
+`;

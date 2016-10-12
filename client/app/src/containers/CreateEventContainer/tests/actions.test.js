@@ -41,10 +41,10 @@ describe('CreateEvent actions', () => {
     };
     expect(actions.createEventAddGuest(guest)).toEqual(expected);
   });
-  it('has a type of CREATE_EVENT_ADD_GUEST', () => {
+  it('has a type of CREATE_EVENT_REMOVE_GUEST', () => {
     const index = 1;
     const expected = {
-      type: types.CREATE_EVENT_ADD_GUEST,
+      type: types.CREATE_EVENT_REMOVE_GUEST,
       index,
     };
     expect(actions.createEventRemoveGuest(index)).toEqual(expected);
