@@ -30,6 +30,7 @@ const Navbar = ({
           <Menu
             direction="row"
             align="center"
+            className={styles.menu}
           >
             <Anchor href="/user/profile" className="active">
               Profile

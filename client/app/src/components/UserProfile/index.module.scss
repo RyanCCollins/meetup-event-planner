@@ -10,7 +10,6 @@
   border: 1px solid #dbe2e8;
   margin: 0 auto;
   position: relative;
-  z-index: 20;
 }
 
 .input {
@@ -33,9 +32,12 @@
   overflow: hidden;
   pointer-events: none;
   position: absolute;
-  top: -75px;
+  top: -100px;
   left: 0;
   width: 100%;
+  @media screen and (max-width: 768px) {
+    top: -80px;
+  }
 }
 
 .isButton {

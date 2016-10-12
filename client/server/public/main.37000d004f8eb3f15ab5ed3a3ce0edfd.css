@@ -111,7 +111,6 @@
   border: 1px solid #dbe2e8;
   margin: 0 auto;
   position: relative;
-  z-index: 20;
 }
 
 .app-src-components-UserProfile-___index-module__input___2PtXY {
@@ -134,13 +133,23 @@
   overflow: hidden;
   pointer-events: none;
   position: absolute;
-  top: -75px;
+  top: -100px;
   left: 0;
   width: 100%;
 }
 
+@media screen and (max-width: 768px) {
+  .app-src-components-UserProfile-___index-module__transformAvatar___2IY65 {
+    top: -80px;
+  }
+}
+
 .app-src-components-UserProfile-___index-module__isButton___3gs84 {
   cursor: pointer;
+}
+
+.app-src-components-UserProfile-___index-module__paragraph___T2g_1 {
+  padding: 0 20px;
 }.app-src-components-EventForm-___index-module__addButton___Bj8vU {
   position: absolute;
   z-index: 10;
@@ -207,6 +216,10 @@
 
 .app-src-components-Navbar-___index-module__rightNav___25AMv {
   margin-right: 20px;
+}
+
+.app-src-components-Navbar-___index-module__menu___22ogi {
+  z-index: 100;
 }.app-src-pages-LogoutPage-___index-module__container___3L7Je {
   height: 100vh;
   width: 100%;
