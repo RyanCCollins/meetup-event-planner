@@ -54,14 +54,16 @@ export const createEventRemoveGuest = (index) => ({
 
 export const fieldsToData = (fields, guestList, user) => ({
   authToken: user.authToken,
-  name: fields.nameInput.value,
-  message: fields.messageInput.value,
-  start: fields.startDateInput.value,
-  end: fields.endDateInput.value,
-  location: fields.locationInput.value,
-  type: fields.typeInput.value.option,
-  host: {
-    name: fields.hostInput.value,
+  event: {
+    name: fields.nameInput.value,
+    message: fields.messageInput.value,
+    start_date: fields.startDateInput.value,
+    end_date: fields.endDateInput.value,
+    location: fields.locationInput.value,
+    type: fields.typeInput.value.option,
+    host: {
+      name: fields.hostInput.value,
+    },
+    guests: guestList.map((item) => ({ name: item })),
   },
-  guests: guestList.map((item) => ({ name: item })),
 });
