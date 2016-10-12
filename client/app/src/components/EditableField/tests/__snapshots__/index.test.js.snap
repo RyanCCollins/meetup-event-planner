@@ -7,6 +7,12 @@ exports[`<EditableField /> should render with default props 1`] = `
       "vertical": "medium"
     }
   }>
-  <span />
+  <Box
+    announce={false}
+    direction="column"
+    focusable={true}
+    pad="none"
+    responsive={true}
+    tag="div" />
 </Section>
 `;

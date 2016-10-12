@@ -81,5 +81,18 @@ describe('createEventReducer', () => {
       })
     ).toEqual(stateAfter);
   });
-  it('should handle reducer for CREATE_EVENT_REMOVE_GUEST', () => {});
+  it('should handle reducer for CREATE_EVENT_REMOVE_GUEST', () => {
+    const stateBefore = {
+      guestList: ['Ryan Collins', 'Bill Clinton'],
+    };
+    const stateAfter = {
+      guestList: ['Ryan Collins'],
+    };
+    expect(
+      createEventReducer(stateBefore, {
+        type: types.CREATE_EVENT_REMOVE_GUEST,
+        index: 1,
+      })
+    ).toEqual(stateAfter);
+  });
 });
