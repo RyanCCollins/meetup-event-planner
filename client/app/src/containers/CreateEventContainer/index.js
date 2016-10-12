@@ -183,25 +183,21 @@ const createEventQuery = gql`
 `;
 
 const createEventMutation = gql`
-mutation createEvent($authToken: String!, $name: String!, $message: String,
-  $start: String!, $end: String!, $type:String!,
-    $host: HostInput, $guests: [GuestInput], $location: String!) {
-      CreateEvent(input: { auth_token: $authToken, name: $name,
-        message: $message, start_date: $start, location: $location,
-        end_date: $end, host: $host, type: $type, guests: $guests}) {
-          event {
-            id
-            name
-            type: event_type
-            guests {
-              name
-            }
-            host {
-              name
-            }
-          }
+mutation createEvent($authToken: String!, $event: EventInput) {
+  CreateEvent(input: { auth_token: $authToken, event: $event }) {
+      event {
+        id
+        name
+        type: event_type
+        guests {
+          name
+        }
+        host {
+          name
         }
       }
+    }
+  }
 `;
 
 const FormContainer = reduxForm({
