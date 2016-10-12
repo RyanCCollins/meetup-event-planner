@@ -51,8 +51,8 @@ EventInfo.propTypes = {
   event: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    end: PropTypes.string.isRequired,
-    start: PropTypes.string.isRequired,
+    endDate: PropTypes.string.isRequired,
+    startDate: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired,

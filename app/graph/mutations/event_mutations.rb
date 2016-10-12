@@ -27,7 +27,7 @@ module EventMutations
                    else
                      Host.new(name: event_inputs[:host].to_h["name"])
                    end
-      event.save
+      event.save!
       {
         event: event
       }
