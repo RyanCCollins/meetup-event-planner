@@ -75,6 +75,7 @@ class Profile extends Component {
       updateProfile,
       bioInput,
       avatarInput,
+      employerInput,
       actions,
       user,
       refetch,
@@ -82,6 +83,7 @@ class Profile extends Component {
     const profile = {
       bio: bioInput,
       avatar: avatarInput,
+      employer: employerInput,
     };
     const variables = {
       authToken: user.authToken,
@@ -203,9 +205,9 @@ const fetchUserData = gql`
 
 const ContainerWithData = graphql(fetchUserData, {
   options: (ownProps) => ({
-    skip: !ownProps.authToken,
+    skip: !ownProps.user.authToken,
     variables: {
-      token: ownProps.authToken,
+      token: ownProps.user.authToken,
     },
   }),
   props: ({ data: { loading, authUser, error, refetch } }) => ({

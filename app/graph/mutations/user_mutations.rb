@@ -6,7 +6,9 @@ module UserMutations
     input_field :name, !types.String
     input_field :password, !types.String
     input_field :password_confirmation, !types.String
-
+    input_field :bio, types.String
+    input_field :employer, types.String
+    
     return_field :user, AuthUserType
     resolve -> (args, ctx) {
       @user = User.create(
