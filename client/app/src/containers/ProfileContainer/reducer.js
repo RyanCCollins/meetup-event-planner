@@ -52,6 +52,12 @@ const profileReducer =
           bioInput: {
             $set: null,
           },
+          employerInput: {
+            $set: null,
+          },
+          emailInput: {
+            $set: null,
+          },
           avatarInput: {
             $set: null,
           },
@@ -68,6 +74,12 @@ const profileReducer =
             $set: null,
           },
           avatarInput: {
+            $set: null,
+          },
+          employerInput: {
+            $set: null,
+          },
+          emailInput: {
             $set: null,
           },
           isLoading: {
@@ -92,6 +104,12 @@ const profileReducer =
             $set: null,
           },
           avatarInput: {
+            $set: null,
+          },
+          employerInput: {
+            $set: null,
+          },
+          emailInput: {
             $set: null,
           },
         });
