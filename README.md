@@ -1,3 +1,5 @@
+![Code Ship](https://codeship.com/projects/c47fa4d0-72f6-0134-360b-1ae66e72c451/status?branch=master)
+
 # Meetup Event Planner
 
 ## Background
