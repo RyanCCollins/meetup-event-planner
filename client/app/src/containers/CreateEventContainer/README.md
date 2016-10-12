@@ -1,5 +1,5 @@
 ## CreateEventContainer
-A container that does ...
+A container that allows creation of event
 
 ### Example Usage
 
@@ -9,3 +9,4 @@ A container that does ...
 
 
 ### Other Information
+See ./index.js for implementation details
