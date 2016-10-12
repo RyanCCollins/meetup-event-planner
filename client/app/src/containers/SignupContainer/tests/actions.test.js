@@ -14,7 +14,7 @@ describe('Signup actions', () => {
   it('should handle SIGNUP_SHOW_MESSAGE', () => {
     const message = 'An error has not occured';
     const expected = {
-      type: types.SIGNUP_SHOW_ERROR,
+      type: types.SIGNUP_SHOW_MESSAGE,
       message,
     };
     expect(actions.signupShowMessage(message)).toEqual(expected);
@@ -36,5 +36,23 @@ describe('Signup actions', () => {
       type: types.SIGNUP_SET_LOADING,
     };
     expect(actions.signupSetLoading()).toEqual(expected);
+  });
+  it('should handle TOGGLE_SIGNUP_TIPS', () => {
+    const isShowing = true;
+    const expected = {
+      type: types.TOGGLE_SIGNUP_TIPS,
+      isShowing,
+    };
+    expect(
+      actions.toggleSignupTips()
+    ).toEqual(expected);
+  });
+  it('should handle SIGNUP_INVALIDATE_TIP', () => {
+    const expected = {
+      type: types.SIGNUP_INVALIDATE_TIP,
+    };
+    expect(
+      actions.invalidateTip()
+    ).toEqual(expected);
   });
 });

@@ -77,4 +77,32 @@ describe('signupReducer', () => {
       })
     ).toEqual(stateAfter);
   });
+  it('should handle reducer for TOGGLE_SIGNUP_TIPS', () => {
+    const isShowing = true;
+    const stateBefore = {
+      isShowingTips: false,
+    };
+    const stateAfter = {
+      isShowingTips: isShowing,
+    };
+    expect(
+      signupReducer(stateBefore, {
+        type: types.TOGGLE_SIGNUP_TIPS,
+        isShowing,
+      })
+    ).toEqual(stateAfter);
+  });
+  it('should handle reducer for SIGNUP_INVALIDATE_TIP', () => {
+    const stateBefore = {
+      tipIsValid: true,
+    };
+    const stateAfter = {
+      tipIsValid: false,
+    };
+    expect(
+      signupReducer(stateBefore, {
+        type: types.SIGNUP_INVALIDATE_TIP,
+      })
+    ).toEqual(stateAfter);
+  });
 });
