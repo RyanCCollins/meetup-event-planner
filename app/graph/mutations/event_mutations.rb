@@ -21,7 +21,7 @@ module EventMutations
         event.guests << Guest.new(name: guest.to_h["name"])
       end
       host = Host.find_by(name: event[:host].to_h["name"])
-      event.user = User.find_by(auth_token: event_inputs[:auth_token])
+      event.user = User.find_by(auth_token: inputs[:auth_token])
       event.host = if host
                      host
                    else
