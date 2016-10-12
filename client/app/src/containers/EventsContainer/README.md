@@ -1,5 +1,5 @@
 ## EventsContainer
-A container that does ...
+A container that connects to a list of events
 
 ### Example Usage
 
@@ -9,3 +9,4 @@ A container that does ...
 
 
 ### Other Information
+See ./index.js for implementation details
