@@ -16,6 +16,8 @@ const EditableField = ({
     {isEditing ?
       <Box size="medium" align="center">
         <FormField
+          size="large"
+          className={styles.formField}
           label={`Edit ${name.charAt(0).toUpperCase()}${name.slice(1)}`}
         >
           <textarea onChange={onEdit} value={value} id={`${name}-input`} />

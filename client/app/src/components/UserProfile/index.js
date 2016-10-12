@@ -114,7 +114,7 @@ const UserProfile = ({
         </EditableField>
         {isEditing &&
           <Footer align="center" justify="center">
-            <Menu inline direction="row">
+            <Menu inline direction="row" responsive={false}>
               <Button
                 label="Save"
                 style={{ marginTop: 10 }}

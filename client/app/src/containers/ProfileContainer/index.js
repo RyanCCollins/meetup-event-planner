@@ -14,6 +14,7 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ToastMessage, LoadingIndicator, UserProfile } from 'components';
 import * as AppActions from 'components/App/actions';
+import authUserDataFragment from './authUserDataFragment';
 import Box from 'grommet-udacity/components/Box';
 
 class Profile extends Component {
@@ -189,18 +190,6 @@ const fetchUserData = gql`
       ...authUserData
     }
   }
-
-  fragment authUserData on AuthUser {
-    id
-    bio
-    email
-    name
-    avatar
-    events {
-      name
-      id
-    }
-  }
 `;
 
 const ContainerWithData = graphql(fetchUserData, {
@@ -209,6 +198,7 @@ const ContainerWithData = graphql(fetchUserData, {
     variables: {
       token: ownProps.user.authToken,
     },
+    fragments: [authUserDataFragment],
   }),
   props: ({ data: { loading, authUser, error, refetch } }) => ({
     loading,
@@ -226,22 +216,12 @@ const updateProfileMutation = gql`
       }
     }
   }
-
-  fragment authUserData on AuthUser {
-    id
-    bio
-    email
-    name
-    avatar
-    authToken: auth_token
-    events {
-      name
-      id
-    }
-  }
 `;
 
 const ContainerWithMutation = graphql(updateProfileMutation, {
+  options: () => ({
+    fragments: [authUserDataFragment],
+  }),
   props: ({ ownProps, mutate }) => ({
     updateProfile({ authToken, profile }) {
       return new Promise((resolve, reject) =>

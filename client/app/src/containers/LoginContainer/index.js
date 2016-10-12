@@ -15,6 +15,7 @@ import Section from 'grommet-udacity/components/Section';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { reduxForm } from 'redux-form';
+import authUserDataFragment from '../ProfileContainer/authUserDataFragment';
 import validation from './utils/validation';
 import {
   LoadingIndicator,
@@ -164,22 +165,13 @@ const signinUserMutation = gql`
       }
     }
   }
-
-  fragment authUserData on AuthUser {
-    id
-    bio
-    email
-    name
-    avatar
-    authToken: auth_token
-    events {
-      name
-      id
-    }
-  }
 `;
 
-const ContainerWithMutation = graphql(signinUserMutation)(Container);
+const ContainerWithMutation = graphql(signinUserMutation, {
+  options: () => ({
+    fragments: [authUserDataFragment],
+  }),
+})(Container);
 
 const FormContainer = reduxForm({
   form: 'Login',
