@@ -26,6 +26,7 @@ class Profile extends Component {
     this.handleCancelEditing = this.handleCancelEditing.bind(this);
     this.handleEditingAvatar = this.handleEditingAvatar.bind(this);
     this.handleEditingEmail = this.handleEditingEmail.bind(this);
+    this.handleEditingEmployer = this.handleEditingEmployer.bind(this);
   }
   handleClearError() {
     const {
@@ -63,6 +64,12 @@ class Profile extends Component {
     } = this.props.actions;
     profileEditEmail(e.target.value);
   }
+  handleEditingEmployer(e) {
+    const {
+      profileEditEmployer,
+    } = this.props.actions;
+    profileEditEmployer(e.target.value);
+  }
   handleSaving() {
     const {
       updateProfile,
@@ -98,6 +105,7 @@ class Profile extends Component {
       bioInput,
       avatarInput,
       isEditing,
+      employerInput,
     } = this.props;
     return (
       <Box>
@@ -124,6 +132,8 @@ class Profile extends Component {
               bioInput={bioInput}
               onEditAvatar={this.handleEditingAvatar}
               avatarInput={avatarInput}
+              onEditEmployer={this.handleEditingEmployer}
+              employerInput={employerInput}
             />
           </Box>
         }
@@ -144,6 +154,7 @@ Profile.propTypes = {
   updateQueries: PropTypes.func.isRequired,
   refetch: PropTypes.func.isRequired,
   avatarInput: PropTypes.string,
+  employerInput: PropTypes.string,
 };
 
 // mapStateToProps :: {State} -> {Props}
@@ -154,6 +165,7 @@ const mapStateToProps = (state) => ({
   isEditing: state.profileContainer.isEditing,
   avatarInput: state.profileContainer.avatarInput,
   emailInput: state.profileContainer.emailInput,
+  employerInput: state.profileContainer.employerInput,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
+import { EditableField } from 'components';
 import Section from 'grommet-udacity/components/Section';
 import Article from 'grommet-udacity/components/Article';
 import Heading from 'grommet-udacity/components/Heading';
@@ -26,6 +27,8 @@ const UserProfile = ({
   avatarInput,
   onEditEmail,
   emailInput,
+  onEditEmployer,
+  employerInput,
 }) => (
   <Section className={styles.userProfile}>
     <Box
@@ -43,75 +46,72 @@ const UserProfile = ({
           align="center"
           justify="center"
         >
-          {isEditing ?
-            <Box size="medium" align="center">
-              <FormField label="Edit Avatar URL">
-                <input
-                  className={`grommetux-text-input grommetux-input ${styles.input}`}
-                  onChange={onEditAvatar}
-                  value={avatarInput || user.avatar}
-                  id="avatar-input"
-                />
-              </FormField>
+          <EditableField
+            isEditing={isEditing}
+            onEdit={onEditAvatar}
+            value={avatarInput || user.avatar}
+            name="avatar"
+          >
+            <Box
+              onClick={onClickToEdit}
+            >
+              <img
+                className={styles.avatar}
+                src={user.avatar ?
+                  user.avatar
+                :
+                  'http://bit.ly/2dqCGdd'
+                }
+              />
             </Box>
-          :
+          </EditableField>
+        </Section>
+        <EditableField
+          isEditing={isEditing}
+          onEdit={onEditBio}
+          value={bioInput || user.bio}
+          name="bio"
+        >
           <Box
             onClick={onClickToEdit}
           >
-            <img
-              className={styles.avatar}
-              src={user.avatar ?
-                user.avatar
-              :
-                'http://bit.ly/2dqCGdd'
-              }
-            />
+            <Paragraph className={styles.isButton}>
+              {user.bio ? user.bio : 'Click to add a bio.'}
+            </Paragraph>
           </Box>
-          }
-        </Section>
-        <Section pad={{ vertical: 'medium' }} align="center" justify="center">
-          {isEditing ?
-            <Box size="medium" align="center">
-              <FormField label="Edit Bio">
-                <textarea onChange={onEditBio} value={bioInput || user.bio} id="bio-input" />
-              </FormField>
-            </Box>
-          :
-            <Box
-              onClick={onClickToEdit}
+        </EditableField>
+        <EditableField
+          isEditing={isEditing}
+          onEdit={onEditEmployer}
+          value={employerInput || user.employer}
+          name="employer"
+        >
+          <Box
+            onClick={onClickToEdit}
+          >
+            <Paragraph className={styles.isButton}>
+              {user.employer ? user.employer : 'Click to add a employer.'}
+            </Paragraph>
+          </Box>
+        </EditableField>
+        <EditableField
+          isEditing={isEditing}
+          onEdit={onEditEmail}
+          value={emailInput || user.email}
+          name="email"
+        >
+          <Box
+            onClick={onClickToEdit}
+          >
+            <Heading
+              className={styles.isButton}
+              tag="h3"
+              align="center"
             >
-              <Paragraph className={styles.isButton}>
-                {user.bio ? user.bio : 'Click to add a bio.'}
-              </Paragraph>
-            </Box>
-          }
-        </Section>
-        <Section pad={{ vertical: 'medium' }} align="center" justify="center">
-          {isEditing ?
-            <Box size="medium" align="center">
-              <FormField label="Edit Email">
-                <input
-                  className={`grommetux-text-input grommetux-input ${styles.input}`}
-                  onChange={onEditEmail}
-                  value={emailInput || user.email}
-                  id="email-input"
-                />
-              </FormField>
-            </Box>
-          :
-            <Box
-              onClick={onClickToEdit}
-            >
-              <Heading
-                className={styles.isButton}
-                tag="h3"
-                align="center"
-              >
-                {user.email}
-              </Heading>
-            </Box>
-          }
-        </Section>
+              {user.email}
+            </Heading>
+          </Box>
+        </EditableField>
         {isEditing &&
           <Footer align="center" justify="center">
             <Menu inline direction="row">

@@ -5,4 +5,5 @@ ProfileInputType = GraphQL::InputObjectType.define do
   input_field :email, types.String, 'The email of the user'
   input_field :bio, types.String, 'The bio of the user'
   input_field :avatar, types.String, 'The user avatar'
+  input_field :employer, types.String, 'The user employer'
 end

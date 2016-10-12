@@ -8,6 +8,7 @@ export const initialState = {
   isLoading: false,
   avatarInput: null,
   emailInput: null,
+  employerInput: null,
 };
 
 const profileReducer =
@@ -29,6 +30,12 @@ const profileReducer =
         return update(state, {
           emailInput: {
             $set: action.email,
+          },
+        });
+      case types.PROFILE_EDIT_EMPLOYER:
+        return update(state, {
+          employerInput: {
+            $set: action.employer,
           },
         });
       case types.PROFILE_SUBMISSION_INITIATION:

@@ -48,3 +48,9 @@ export const profileEditEmail = (email) => ({
   type: types.PROFILE_EDIT_EMAIL,
   email,
 });
+
+// profileEditEmployer :: String -> {Action}
+export const profileEditEmployer = (employer) => ({
+  type: types.PROFILE_EDIT_EMPLOYER,
+  employer,
+});
