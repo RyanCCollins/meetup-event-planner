@@ -9,7 +9,7 @@ import Footer from 'grommet-udacity/components/Footer';
 import Button from 'grommet-udacity/components/Button';
 import Box from 'grommet-udacity/components/Box';
 import { AuthFormFooter } from 'components';
-import calculatedError from 'utils/error';
+import calculatedError from './utils/error';
 
 const LoginForm = ({
   passwordInput,

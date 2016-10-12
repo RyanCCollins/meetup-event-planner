@@ -16,9 +16,7 @@ import ListItem from 'grommet-udacity/components/ListItem';
 import CloseIcon from 'grommet-udacity/components/icons/base/Close';
 import AddIcon from 'grommet-udacity/components/icons/base/Add';
 import uniq from 'lodash/uniq';
-
-const calculatedError = (input) =>
-  input.dirty || input.touched && input.error ? input.error : null;
+import calculatedError from './utils/error';
 
 const EventForm = ({
   onSubmit,

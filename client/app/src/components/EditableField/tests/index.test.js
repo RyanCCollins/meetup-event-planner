@@ -6,7 +6,17 @@ import React from 'react';
 describe('<EditableField />', () => {
   it('should render with default props', () => {
     const wrapper = shallow(
-      <EditableField />
+      <EditableField
+        isEditing={false}
+        onClickToEdit={e => e}
+        onEdit={e => e}
+        value={"hello world"}
+        name="bio"
+      >
+        <div>
+          Hi
+        </div>
+      </EditableField>
     );
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });

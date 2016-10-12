@@ -10,7 +10,7 @@ import Button from 'grommet-udacity/components/Button';
 import Box from 'grommet-udacity/components/Box';
 import Paragraph from 'grommet-udacity/components/Paragraph';
 import { AuthFormFooter, ToolTip } from 'components';
-import calculatedError from 'utils/error';
+import calculatedError from './utils/error';
 
 const SignupForm = ({
   onSubmit,

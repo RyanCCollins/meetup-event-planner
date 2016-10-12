@@ -1,17 +1,25 @@
 ## LoginForm Component
-A component that ...
+A reusable login form component.
 
 ### Example
 
 ```js
-<LoginForm />
+<LoginForm
+  {...fields}
+  onSubmit={this.handleSubmit}
+  invalid={invalid}
+/>
 ```
 
 ### Props
 
 | Prop          | Type     | Default     | Possible Values
 | ------------- | -------- | ----------- | ---------------------------------------------
-| **myProp**    | String   |             | Any string value
+| **invalid**    | Boolean   |             | Redux form, invalid parameter
+| **passwordInput**    | Object   |             | Redux form, password Input
+| **emailInput**    | Object   |             | Redux form, email Input
+| **onSubmit**    | Func   |             | Redux form, callback func for submission
 
 
 ### Other Information
+This component relies on redux form.  See the LoginContainer for example usage.

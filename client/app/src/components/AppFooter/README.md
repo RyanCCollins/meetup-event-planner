@@ -1,5 +1,5 @@
 ## AppFooter Component
-A footer component for the site.
+A reusable footer component for the site.
 
 ### Example
 

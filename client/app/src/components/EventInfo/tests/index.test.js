@@ -6,7 +6,7 @@ import React from 'react';
 describe('<EventInfo />', () => {
   it('should render with default props', () => {
     const event = {
-      id: 4,
+      id: '4',
       name: 'Pool Party',
       end: '2014-12-12 00:00:00 UTC',
       start: '2016-11-02 00:00:00 UTC',
