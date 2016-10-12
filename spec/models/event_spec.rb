@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to(:host) }
+  it { should belong_to(:user) }
+  it { should have_many(:guests) }
+  it { should define_enum_for(:event_type) }
 end
