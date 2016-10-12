@@ -1,4 +1,40 @@
-.app-src-components-AppFooter-___index-module__appFooter___1DA5x {
+@media screen and (max-width: 700px) {
+  .app-src-components-EditableField-___index-module__formField___1qkFQ {
+    max-width: 90vw;
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .app-src-components-EditableField-___index-module__formField___1qkFQ {
+    max-width: 90vw;
+    width: 300px;
+  }
+
+  .app-src-components-EditableField-___index-module__formField___1qkFQ textarea {
+    max-width: 280px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .app-src-components-EditableField-___index-module__formField___1qkFQ {
+    width: 270px;
+  }
+
+  .app-src-components-EditableField-___index-module__formField___1qkFQ textarea {
+    max-width: 250px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .app-src-components-EditableField-___index-module__formField___1qkFQ {
+    width: 210px;
+  }
+
+  .app-src-components-EditableField-___index-module__formField___1qkFQ textarea {
+    max-width: 190px;
+  }
+}.app-src-components-AppFooter-___index-module__appFooter___1DA5x {
   background: #f5f5f5;
   padding: 50px;
 }
@@ -38,12 +74,6 @@
 
 .app-src-components-LoginForm-___index-module__formField___1kGaD {
   max-width: 430px;
-}
-
-.app-src-components-LoginForm-___index-module__listItem___2ndqN {
-  margin-top: 5px !important;
-  margin-bottom: 5px !important;
-  color: black !important;
 }.app-src-components-SingleEvent-___index-module__panel___3OuZz {
   background: #fff;
   box-shadow: 0 2px 4px 0 rgba(167, 157, 144, 0.52);
@@ -164,6 +194,12 @@
 
 .app-src-components-SignupForm-___index-module__formField___3fEoo {
   max-width: 430px;
+}
+
+.app-src-components-SignupForm-___index-module__listItem___291NM {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+  color: black !important;
 }.app-src-components-Navbar-___index-module__logo___1rSh0 {
   max-height: 45px;
   margin-left: 6%;

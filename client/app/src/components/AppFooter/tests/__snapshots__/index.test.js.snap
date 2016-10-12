@@ -17,7 +17,7 @@ exports[`<AppFooter /> should render with default props 1`] = `
     <Heading
       tag="h3">
       <Anchor
-        href="https://medium.com/react-weekly"
+        href="http://meetup-event-planner.herokuapp.com/"
         tag="a">
         Meetup Event Planner
       </Anchor>

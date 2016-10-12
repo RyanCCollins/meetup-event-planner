@@ -11,6 +11,7 @@ const EditableField = ({
   value,
   name,
   children,
+  onClickToEdit,
 }) => (
   <Section pad={{ vertical: 'medium' }} align="center" justify="center">
     {isEditing ?
@@ -24,9 +25,11 @@ const EditableField = ({
         </FormField>
       </Box>
     :
-      <span>
+      <Box
+        onClick={onClickToEdit}
+      >
         {children}
-      </span>
+      </Box>
     }
   </Section>
 );
@@ -37,6 +40,7 @@ EditableField.propTypes = {
   value: PropTypes.string,
   name: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+  onClickToEdit: PropTypes.func.isRequired,
 };
 
 export default cssModules(EditableField, styles);

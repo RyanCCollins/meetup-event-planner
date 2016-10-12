@@ -46,70 +46,58 @@ const UserProfile = ({
           justify="center"
         >
           <EditableField
+            onClickToEdit={onClickToEdit}
             isEditing={isEditing}
             onEdit={onEditAvatar}
             value={avatarInput || user.avatar}
             name="avatar"
           >
-            <Box
-              onClick={onClickToEdit}
-            >
-              <img
-                className={styles.avatar}
-                src={user.avatar ?
-                  user.avatar
-                :
-                  'http://bit.ly/2dqCGdd'
-                }
-              />
-            </Box>
+            <img
+              className={styles.avatar}
+              src={user.avatar ?
+                user.avatar
+              :
+                'http://bit.ly/2dqCGdd'
+              }
+            />
           </EditableField>
         </Section>
         <EditableField
           isEditing={isEditing}
+          onClickToEdit={onClickToEdit}
           onEdit={onEditBio}
           value={bioInput || user.bio}
           name="bio"
         >
-          <Box
-            onClick={onClickToEdit}
-          >
-            <Paragraph className={styles.isButton}>
-              {user.bio ? user.bio : 'Click to add a bio.'}
-            </Paragraph>
-          </Box>
+          <Paragraph className={`${styles.isButton} ${styles.paragraph}`}>
+            {user.bio ? user.bio : 'Click to add a bio.'}
+          </Paragraph>
         </EditableField>
         <EditableField
+          onClickToEdit={onClickToEdit}
           isEditing={isEditing}
           onEdit={onEditEmployer}
           value={employerInput || user.employer}
           name="employer"
         >
-          <Box
-            onClick={onClickToEdit}
-          >
-            <Paragraph className={styles.isButton}>
-              {user.employer ? user.employer : 'Click to add a employer.'}
-            </Paragraph>
-          </Box>
+          <Paragraph className={styles.isButton}>
+            {user.employer ? user.employer : 'Click to add a employer.'}
+          </Paragraph>
         </EditableField>
         <EditableField
           isEditing={isEditing}
           onEdit={onEditEmail}
+          onClickToEdit={onClickToEdit}
           value={emailInput || user.email}
           name="email"
         >
-          <Box
-            onClick={onClickToEdit}
+          <Heading
+            className={styles.isButton}
+            tag="h3"
+            align="center"
           >
-            <Heading
-              className={styles.isButton}
-              tag="h3"
-              align="center"
-            >
-              {user.email}
-            </Heading>
-          </Box>
+            {user.email}
+          </Heading>
         </EditableField>
         {isEditing &&
           <Footer align="center" justify="center">

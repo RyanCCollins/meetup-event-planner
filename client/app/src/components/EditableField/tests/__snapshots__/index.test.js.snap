@@ -1,0 +1,12 @@
+exports[`<EditableField /> should render with default props 1`] = `
+<Section
+  align="center"
+  justify="center"
+  pad={
+    Object {
+      "vertical": "medium"
+    }
+  }>
+  <span />
+</Section>
+`;
