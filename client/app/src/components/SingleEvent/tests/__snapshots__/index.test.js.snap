@@ -1,0 +1,184 @@
+exports[`<SingleEvent /> should render with default props 1`] = `
+<Box
+  align="center"
+  announce={false}
+  direction="column"
+  focusable={true}
+  justify="center"
+  pad="none"
+  responsive={true}
+  tag="div">
+  <Section
+    justify="center"
+    pad={
+      Object {
+        "vertical": "medium"
+      }
+    }>
+    <Article
+      direction="column"
+      pad={
+        Object {
+          "horizontal": "small"
+        }
+      }>
+      <Section
+        pad={
+          Object {
+            "vertical": "medium"
+          }
+        }>
+        <Box
+          align="center"
+          announce={false}
+          direction="column"
+          focusable={true}
+          pad={
+            Object {
+              "vertical": "large"
+            }
+          }
+          responsive={true}
+          tag="div">
+          <Calendar
+            a11yTitleId="calendar-title"
+            responsive={true}
+            size="large" />
+        </Box>
+        <Heading
+          align="center"
+          tag="h3">
+          It\'s a birthday Party!
+        </Heading>
+        <Heading
+          align="center"
+          tag="h1">
+          Pool Party
+        </Heading>
+        <Heading
+          align="center"
+          tag="h4">
+          Hosted by Joaquin West
+        </Heading>
+      </Section>
+      <Section
+        pad={
+          Object {
+            "vertical": "medium"
+          }
+        }>
+        <Box
+          align="center"
+          announce={false}
+          direction="column"
+          focusable={true}
+          justify="center"
+          pad="none"
+          responsive={true}
+          tag="div">
+          <Location
+            a11yTitleId="location-title"
+            responsive={true} />
+          <Heading
+            align="center"
+            tag="h4">
+            1204 North Carolina 55, Fuquay Varina, NC, United States
+          </Heading>
+        </Box>
+        <Box
+          align="center"
+          announce={false}
+          direction="column"
+          focusable={true}
+          justify="center"
+          pad="none"
+          responsive={true}
+          tag="div">
+          <Clock
+            a11yTitleId="clock-title"
+            responsive={true} />
+          <Heading
+            align="center"
+            tag="h5">
+            From: November 2, 2016 12:00 AM
+          </Heading>
+          <Heading
+            align="center"
+            tag="h5">
+            To: December 12, 2014 12:00 AM
+          </Heading>
+        </Box>
+      </Section>
+      <Section
+        pad={
+          Object {
+            "vertical": "medium"
+          }
+        }>
+        <Heading
+          align="center"
+          tag="h3">
+          About
+        </Heading>
+        <Paragraph
+          size="large">
+          The best party
+        </Paragraph>
+      </Section>
+      <Section
+        pad={
+          Object {
+            "vertical": "medium"
+          }
+        }>
+        <Heading
+          align="center"
+          tag="h3">
+          Guest List
+        </Heading>
+        <Box
+          align="center"
+          announce={false}
+          direction="column"
+          focusable={true}
+          justify="center"
+          pad="none"
+          responsive={true}
+          tag="div">
+          <List
+            role="list">
+            <ListItem
+              align="center"
+              direction="row"
+              pad={
+                Object {
+                  "horizontal": "medium",
+                  "vertical": "small"
+                }
+              }
+              role="listitem"
+              separator="bottom">
+              Bilbo Baggins
+            </ListItem>
+          </List>
+        </Box>
+      </Section>
+      <Footer
+        align="center"
+        direction="row"
+        justify="center"
+        pad={
+          Object {
+            "vertical": "medium"
+          }
+        }
+        responsive={false}>
+        <Button
+          label="RSVP"
+          onClick={[Function onRsvp]}
+          type="button" />
+      </Footer>
+    </Article>
+  </Section>
+</Box>
+`;

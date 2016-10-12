@@ -11,9 +11,11 @@ describe('signupReducer', () => {
   it('should handle reducer for SIGNUP_SHOW_ERROR', () => {
     const error = 'An error has occured';
     const stateBefore = {
+      isLoading: true,
       error: null,
     };
     const stateAfter = {
+      isLoading: false,
       error,
     };
     expect(
@@ -26,9 +28,11 @@ describe('signupReducer', () => {
   it('should handle reducer for SIGNUP_SHOW_MESSAGE', () => {
     const message = 'A message has occured';
     const stateBefore = {
+      isLoading: true,
       message: null,
     };
     const stateAfter = {
+      isLoading: false,
       message,
     };
     expect(

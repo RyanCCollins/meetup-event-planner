@@ -13,7 +13,7 @@ import styles from './index.module.scss';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ToastMessage, LoadingIndicator, UserProfile } from 'components';
-import * as AppActions from 'components/App/actions';
+import * as AppActions from '../../components/App/actions';
 import authUserDataFragment from './authUserDataFragment';
 import Box from 'grommet-udacity/components/Box';
 
