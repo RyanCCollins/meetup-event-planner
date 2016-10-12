@@ -77,6 +77,7 @@ class Profile extends Component {
       bioInput,
       avatarInput,
       employerInput,
+      emailInput,
       actions,
       user,
       refetch,
@@ -85,6 +86,7 @@ class Profile extends Component {
       bio: bioInput,
       avatar: avatarInput,
       employer: employerInput,
+      email: emailInput,
     };
     const variables = {
       authToken: user.authToken,
@@ -109,6 +111,7 @@ class Profile extends Component {
       avatarInput,
       isEditing,
       employerInput,
+      emailInput,
     } = this.props;
     return (
       <Box>
@@ -137,6 +140,7 @@ class Profile extends Component {
               avatarInput={avatarInput}
               onEditEmployer={this.handleEditingEmployer}
               employerInput={employerInput}
+              emailInput={emailInput}
             />
           </Box>
         }
@@ -158,6 +162,7 @@ Profile.propTypes = {
   refetch: PropTypes.func.isRequired,
   avatarInput: PropTypes.string,
   employerInput: PropTypes.string,
+  emailInput: PropTypes.string,
 };
 
 // mapStateToProps :: {State} -> {Props}

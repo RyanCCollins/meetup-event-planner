@@ -10,7 +10,6 @@ import Box from 'grommet-udacity/components/Box';
 import Button from 'grommet-udacity/components/Button';
 import List from 'grommet-udacity/components/List';
 import ListItem from 'grommet-udacity/components/ListItem';
-import FormField from 'grommet-udacity/components/FormField';
 import Footer from 'grommet-udacity/components/Footer';
 import Menu from 'grommet-udacity/components/Menu';
 import Anchor from 'grommet-udacity/components/Anchor';

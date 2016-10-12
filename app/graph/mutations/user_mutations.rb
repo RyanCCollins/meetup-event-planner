@@ -8,7 +8,7 @@ module UserMutations
     input_field :password_confirmation, !types.String
     input_field :bio, types.String
     input_field :employer, types.String
-    
+
     return_field :user, AuthUserType
     resolve -> (args, ctx) {
       @user = User.create(
@@ -59,7 +59,7 @@ module UserMutations
       @user.bio = args[:profile][:bio] if args[:profile][:bio]
       @user.avatar = args[:profile][:avatar] if args[:profile][:avatar]
       @user.email = args[:profile][:email] if args[:profile][:email]
-      @user.employer = args[:employer] if args[:employer]
+      @user.employer = args[:profile][:employer] if args[:profile][:employer]
       @user.save!
       {
         user: @user
