@@ -51,3 +51,12 @@ export const fieldsToData = (fields) => ({
 export const signupSetLoading = () => ({
   type: types.SIGNUP_SET_LOADING,
 });
+
+export const toggleSignupTips = (isShowing) => ({
+  type: types.TOGGLE_SIGNUP_TIPS,
+  isShowing,
+});
+
+export const invalidateTip = () => ({
+  type: types.SIGNUP_INVALIDATE_TIP,
+});

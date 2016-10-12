@@ -5,6 +5,8 @@ export const initialState = {
   error: null,
   message: null,
   isLoading: false,
+  isShowingTips: false,
+  tipIsValid: true,
 };
 
 const signupReducer =
@@ -44,6 +46,18 @@ const signupReducer =
         return update(state, {
           isLoading: {
             $set: true,
+          },
+        });
+      case types.TOGGLE_SIGNUP_TIPS:
+        return update(state, {
+          isShowingTips: {
+            $set: action.isShowing,
+          },
+        });
+      case types.SIGNUP_INVALIDATE_TIP:
+        return update(state, {
+          tipIsValid: {
+            $set: false,
           },
         });
       default:

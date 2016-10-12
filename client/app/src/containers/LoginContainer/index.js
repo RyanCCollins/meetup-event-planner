@@ -32,7 +32,6 @@ class Login extends Component {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClosingToast = this.handleClosingToast.bind(this);
-    this.handleShowingTips = this.handleShowingTips.bind(this);
   }
   componentDidMount() {
     const {
@@ -80,19 +79,12 @@ class Login extends Component {
     } = this.props.actions;
     clearLoginToast(type);
   }
-  handleShowingTips(isShowing) {
-    const {
-      toggleLoginTips,
-    } = this.props.actions;
-    toggleLoginTips(isShowing);
-  }
   render() {
     const {
       message,
       isLoading,
       fields,
       errorMessage,
-      isShowingTips,
       invalid,
     } = this.props;
     return (
@@ -107,9 +99,6 @@ class Login extends Component {
         }
         <LoginForm
           {...fields}
-          isShowingPasswordTips={isShowingTips}
-          onPasswordFocus={() => this.handleShowingTips(true)}
-          onPasswordBlur={() => this.handleShowingTips(false)}
           invalid={invalid}
           onSubmit={this.handleSubmit}
         />
@@ -140,7 +129,6 @@ Login.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   fields: PropTypes.object.isRequired,
   invalid: PropTypes.bool.isRequired,
-  isShowingTips: PropTypes.bool.isRequired,
 };
 
 Login.contextTypes = {
@@ -153,7 +141,6 @@ const mapStateToProps = (state) => ({
   errorMessage: state.loginContainer.error,
   message: state.loginContainer.message,
   isLoading: state.loginContainer.isLoading,
-  isShowingTips: state.loginContainer.isShowingTips,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}

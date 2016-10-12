@@ -6,4 +6,5 @@ UserType = GraphQL::ObjectType.define do
   field :bio, types.String, 'The bio of the user'
   field :events, types[EventType], 'The user events'
   field :avatar, types.String, 'The user avatar'
+  field :employer, types.String, 'The user employer'
 end

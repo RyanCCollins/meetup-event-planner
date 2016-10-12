@@ -43,8 +43,3 @@ export const clearLoginToast = (type) =>
 export const loginSetLoading = () => ({
   type: types.LOGIN_SET_LOADING,
 });
-
-export const toggleLoginTips = (isShowing) => ({
-  type: types.TOGGLE_LOGIN_TIPS,
-  isShowing,
-});

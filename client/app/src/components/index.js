@@ -1,4 +1,5 @@
 /* Assemble all components for export */
+export ToolTip from './ToolTip';
 export AppFooter from './AppFooter';
 export LoginForm from './LoginForm';
 export SingleEvent from './SingleEvent';

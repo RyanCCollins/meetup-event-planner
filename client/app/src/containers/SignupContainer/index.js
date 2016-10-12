@@ -32,6 +32,7 @@ class Signup extends Component {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClosingToast = this.handleClosingToast.bind(this);
+    this.handleShowingTips = this.handleShowingTips.bind(this);
   }
   handleSubmit() {
     const {
@@ -67,6 +68,22 @@ class Signup extends Component {
     } = this.props.actions;
     clearSignupToast(type);
   }
+  handleShowingTips(isShowing) {
+    const {
+      toggleSignupTips,
+    } = this.props.actions;
+    toggleSignupTips(isShowing);
+  }
+  handleInvalidateTip() {
+    const {
+      invalidateTip,
+      toggleSignupTips,
+    } = this.props.actions;
+    toggleSignupTips(false);
+    setTimeout(() => {
+      invalidateTip();
+    }, 400);
+  }
   render() {
     const {
       fields,
@@ -74,6 +91,8 @@ class Signup extends Component {
       message,
       isLoading,
       invalid,
+      isShowingTips,
+      tipIsValid,
     } = this.props;
     return (
       <Section
@@ -101,6 +120,11 @@ class Signup extends Component {
         }
         <SignupForm
           {...fields}
+          isShowingPasswordTips={isShowingTips}
+          onInvalidateTip={() => this.handleInvalidateTip()}
+          onPasswordFocus={() => this.handleShowingTips(true)}
+          onPasswordBlur={() => this.handleShowingTips(false)}
+          tipIsValid={tipIsValid}
           invalid={invalid}
           onSubmit={this.handleSubmit}
         />
@@ -117,6 +141,8 @@ Signup.propTypes = {
   actions: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
   invalid: PropTypes.bool.isRequired,
+  isShowingTips: PropTypes.bool.isRequired,
+  tipIsValid: PropTypes.bool.isRequired,
 };
 
 Signup.contextTypes = {
@@ -128,6 +154,8 @@ const mapStateToProps = (state) => ({
   message: state.signupContainer.message,
   error: state.signupContainer.error,
   isLoading: state.signupContainer.isLoading,
+  isShowingTips: state.signupContainer.isShowingTips,
+  tipIsValid: state.signupContainer.tipIsValid,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}

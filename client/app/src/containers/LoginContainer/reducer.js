@@ -5,7 +5,6 @@ export const initialState = {
   error: null,
   message: null,
   isLoading: false,
-  isShowingTips: false,
 };
 
 const loginReducer =
@@ -45,12 +44,6 @@ const loginReducer =
         return update(state, {
           isLoading: {
             $set: true,
-          },
-        });
-      case types.TOGGLE_LOGIN_TIPS:
-        return update(state, {
-          isShowingTips: {
-            $set: action.isShowing,
           },
         });
       default:

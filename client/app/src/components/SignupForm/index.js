@@ -8,7 +8,8 @@ import FormFields from 'grommet-udacity/components/FormFields';
 import Footer from 'grommet-udacity/components/Footer';
 import Button from 'grommet-udacity/components/Button';
 import Box from 'grommet-udacity/components/Box';
-import { AuthFormFooter } from 'components';
+import Paragraph from 'grommet-udacity/components/Paragraph';
+import { AuthFormFooter, ToolTip } from 'components';
 import calculatedError from 'utils/error';
 
 const SignupForm = ({
@@ -20,6 +21,11 @@ const SignupForm = ({
   bioInput,
   employerInput,
   invalid,
+  isShowingPasswordTips,
+  onPasswordFocus,
+  onPasswordBlur,
+  tipIsValid,
+  onInvalidateTip,
 }) => (
   <Box
     className={styles.signupForm}
@@ -32,6 +38,40 @@ const SignupForm = ({
       <Heading align="center" tag="h5">
         Signup
       </Heading>
+        {tipIsValid &&
+          <ToolTip onClose={onInvalidateTip} isShowing={isShowingPasswordTips}>
+            <Box size="medium">
+              <Heading tag="h4" align="center">
+                Secure Password Tips
+              </Heading>
+              <Heading tag="h5" align="center">
+                Password must have at least
+              </Heading>
+              <ul>
+                <li>
+                  <Paragraph className={styles.listItem}>
+                    1. Eight characters total
+                  </Paragraph>
+                </li>
+                <li>
+                  <Paragraph className={styles.listItem}>
+                    2. One uppercase character
+                  </Paragraph>
+                </li>
+                <li>
+                  <Paragraph className={styles.listItem}>
+                    3. One special character
+                  </Paragraph>
+                </li>
+                <li>
+                  <Paragraph className={styles.listItem}>
+                    4. One numerical character
+                  </Paragraph>
+                </li>
+              </ul>
+            </Box>
+          </ToolTip>
+        }
       <FormFields>
         <FormField
           help="What should we call you?"
@@ -79,6 +119,9 @@ const SignupForm = ({
             id="passwordInput"
             name="password"
             type="password"
+            onFocus={onPasswordFocus}
+            onBlur={onPasswordBlur}
+            onClick={onPasswordFocus}
             className={styles.input}
           />
         </FormField>
@@ -144,6 +187,11 @@ SignupForm.propTypes = {
   bioInput: PropTypes.object.isRequired,
   employerInput: PropTypes.object.isRequired,
   invalid: PropTypes.bool.isRequired,
+  onPasswordFocus: PropTypes.func.isRequired,
+  onPasswordBlur: PropTypes.func.isRequired,
+  isShowingPasswordTips: PropTypes.bool.isRequired,
+  onInvalidateTip: PropTypes.func.isRequired,
+  tipIsValid: PropTypes.bool.isRequired,
 };
 
 export default cssModules(SignupForm, styles);

@@ -15,6 +15,8 @@ module UserMutations
         password: args[:password],
         password_confirmation: args[:password_confirmation]
       )
+      @user.bio = args[:bio] if args[:bio]
+      @user.employer = args[:employer] if args[:employer]
       if @user.save
         {
           user: @user
@@ -55,6 +57,7 @@ module UserMutations
       @user.bio = args[:profile][:bio] if args[:profile][:bio]
       @user.avatar = args[:profile][:avatar] if args[:profile][:avatar]
       @user.email = args[:profile][:email] if args[:profile][:email]
+      @user.employer = args[:employer] if args[:employer]
       @user.save!
       {
         user: @user
