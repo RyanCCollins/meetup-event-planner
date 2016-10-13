@@ -6,7 +6,6 @@ export const initialState = {
   message: null,
   isLoading: false,
   isShowingTips: false,
-  tipIsValid: true,
 };
 
 const signupReducer =
@@ -52,12 +51,6 @@ const signupReducer =
         return update(state, {
           isShowingTips: {
             $set: action.isShowing,
-          },
-        });
-      case types.SIGNUP_INVALIDATE_TIP:
-        return update(state, {
-          tipIsValid: {
-            $set: false,
           },
         });
       default:

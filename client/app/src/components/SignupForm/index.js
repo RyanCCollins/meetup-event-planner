@@ -24,8 +24,6 @@ const SignupForm = ({
   isShowingPasswordTips,
   onPasswordFocus,
   onPasswordBlur,
-  tipIsValid,
-  onInvalidateTip,
 }) => (
   <Box
     className={styles.signupForm}
@@ -38,40 +36,38 @@ const SignupForm = ({
       <Heading align="center" tag="h5">
         Signup
       </Heading>
-        {tipIsValid &&
-          <ToolTip onClose={onInvalidateTip} isShowing={isShowingPasswordTips}>
-            <Box size="medium">
-              <Heading tag="h4" align="center">
-                Secure Password Tips
-              </Heading>
-              <Heading tag="h5" align="center">
-                Password must have at least
-              </Heading>
-              <ul>
-                <li>
-                  <Paragraph className={styles.listItem}>
-                    1. Eight characters total
-                  </Paragraph>
-                </li>
-                <li>
-                  <Paragraph className={styles.listItem}>
-                    2. One uppercase character
-                  </Paragraph>
-                </li>
-                <li>
-                  <Paragraph className={styles.listItem}>
-                    3. One special character
-                  </Paragraph>
-                </li>
-                <li>
-                  <Paragraph className={styles.listItem}>
-                    4. One numerical character
-                  </Paragraph>
-                </li>
-              </ul>
-            </Box>
-          </ToolTip>
-        }
+      <ToolTip onClose={onPasswordBlur} isShowing={isShowingPasswordTips}>
+        <Box size="medium">
+          <Heading tag="h4" align="center">
+            Secure Password Tips
+          </Heading>
+          <Heading tag="h5" align="center">
+            Password must have at least
+          </Heading>
+          <ul>
+            <li>
+              <Paragraph className={styles.listItem}>
+                1. Eight characters total
+              </Paragraph>
+            </li>
+            <li>
+              <Paragraph className={styles.listItem}>
+                2. One uppercase character
+              </Paragraph>
+            </li>
+            <li>
+              <Paragraph className={styles.listItem}>
+                3. One special character
+              </Paragraph>
+            </li>
+            <li>
+              <Paragraph className={styles.listItem}>
+                4. One numerical character
+              </Paragraph>
+            </li>
+          </ul>
+        </Box>
+      </ToolTip>
       <FormFields>
         <FormField
           help="What should we call you?"
@@ -107,7 +103,7 @@ const SignupForm = ({
           />
         </FormField>
         <FormField
-          help="Make it secure"
+          help="Start typing for password tips"
           error={calculatedError(passwordInput)}
           label="Password *"
           htmlFor="passwordInput"
@@ -190,8 +186,6 @@ SignupForm.propTypes = {
   onPasswordFocus: PropTypes.func.isRequired,
   onPasswordBlur: PropTypes.func.isRequired,
   isShowingPasswordTips: PropTypes.bool.isRequired,
-  onInvalidateTip: PropTypes.func.isRequired,
-  tipIsValid: PropTypes.bool.isRequired,
 };
 
 export default cssModules(SignupForm, styles);

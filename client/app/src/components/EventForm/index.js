@@ -16,7 +16,7 @@ import ListItem from 'grommet-udacity/components/ListItem';
 import CloseIcon from 'grommet-udacity/components/icons/base/Close';
 import AddIcon from 'grommet-udacity/components/icons/base/Add';
 import uniq from 'lodash/uniq';
-import calculatedError from './utils/error';
+import calculatedError, { valueRequired } from './utils/error';
 
 const EventForm = ({
   onSubmit,
@@ -41,8 +41,8 @@ const EventForm = ({
       <FormField
         label="Name *"
         htmlFor="name-input"
-        help="Name it something fun!!"
-        error={nameInput.dirty || nameInput.touched && nameInput.error ? nameInput.error : null}
+        help="Set a name for the event."
+        error={calculatedError(nameInput)}
       >
         <input
           {...nameInput}
@@ -55,7 +55,7 @@ const EventForm = ({
       </FormField>
       <FormField
         label="Type *"
-        help="What type of event is it?"
+        help="What type of event is it? Select a value from the list."
         error={!typeInput.valid && typeInput.error ? typeInput.error : null}
         htmlFor="type-input"
       >
@@ -71,8 +71,8 @@ const EventForm = ({
       <FormField
         label="Host *"
         htmlFor="host-input"
-        help="Who is hosting this shindig?"
-        error={calculatedError(hostInput)}
+        help="Start typing to set the host, or select from the list."
+        error={calculatedError(hostInput) || valueRequired(hostInput)}
       >
         <SearchInput
           {...hostInput}
@@ -94,15 +94,16 @@ const EventForm = ({
         <Geosuggest
           required
           id="location-input"
-          placeholder="Start typing!"
+          placeholder="Start typing to find the event location."
+          onSuggestSelect={(suggest) => locationInput.onChage(suggest)}
           {...locationInput}
         />
       </FormField>
       <FormField
         label="Start Date *"
         htmlFor="start-date-input"
-        error={calculatedError(startDateInput)}
-        help="When does it start? Set a Date and Time"
+        error={calculatedError(startDateInput) || valueRequired(startDateInput)}
+        help="When does it start? Set a Date and Time."
       >
         <DateTime
           {...startDateInput}
@@ -115,8 +116,8 @@ const EventForm = ({
       <FormField
         label="End Date *"
         htmlFor="end-date-input"
-        error={calculatedError(endDateInput)}
-        help="When does it end? Set a Date and Time"
+        error={calculatedError(endDateInput) || valueRequired(startDateInput)}
+        help="When does it end? Set a Date and Time."
       >
         <DateTime
           {...endDateInput}
@@ -129,7 +130,7 @@ const EventForm = ({
       <FormField
         label="Guests *"
         htmlFor="guests-input"
-        help="Start Typing to Add A Guest"
+        help="Add a new guest, or select past guests."
         style={{ position: 'relative' }}
         error={guestList.length < 1 ? guestsInput.error : null}
       >
@@ -146,7 +147,7 @@ const EventForm = ({
             guestsInput.onChange('');
           }}
         />
-        {guestsInput.valid &&
+        {guestsInput.valid && guestsInput.value !== '' &&
           <Button
             tabIndex="0"
             className={styles.addButton}

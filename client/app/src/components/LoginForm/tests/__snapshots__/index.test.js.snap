@@ -27,7 +27,7 @@ exports[`<LoginForm /> should render with default props 1`] = `
     </Heading>
     <FormFields>
       <FormField
-        help="How should we get in touch with you?"
+        help="Enter the email you used to create your account"
         htmlFor="emailInput"
         label="Email *"
         size="medium"
@@ -50,7 +50,7 @@ exports[`<LoginForm /> should render with default props 1`] = `
           visited={true} />
       </FormField>
       <FormField
-        help="Gotta be secure"
+        help="Enter the password you used to create your account"
         htmlFor="passwordInput"
         label="Password *"
         size="medium"

@@ -119,6 +119,21 @@ const profileReducer =
             $set: true,
           },
         });
+      case types.PROFILE_SET_DEFAULT_INPUTS:
+        return update(state, {
+          bioInput: {
+            $set: action.inputs.bio,
+          },
+          avatarInput: {
+            $set: action.inputs.avatar,
+          },
+          employerInput: {
+            $set: action.inputs.employer,
+          },
+          emailInput: {
+            $set: action.inputs.email,
+          },
+        });
       default:
         return state;
     }

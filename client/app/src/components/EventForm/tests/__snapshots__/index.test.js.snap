@@ -7,7 +7,7 @@ exports[`<EventForm /> should render with default props 1`] = `
   <FormFields>
     <FormField
       error="Value Required"
-      help="Name it something fun!!"
+      help="Set a name for the event."
       htmlFor="name-input"
       label="Name *"
       size="medium"
@@ -32,7 +32,7 @@ exports[`<EventForm /> should render with default props 1`] = `
     </FormField>
     <FormField
       error="Value Required"
-      help="What type of event is it?"
+      help="What type of event is it? Select a value from the list."
       htmlFor="type-input"
       label="Type *"
       size="medium"
@@ -69,8 +69,8 @@ exports[`<EventForm /> should render with default props 1`] = `
         visited={false} />
     </FormField>
     <FormField
-      error={null}
-      help="Who is hosting this shindig?"
+      error="Value Required"
+      help="Start typing to set the host, or select from the list."
       htmlFor="host-input"
       label="Host *"
       size="medium"
@@ -131,7 +131,7 @@ exports[`<EventForm /> should render with default props 1`] = `
         onFocus={[Function onFocus]}
         onSuggestNoResults={[Function onSuggestNoResults]}
         onSuggestSelect={[Function onSuggestSelect]}
-        placeholder="Start typing!"
+        placeholder="Start typing to find the event location."
         pristine={true}
         queryDelay={250}
         radius={null}
@@ -151,8 +151,8 @@ exports[`<EventForm /> should render with default props 1`] = `
         visited={false} />
     </FormField>
     <FormField
-      error={null}
-      help="When does it start? Set a Date and Time"
+      error="Value Required"
+      help="When does it start? Set a Date and Time."
       htmlFor="start-date-input"
       label="Start Date *"
       size="medium"
@@ -176,8 +176,8 @@ exports[`<EventForm /> should render with default props 1`] = `
         visited={false} />
     </FormField>
     <FormField
-      error={null}
-      help="When does it end? Set a Date and Time"
+      error="Value Required"
+      help="When does it end? Set a Date and Time."
       htmlFor="end-date-input"
       label="End Date *"
       size="medium"
@@ -202,7 +202,7 @@ exports[`<EventForm /> should render with default props 1`] = `
     </FormField>
     <FormField
       error={null}
-      help="Start Typing to Add A Guest"
+      help="Add a new guest, or select past guests."
       htmlFor="guests-input"
       label="Guests *"
       size="medium"
@@ -234,18 +234,6 @@ exports[`<EventForm /> should render with default props 1`] = `
         valid={true}
         value=""
         visited={false} />
-      <Button
-        icon={
-          <function Icon() {
-              (0, _classCallCheck3.default)(this, Icon);
-              return (0, _possibleConstructorReturn3.default)(this, (Icon.__proto__ || (0, _getPrototypeOf2.default)(Icon)).apply(this, arguments));
-            }
-            a11yTitleId="add-title"
-            responsive={true} />
-        }
-        onClick={[Function onClick]}
-        tabIndex="0"
-        type="button" />
     </FormField>
     <FormField
       label="Guest List"

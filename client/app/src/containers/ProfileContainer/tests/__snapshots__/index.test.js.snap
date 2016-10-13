@@ -16,6 +16,7 @@ exports[`<Profile /> should render with default props 1`] = `
       "profileSubmissionFailure": [Function anonymous],
       "profileSubmissionInitiation": [Function anonymous],
       "profileSubmissionSuccess": [Function anonymous],
+      "setDefaultInputs": [Function anonymous],
       "setPersistentUser": [Function anonymous]
     }
   }

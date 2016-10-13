@@ -93,4 +93,19 @@ describe('Profile actions', () => {
       actions.profileEditEmployer(employer)
     ).toEqual(expected);
   });
+  it('it should handle PROFILE_SET_DEFAULT_INPUTS', () => {
+    const inputs = {
+      bio: 'Woo',
+      email: 'temp@gmail.com',
+      avatar: 'http://avatar.png',
+      employer: 'Udacity',
+    };
+    const expected = {
+      type: types.PROFILE_SET_DEFAULT_INPUTS,
+      inputs,
+    };
+    expect(
+      actions.setDefaultInputs(inputs)
+    ).toEqual(expected);
+  });
 });

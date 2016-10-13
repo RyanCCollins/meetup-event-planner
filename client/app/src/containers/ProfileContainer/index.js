@@ -28,6 +28,19 @@ class Profile extends Component {
     this.handleEditingAvatar = this.handleEditingAvatar.bind(this);
     this.handleEditingEmail = this.handleEditingEmail.bind(this);
     this.handleEditingEmployer = this.handleEditingEmployer.bind(this);
+    this.setDefaults = this.setDefaults.bind(this);
+  }
+  setDefaults() {
+    const {
+      user,
+      actions,
+    } = this.props;
+    actions.setDefaultInputs({
+      bio: user.bio,
+      email: user.email,
+      avatar: user.avatar,
+      employer: user.employer,
+    });
   }
   handleClearError() {
     const {
@@ -45,6 +58,7 @@ class Profile extends Component {
     const {
       profileStartEditing,
     } = this.props.actions;
+    this.setDefaults();
     profileStartEditing();
   }
   handleEditingAvatar(e) {

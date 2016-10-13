@@ -187,4 +187,34 @@ describe('profileReducer', () => {
       })
     ).toEqual(stateAfter);
   });
+  it('should handle reducer for PROFILE_SET_DEFAULT_INPUTS', () => {
+    const bio = 'Woo';
+    const email = 'temp@gmail.com';
+    const avatar = 'http://avatar.png';
+    const employer = 'Udacity';
+    const inputs = {
+      bio,
+      email,
+      avatar,
+      employer,
+    };
+    const stateBefore = {
+      bioInput: null,
+      avatarInput: null,
+      employerInput: null,
+      emailInput: null,
+    };
+    const stateAfter = {
+      bioInput: bio,
+      avatarInput: avatar,
+      employerInput: employer,
+      emailInput: email,
+    };
+    expect(
+      profileReducer(stateBefore, {
+        type: types.PROFILE_SET_DEFAULT_INPUTS,
+        inputs,
+      })
+    ).toEqual(stateAfter);
+  });
 });

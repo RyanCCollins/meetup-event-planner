@@ -18,3 +18,4 @@ A signup form component.
 
 
 ### Other Information
+See index.js for the props and example

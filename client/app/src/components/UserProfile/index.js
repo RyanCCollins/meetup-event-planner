@@ -41,7 +41,7 @@ const UserProfile = ({
         </Heading>
         <Section
           className={isEditing ? '' : styles.transformAvatar}
-          pad={{ vertical: 'medium' }}
+          pad="none"
           align="center"
           justify="center"
         >
@@ -49,7 +49,8 @@ const UserProfile = ({
             onClickToEdit={onClickToEdit}
             isEditing={isEditing}
             onEdit={onEditAvatar}
-            value={avatarInput || user.avatar}
+            type="url"
+            value={avatarInput}
             name="avatar"
           >
             <img
@@ -66,7 +67,7 @@ const UserProfile = ({
           isEditing={isEditing}
           onClickToEdit={onClickToEdit}
           onEdit={onEditBio}
-          value={bioInput || user.bio}
+          value={bioInput}
           name="bio"
         >
           <Paragraph className={`${styles.isButton} ${styles.paragraph}`}>
@@ -77,7 +78,7 @@ const UserProfile = ({
           onClickToEdit={onClickToEdit}
           isEditing={isEditing}
           onEdit={onEditEmployer}
-          value={employerInput || user.employer}
+          value={employerInput}
           name="employer"
         >
           <Paragraph className={styles.isButton}>
@@ -87,8 +88,9 @@ const UserProfile = ({
         <EditableField
           isEditing={isEditing}
           onEdit={onEditEmail}
+          type="email"
           onClickToEdit={onClickToEdit}
-          value={emailInput || user.email}
+          value={emailInput}
           name="email"
         >
           <Heading

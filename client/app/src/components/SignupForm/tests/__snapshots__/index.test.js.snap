@@ -116,7 +116,7 @@ exports[`<SignupForm /> should render with default props 1`] = `
           }>
       }
       isShowing={true}
-      onClose={[Function onInvalidateTip]} />
+      onClose={[Function onPasswordBlur]} />
     <FormFields>
       <FormField
         error="value Required"
@@ -169,7 +169,7 @@ exports[`<SignupForm /> should render with default props 1`] = `
       </FormField>
       <FormField
         error={null}
-        help="Make it secure"
+        help="Start typing for password tips"
         htmlFor="passwordInput"
         label="Password *"
         size="medium"

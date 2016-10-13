@@ -96,17 +96,4 @@ describe('signupReducer', () => {
       })
     ).toEqual(stateAfter);
   });
-  it('should handle reducer for SIGNUP_INVALIDATE_TIP', () => {
-    const stateBefore = {
-      tipIsValid: true,
-    };
-    const stateAfter = {
-      tipIsValid: false,
-    };
-    expect(
-      signupReducer(stateBefore, {
-        type: types.SIGNUP_INVALIDATE_TIP,
-      })
-    ).toEqual(stateAfter);
-  });
 });

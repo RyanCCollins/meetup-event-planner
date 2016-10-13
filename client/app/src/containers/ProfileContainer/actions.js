@@ -54,3 +54,9 @@ export const profileEditEmployer = (employer) => ({
   type: types.PROFILE_EDIT_EMPLOYER,
   employer,
 });
+
+// setDefaultInputs :: Object -> {Action}
+export const setDefaultInputs = (inputs) => ({
+  type: types.PROFILE_SET_DEFAULT_INPUTS,
+  inputs,
+});

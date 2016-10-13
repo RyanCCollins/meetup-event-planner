@@ -30,7 +30,7 @@ const LoginForm = ({
       </Heading>
       <FormFields>
         <FormField
-          help="How should we get in touch with you?"
+          help="Enter the email you used to create your account"
           error={calculatedError(emailInput)}
           label="Email *"
           htmlFor="emailInput"
@@ -47,7 +47,7 @@ const LoginForm = ({
           />
         </FormField>
         <FormField
-          help="Gotta be secure"
+          help="Enter the password you used to create your account"
           error={calculatedError(passwordInput)}
           label="Password *"
           htmlFor="passwordInput"

@@ -5,7 +5,6 @@ exports[`<Signup /> should render with default props 1`] = `
       "authenticateUser": [Function anonymous],
       "clearSignupToast": [Function anonymous],
       "fieldsToData": [Function anonymous],
-      "invalidateTip": [Function anonymous],
       "invalidateUser": [Function anonymous],
       "loadPersistedUser": [Function anonymous],
       "logoutUser": [Function anonymous],
@@ -18,7 +17,7 @@ exports[`<Signup /> should render with default props 1`] = `
       "toggleSignupTips": [Function anonymous]
     }
   }
-  error={null}
+  errorMessage={null}
   isLoading={false}
   isShowingTips={false}
   message={null}
@@ -31,6 +30,5 @@ exports[`<Signup /> should render with default props 1`] = `
       "replaceReducer": [Function replaceReducer],
       "subscribe": [Function subscribe]
     }
-  }
-  tipIsValid={true} />
+  } />
 `;

@@ -11,17 +11,24 @@ const EditableField = ({
   value,
   name,
   children,
+  type,
   onClickToEdit,
 }) => (
   <Section pad={{ vertical: 'medium' }} align="center" justify="center">
     {isEditing ?
       <Box size="medium" align="center">
         <FormField
+          help={`Edit your ${name}`}
           size="large"
           className={styles.formField}
-          label={`Edit ${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+          label={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
         >
-          <textarea onChange={onEdit} value={value} id={`${name}-input`} />
+          <textarea
+            type={type}
+            onChange={onEdit}
+            value={value}
+            id={`${name}-input`}
+          />
         </FormField>
       </Box>
     :
@@ -41,6 +48,11 @@ EditableField.propTypes = {
   name: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   onClickToEdit: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
+};
+
+EditableField.defaultProps = {
+  type: 'text',
 };
 
 export default cssModules(EditableField, styles);

@@ -47,12 +47,4 @@ describe('Signup actions', () => {
       actions.toggleSignupTips(isShowing)
     ).toEqual(expected);
   });
-  it('should handle SIGNUP_INVALIDATE_TIP', () => {
-    const expected = {
-      type: types.SIGNUP_INVALIDATE_TIP,
-    };
-    expect(
-      actions.invalidateTip()
-    ).toEqual(expected);
-  });
 });

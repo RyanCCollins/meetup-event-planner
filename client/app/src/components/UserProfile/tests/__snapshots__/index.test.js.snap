@@ -30,11 +30,7 @@ exports[`<UserProfile /> should render with default props 1`] = `
       <Section
         align="center"
         justify="center"
-        pad={
-          Object {
-            "vertical": "medium"
-          }
-        }>
+        pad="none">
         <undefined
           children={
             <img
@@ -45,7 +41,8 @@ exports[`<UserProfile /> should render with default props 1`] = `
           name="avatar"
           onClickToEdit={[Function mockFn]}
           onEdit={[Function mockFn]}
-          value={undefined} />
+          type="url"
+          value="" />
       </Section>
       <undefined
         children={
@@ -64,7 +61,7 @@ exports[`<UserProfile /> should render with default props 1`] = `
         name="bio"
         onClickToEdit={[Function mockFn]}
         onEdit={[Function mockFn]}
-        value={undefined} />
+        value="" />
       <undefined
         children={
           <function Paragraph() {
@@ -82,7 +79,7 @@ exports[`<UserProfile /> should render with default props 1`] = `
         name="employer"
         onClickToEdit={[Function mockFn]}
         onEdit={[Function mockFn]}
-        value={undefined} />
+        value="" />
       <undefined
         children={
           <function Heading() {
@@ -97,7 +94,8 @@ exports[`<UserProfile /> should render with default props 1`] = `
         name="email"
         onClickToEdit={[Function mockFn]}
         onEdit={[Function mockFn]}
-        value={undefined} />
+        type="email"
+        value="" />
     </Article>
     <Article
       direction="column"
