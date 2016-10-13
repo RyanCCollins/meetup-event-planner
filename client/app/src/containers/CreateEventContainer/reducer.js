@@ -47,10 +47,6 @@ const createEventReducer =
             $set: state.guestList.filter((_, i) => i !== action.index),
           },
         });
-      case types.SET_GEO_LOCATION:
-        return update(state, {
-          geoLocation: action.position,
-        });
       default:
         return state;
     }

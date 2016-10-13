@@ -50,6 +50,7 @@ const EventForm = ({
           autoFocus
           type="text"
           id="name-input"
+          placeholder="Bill's Birthday"
           name="event-name"
         />
       </FormField>
@@ -132,7 +133,9 @@ const EventForm = ({
         htmlFor="guests-input"
         help="Add a new guest, or select past guests."
         style={{ position: 'relative' }}
-        error={guestList.length < 1 ? guestsInput.error : null}
+        error={guestList.length < 1 ?
+          'One guest minimum' : guestsInput.error
+        }
       >
         <SearchInput
           {...guestsInput}
@@ -199,6 +202,7 @@ const EventForm = ({
         <textarea
           {...messageInput}
           name="message"
+          placeholder="BYOB, bring a swimming suit, no wives allowed"
           id="message-input"
           cols="40"
           rows="3"
