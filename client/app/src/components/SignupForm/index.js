@@ -80,6 +80,7 @@ const SignupForm = ({
             {...nameInput}
             required
             autoFocus
+            placeholder="Bill Clinton"
             id="nameInput"
             name="name"
             type="text"
@@ -98,6 +99,7 @@ const SignupForm = ({
             required
             id="emailInput"
             name="email"
+            placeholder="bill@clinton.com"
             type="email"
             className={styles.input}
           />
@@ -149,6 +151,7 @@ const SignupForm = ({
             name="bio"
             type="text"
             rows="3"
+            placeholder="Hi, my name is Bill. I used to be the president of the US.  Vote for Hillary."
             cols="40"
           />
         </FormField>
@@ -161,6 +164,7 @@ const SignupForm = ({
           <input
             {...employerInput}
             name="organization"
+            placeholder="Udacity"
             id="employer-input"
             type="text"
           />

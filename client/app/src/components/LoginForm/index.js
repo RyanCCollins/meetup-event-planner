@@ -42,6 +42,7 @@ const LoginForm = ({
             autoFocus
             id="emailInput"
             name="email"
+            placeholder="bill@clinton.com"
             type="email"
             className={styles.input}
           />

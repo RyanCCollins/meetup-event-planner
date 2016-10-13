@@ -67,3 +67,8 @@ export const fieldsToData = (fields, guestList, user) => ({
     guests: guestList.map((item) => ({ name: item })),
   },
 });
+
+export const setGeoLocation = (position) => ({
+  type: types.SET_GEO_LOCATION,
+  position,
+});

@@ -36,6 +36,10 @@ class CreateEvent extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAddingGuest = this.handleAddingGuest.bind(this);
     this.handleRemovingGuest = this.handleRemovingGuest.bind(this);
+    this.handleGeolocation = this.handleGeolocation.bind(this);
+  }
+  componentDidMount() {
+    this.handleGeolocation();
   }
   handleClear(type) {
     const {
@@ -79,6 +83,16 @@ class CreateEvent extends Component {
       createEventRemoveGuest,
     } = this.props.actions;
     createEventRemoveGuest(index);
+  }
+  handleGeolocation() {
+    if (navigator.geolocation) {
+      const {
+        actions,
+      } = this.props;
+      navigator.geolocation.getCurrengetCurrentPosition((position) => {
+        actions.setGeoLocation(position);
+      });
+    }
   }
   render() {
     const {

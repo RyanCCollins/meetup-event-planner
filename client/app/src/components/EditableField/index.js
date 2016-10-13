@@ -13,6 +13,7 @@ const EditableField = ({
   children,
   type,
   onClickToEdit,
+  placeholder,
 }) => (
   <Section pad={{ vertical: 'medium' }} align="center" justify="center">
     {isEditing ?
@@ -25,6 +26,7 @@ const EditableField = ({
         >
           <textarea
             type={type}
+            placeholder={placeholder}
             onChange={onEdit}
             value={value}
             id={`${name}-input`}
@@ -49,6 +51,7 @@ EditableField.propTypes = {
   children: PropTypes.node.isRequired,
   onClickToEdit: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
 };
 
 EditableField.defaultProps = {

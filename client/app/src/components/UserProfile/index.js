@@ -50,6 +50,7 @@ const UserProfile = ({
             isEditing={isEditing}
             onEdit={onEditAvatar}
             type="url"
+            placeholder="http://github.com/avatar.png"
             value={avatarInput}
             name="avatar"
           >
@@ -67,6 +68,7 @@ const UserProfile = ({
           isEditing={isEditing}
           onClickToEdit={onClickToEdit}
           onEdit={onEditBio}
+          placeholder="Hi, I'm Bill and I used to be the president."
           value={bioInput}
           name="bio"
         >
@@ -79,6 +81,7 @@ const UserProfile = ({
           isEditing={isEditing}
           onEdit={onEditEmployer}
           value={employerInput}
+          placeholder="Udacity"
           name="employer"
         >
           <Paragraph className={styles.isButton}>
@@ -90,6 +93,7 @@ const UserProfile = ({
           onEdit={onEditEmail}
           type="email"
           onClickToEdit={onClickToEdit}
+          placeholder="bill@clinton.com"
           value={emailInput}
           name="email"
         >
