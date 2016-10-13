@@ -40,16 +40,9 @@ export const clearCreateEventToast = (type) =>
     }
   };
 
-// createEventAddGuest :: String -> {Action}
-export const createEventAddGuest = (guest) => ({
-  type: types.CREATE_EVENT_ADD_GUEST,
-  guest,
-});
-
-// createEventRemoveGuest :: Int -> {Action}
-export const createEventRemoveGuest = (index) => ({
-  type: types.CREATE_EVENT_REMOVE_GUEST,
-  index,
+export const onSetGuests = (guests) => ({
+  type: types.CREATE_EVENT_ADD_GUESTS,
+  guests,
 });
 
 export const fieldsToData = (fields, guestList, user) => ({

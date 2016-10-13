@@ -68,11 +68,11 @@ class CreateEvent extends Component {
         actions.createEventError(err.message || 'An unknown error has occured');
       });
   }
-  handleAddingGuest(name) {
+  handleAddingGuest(guests) {
     const {
-      createEventAddGuest,
+      onSetGuests,
     } = this.props.actions;
-    createEventAddGuest(name);
+    onSetGuests(guests);
   }
   handleRemovingGuest(index) {
     const {

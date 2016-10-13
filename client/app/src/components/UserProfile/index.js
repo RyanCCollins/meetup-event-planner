@@ -48,6 +48,7 @@ const UserProfile = ({
           <EditableField
             onClickToEdit={onClickToEdit}
             isEditing={isEditing}
+            autoFocus
             onEdit={onEditAvatar}
             type="url"
             placeholder="http://github.com/avatar.png"

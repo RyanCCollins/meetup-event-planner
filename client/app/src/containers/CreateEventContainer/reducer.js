@@ -35,16 +35,10 @@ const createEventReducer =
             $set: null,
           },
         });
-      case types.CREATE_EVENT_ADD_GUEST:
+      case types.CREATE_EVENT_ADD_GUESTS:
         return update(state, {
           guestList: {
-            $set: [...state.guestList, action.guest],
-          },
-        });
-      case types.CREATE_EVENT_REMOVE_GUEST:
-        return update(state, {
-          guestList: {
-            $set: state.guestList.filter((_, i) => i !== action.index),
+            $set: action.guests,
           },
         });
       default:

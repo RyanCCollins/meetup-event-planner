@@ -5,18 +5,14 @@ import Form from 'grommet-udacity/components/Form';
 import FormFields from 'grommet-udacity/components/FormFields';
 import FormField from 'grommet-udacity/components/FormField';
 import DateTime from 'grommet-udacity/components/DateTime';
-import SearchInput from 'grommet-udacity/components/SearchInput';
-import Select from 'grommet-udacity/components/Select';
 import Footer from 'grommet-udacity/components/Footer';
 import Button from 'grommet-udacity/components/Button';
-import Box from 'grommet-udacity/components/Box';
+import Select, { Creatable } from 'react-select';
+import 'react-select/dist/react-select.css';
 import Geosuggest from 'react-geosuggest';
-import List from 'grommet-udacity/components/List';
-import ListItem from 'grommet-udacity/components/ListItem';
-import CloseIcon from 'grommet-udacity/components/icons/base/Close';
-import AddIcon from 'grommet-udacity/components/icons/base/Add';
+
 import uniq from 'lodash/uniq';
-import calculatedError, { valueRequired } from './utils/error';
+import calculatedError, { valueRequired, atLeastOne } from './utils/error';
 
 const EventForm = ({
   onSubmit,
@@ -31,10 +27,9 @@ const EventForm = ({
   pastGuests,
   pastHosts,
   eventTypes,
-  guestList,
-  onAddGuest,
-  onRemoveGuest,
   invalid,
+  onAddGuest,
+  guestList,
 }) => (
   <Form onSubmit={onSubmit} className={styles.eventForm}>
     <FormFields>
@@ -57,45 +52,66 @@ const EventForm = ({
       <FormField
         label="Type *"
         help="What type of event is it? Select a value from the list."
-        error={!typeInput.valid && typeInput.error ? typeInput.error : null}
+        error={calculatedError(typeInput)}
         htmlFor="type-input"
       >
         <Select
           {...typeInput}
           required
           id="type-input"
-          value={{ value: typeInput.value.option, label: typeInput.value.option }}
-          options={eventTypes.map(i => `${i.charAt(0).toUpperCase()}${i.slice(1)}`)}
-          onSelect={({ suggestion }) => typeInput.onChange(suggestion.option)}
+          input={typeInput}
+          onBlur={() => typeInput.onBlur(typeInput.value)}
+          onChange={(option) => {
+            if (option && option.value) {
+              typeInput.onChange(option.value);
+            } else {
+              typeInput.onChange(null);
+            }
+          }}
+          options={eventTypes.map(i =>
+            ({
+              value: `${i.charAt(0).toUpperCase()}${i.slice(1)}`,
+              label: `${i.charAt(0).toUpperCase()}${i.slice(1)}`,
+            }))
+          }
         />
       </FormField>
       <FormField
         label="Host *"
         htmlFor="host-input"
         help="Start typing to set the host, or select from the list."
-        error={calculatedError(hostInput) || valueRequired(hostInput)}
+        error={calculatedError(hostInput)}
       >
-        <SearchInput
+        <Creatable
           {...hostInput}
           required
           id="host-input"
           name="host"
           required
-          suggestions={uniq(pastHosts.map(i => i.name))}
-          onDOMChange={(e) => hostInput.onChange(e.target.value)}
-          onSelect={({ suggestion }) => hostInput.onChange(suggestion)}
+          value={hostInput.value}
+          onBlur={() => hostInput.onBlur(hostInput.value)}
+          onChange={(option) => {
+            if (option && option.value) {
+              hostInput.onChange(option.value);
+            } else {
+              hostInput.onChange(null);
+            }
+          }}
+          options={uniq(pastHosts.map((host) => ({ value: host.name, label: host.name })))}
         />
+
       </FormField>
       <FormField
         error={calculatedError(locationInput)}
         label="Location *"
+        help="Start typing to find the event location"
         className={styles.locationInput}
         htmlFor="location-input"
       >
         <Geosuggest
           required
           id="location-input"
-          placeholder="Start typing to find the event location."
+          placeholder="123 Main St, NY, New York 12345"
           onSuggestSelect={(suggest) => locationInput.onChage(suggest)}
           {...locationInput}
         />
@@ -103,7 +119,9 @@ const EventForm = ({
       <FormField
         label="Start Date *"
         htmlFor="start-date-input"
-        error={calculatedError(startDateInput) || valueRequired(startDateInput)}
+        error={calculatedError(startDateInput) ||
+          startDateInput.touched && valueRequired(startDateInput)
+        }
         help="When does it start? Set a Date and Time."
       >
         <DateTime
@@ -117,7 +135,9 @@ const EventForm = ({
       <FormField
         label="End Date *"
         htmlFor="end-date-input"
-        error={calculatedError(endDateInput) || valueRequired(startDateInput)}
+        error={calculatedError(endDateInput) ||
+          startDateInput.touched && valueRequired(startDateInput)
+        }
         help="When does it end? Set a Date and Time."
       >
         <DateTime
@@ -133,65 +153,28 @@ const EventForm = ({
         htmlFor="guests-input"
         help="Add a new guest, or select past guests."
         style={{ position: 'relative' }}
-        error={guestList.length < 1 ?
-          'One guest minimum' : guestsInput.error
-        }
+        error={calculatedError(guestsInput) || atLeastOne(guestList, guestsInput)}
       >
-        <SearchInput
+        <Creatable
           {...guestsInput}
           required
           id="guests-input"
           name="guests"
-          onDOMChange={(e) => guestsInput.onChange(e.target.value)}
-          suggestions={uniq(pastGuests.map(i => i.name))}
-          onSelect={({ suggestion }) => {
-            guestsInput.onChange(suggestion);
-            onAddGuest(suggestion);
-            guestsInput.onChange('');
+          multi
+          onBlur={() => guestsInput.onBlur(guestsInput.value)}
+          value={guestList}
+          onChange={(guests) => {
+            onAddGuest(
+              guests.map((guest) =>
+                ({
+                  ...guest,
+                  name: guest.value,
+                })
+              )
+            );
           }}
+          options={uniq(pastGuests.map((guest) => ({ value: guest.name, label: guest.name })))}
         />
-        {guestsInput.valid && guestsInput.value !== '' &&
-          <Button
-            tabIndex="0"
-            className={styles.addButton}
-            icon={<AddIcon />}
-            onClick={() => {
-              if (guestsInput.value !== null || guestsInput.value !== '') {
-                onAddGuest(guestsInput.value);
-                guestsInput.onChange('');
-              }
-            }}
-          />
-        }
-      </FormField>
-      <FormField
-        label={guestList && guestList.length > 0 ? 'Guest List' : ''}
-        className={styles.guestListField}
-      >
-        {guestList && guestList.length > 0 &&
-          <Box style={{ zIndex: 10 }}>
-            <List>
-              {guestList.map((item, i) =>
-                <ListItem key={i}>
-                  <Box
-                    style={{ width: '100%' }}
-                    responsive={false}
-                    justify="around"
-                    align="start"
-                    direction="row"
-                  >
-                    <span
-                      style={{ flex: 1, height: 30, marginTop: 18 }}
-                    >
-                      {item}
-                    </span>
-                    <Button onClick={() => onRemoveGuest(i)} icon={<CloseIcon />} />
-                  </Box>
-                </ListItem>
-              )}
-            </List>
-          </Box>
-        }
       </FormField>
       <FormField
         label="Message"

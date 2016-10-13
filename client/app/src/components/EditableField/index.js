@@ -14,6 +14,7 @@ const EditableField = ({
   type,
   onClickToEdit,
   placeholder,
+  autoFocus,
 }) => (
   <Section pad={{ vertical: 'medium' }} align="center" justify="center">
     {isEditing ?
@@ -25,6 +26,7 @@ const EditableField = ({
           label={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
         >
           <textarea
+            autoFocus={autoFocus}
             type={type}
             placeholder={placeholder}
             onChange={onEdit}
@@ -52,10 +54,12 @@ EditableField.propTypes = {
   onClickToEdit: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
+  autoFocus: PropTypes.bool.isRequired,
 };
 
 EditableField.defaultProps = {
   type: 'text',
+  autoFocus: false,
 };
 
 export default cssModules(EditableField, styles);

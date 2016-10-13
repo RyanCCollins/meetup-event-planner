@@ -1,7 +1,10 @@
 const calculatedError = (input) =>
-  input.dirty || input.touched && input.error ? input.error : null;
+  input.touched && input.error ? input.error : null;
 
 export const valueRequired = (input) =>
   input.value === '' ? 'Value Required' : input.error;
+
+export const atLeastOne = (guestsList, input) =>
+  input.touched && guestsList.length < 1 ? 'At least one guest required' : null;
 
 export default calculatedError;
