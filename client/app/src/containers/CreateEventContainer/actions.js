@@ -60,3 +60,11 @@ export const fieldsToData = (fields, guestList, user) => ({
     guests: guestList.map((item) => ({ name: item })),
   },
 });
+
+export const setStartDateFocus = () => ({
+  type: types.CREATE_EVENT_SET_START_DATE_FOCUS,
+});
+
+export const setEndDateFocus = () => ({
+  type: types.CREATE_EVENT_SET_END_DATE_FOCUS,
+});

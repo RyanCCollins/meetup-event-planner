@@ -8,11 +8,10 @@ import DateTime from 'grommet-udacity/components/DateTime';
 import Footer from 'grommet-udacity/components/Footer';
 import Button from 'grommet-udacity/components/Button';
 import Select, { Creatable } from 'react-select';
-import 'react-select/dist/react-select.css';
 import Geosuggest from 'react-geosuggest';
 
 import uniq from 'lodash/uniq';
-import calculatedError, { valueRequired, atLeastOne } from './utils/error';
+import calculatedError, { valueRequired, atLeastOne, dateError } from './utils/error';
 
 const EventForm = ({
   onSubmit,
@@ -30,6 +29,9 @@ const EventForm = ({
   invalid,
   onAddGuest,
   guestList,
+  onFocusDateTime,
+  startDateFocused,
+  endDateFocused,
 }) => (
   <Form onSubmit={onSubmit} className={styles.eventForm}>
     <FormFields>
@@ -112,22 +114,27 @@ const EventForm = ({
           required
           id="location-input"
           placeholder="123 Main St, NY, New York 12345"
-          onSuggestSelect={(suggest) => locationInput.onChage(suggest)}
+          onSuggestSelect={(suggest) => locationInput.onChange(suggest)}
           {...locationInput}
         />
       </FormField>
       <FormField
         label="Start Date *"
         htmlFor="start-date-input"
-        error={calculatedError(startDateInput) ||
-          startDateInput.touched && valueRequired(startDateInput)
-        }
+        error={dateError(startDateInput, startDateFocused)}
         help="When does it start? Set a Date and Time."
       >
         <DateTime
           {...startDateInput}
           required
           id="start-date-input"
+          onFocus={() => onFocusDateTime('end')}
+          onChange={(value) => {
+            startDateInput.onChange(value);
+          }}
+          onBlur={(value) => {
+            startDateInput.onBlur(value);
+          }}
           format="MM/DD/YYYY h:mm a"
           step="30"
         />
@@ -135,15 +142,20 @@ const EventForm = ({
       <FormField
         label="End Date *"
         htmlFor="end-date-input"
-        error={calculatedError(endDateInput) ||
-          startDateInput.touched && valueRequired(startDateInput)
-        }
+        onFocus={() => onFocusDateTime('end')}
+        error={dateError(endDateInput, endDateFocused)}
         help="When does it end? Set a Date and Time."
       >
         <DateTime
           {...endDateInput}
           required
           id="end-date-input"
+          onChange={(value) => {
+            endDateInput.onChange(value);
+          }}
+          onBlur={(value) => {
+            endDateInput.onBlur(value);
+          }}
           format="MM/DD/YYYY h:mm a"
           step="30"
         />
@@ -214,6 +226,9 @@ EventForm.propTypes = {
   eventTypes: PropTypes.array.isRequired,
   guestList: PropTypes.array,
   invalid: PropTypes.bool.isRequired,
+  onFocusDateTime: PropTypes.func.isRequired,
+  startDateFocused: PropTypes.bool.isRequired,
+  endDateFocused: PropTypes.bool.isRequired,
 };
 
 export default cssModules(EventForm, styles);

@@ -80,6 +80,21 @@ class CreateEvent extends Component {
     } = this.props.actions;
     createEventRemoveGuest(index);
   }
+  handleFocusDateTime(type) {
+    const {
+      setStartDateFocus,
+      setEndDateFocus,
+    } = this.props.actions;
+    switch (type) {
+      case 'end':
+        setEndDateFocus();
+        break;
+      case 'start':
+        setStartDateFocus();
+        break;
+      default: break;
+    }
+  }
   render() {
     const {
       fields,
@@ -91,6 +106,8 @@ class CreateEvent extends Component {
       message,
       guestList,
       invalid,
+      endDateFocused,
+      startDateFocused,
     } = this.props;
     return (
       <Section className={styles.createEvent}>
@@ -111,6 +128,8 @@ class CreateEvent extends Component {
               pastHosts={hosts}
               pastGuests={guests}
               onSubmit={this.handleSubmit}
+              endDateFocused={endDateFocused}
+              startDateFocused={startDateFocused}
             />
           </Section>
         }
@@ -146,6 +165,8 @@ CreateEvent.propTypes = {
   actions: PropTypes.object.isRequired,
   guestList: PropTypes.array,
   invalid: PropTypes.bool.isRequired,
+  endDateFocused: PropTypes.bool.isRequired,
+  startDateFocused: PropTypes.bool.isRequired,
 };
 
 CreateEvent.contextTypes = {
@@ -158,6 +179,8 @@ const mapStateToProps = (state) => ({
   errorMessage: state.createEventContainer.error,
   message: state.createEventContainer.message,
   guestList: state.createEventContainer.guestList,
+  endDateFocused: state.createEventContainer.endDateFocused,
+  startDateFocused: state.createEventContainer.startDateFocused,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}
