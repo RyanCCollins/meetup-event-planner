@@ -8,6 +8,7 @@ export const initialState = {
   geoLocation: null,
   startDateFocused: false,
   endDateFocused: false,
+  host: null,
 };
 
 const createEventReducer =
@@ -53,6 +54,12 @@ const createEventReducer =
         return update(state, {
           startDateFocused: {
             $set: true,
+          },
+        });
+      case types.SET_EVENT_HOST:
+        return update(state, {
+          host: {
+            $set: action.host,
           },
         });
       default:

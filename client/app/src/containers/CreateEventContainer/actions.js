@@ -68,3 +68,8 @@ export const setStartDateFocus = () => ({
 export const setEndDateFocus = () => ({
   type: types.CREATE_EVENT_SET_END_DATE_FOCUS,
 });
+
+export const setEventHost = (host) => ({
+  type: types.SET_EVENT_HOST,
+  host,
+});

@@ -32,6 +32,8 @@ const EventForm = ({
   onFocusDateTime,
   startDateFocused,
   endDateFocused,
+  onAddHost,
+  host,
 }) => (
   <Form onSubmit={onSubmit} className={styles.eventForm}>
     <FormFields>
@@ -61,7 +63,6 @@ const EventForm = ({
           {...typeInput}
           required
           id="type-input"
-          input={typeInput}
           onBlur={() => typeInput.onBlur(typeInput.value)}
           onChange={(option) => {
             if (option && option.value) {
@@ -81,7 +82,7 @@ const EventForm = ({
       <FormField
         label="Host *"
         htmlFor="host-input"
-        help="Start typing to set the host, or select from the list."
+        help="Select host from list, or start typing to add new host."
         error={calculatedError(hostInput)}
       >
         <Creatable
@@ -90,18 +91,25 @@ const EventForm = ({
           id="host-input"
           name="host"
           required
-          value={hostInput.value}
+          value={{ label: hostInput.value, value: hostInput.value }}
           onBlur={() => hostInput.onBlur(hostInput.value)}
           onChange={(option) => {
             if (option && option.value) {
               hostInput.onChange(option.value);
+              onAddHost(option.value);
             } else {
               hostInput.onChange(null);
             }
           }}
-          options={uniq(pastHosts.map((host) => ({ value: host.name, label: host.name })))}
+          options={uniq(
+            pastHosts.map((hostVal) =>
+              ({
+                value: hostVal.name,
+                label: hostVal.name,
+              })
+            )
+          )}
         />
-
       </FormField>
       <FormField
         error={calculatedError(locationInput)}
