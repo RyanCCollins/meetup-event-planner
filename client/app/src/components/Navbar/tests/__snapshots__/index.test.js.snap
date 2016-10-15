@@ -38,21 +38,20 @@ exports[`<Navbar /> should render with default props 1`] = `
       pad="none"
       responsive={true}>
       <Anchor
-        className="active"
+        className={undefined}
         href="/events"
         tag="a">
         Events
       </Anchor>
       <span>
         <Anchor
-          className="active"
+          className={undefined}
           href="/login"
           tag="a">
           Login
         </Anchor>
-         / 
         <Anchor
-          className="active"
+          className={undefined}
           href="/signup"
           tag="a">
           Signup

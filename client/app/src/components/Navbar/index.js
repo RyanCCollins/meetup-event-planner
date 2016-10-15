@@ -23,7 +23,7 @@ const Navbar = ({
         className={styles.rightNav}
         responsive
       >
-        <Anchor href="/events" className="active">
+        <Anchor href="/events" className={styles.menuItem}>
           Events
         </Anchor>
         {isAuthenticated ?
@@ -32,23 +32,22 @@ const Navbar = ({
             align="center"
             className={styles.menu}
           >
-            <Anchor href="/user/profile" className="active">
+            <Anchor href="/user/profile" className={styles.menuItem}>
               Profile
             </Anchor>
-            <Anchor href="/create-event" className="active">
+            <Anchor href="/create-event" className={styles.menuItem}>
               Create Event
             </Anchor>
-            <Anchor href="/logout" className="active">
+            <Anchor href="/logout" className={styles.menuItem}>
               Logout
             </Anchor>
           </Menu>
         :
           <span>
-            <Anchor href="/login" className="active">
+            <Anchor href="/login" className={styles.menuItem}>
               Login
             </Anchor>
-            {' / '}
-            <Anchor href="/signup" className="active">
+            <Anchor href="/signup" className={styles.menuItem}>
               Signup
             </Anchor>
           </span>

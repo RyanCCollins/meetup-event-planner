@@ -126,11 +126,12 @@ class Profile extends Component {
       isEditing,
       employerInput,
       emailInput,
+      isLoading,
     } = this.props;
     return (
       <Box>
-        {loading &&
-          <LoadingIndicator isLoading={loading} />
+        {loading || isLoading &&
+          <LoadingIndicator isLoading />
         }
         {submissionError &&
           <ToastMessage
@@ -177,6 +178,7 @@ Profile.propTypes = {
   avatarInput: PropTypes.string,
   employerInput: PropTypes.string,
   emailInput: PropTypes.string,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 // mapStateToProps :: {State} -> {Props}
@@ -188,6 +190,7 @@ const mapStateToProps = (state) => ({
   avatarInput: state.profileContainer.avatarInput,
   emailInput: state.profileContainer.emailInput,
   employerInput: state.profileContainer.employerInput,
+  isLoading: state.profileContainer.isLoading,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}

@@ -53,7 +53,8 @@ const UserProfile = ({
             type="url"
             placeholder="http://github.com/avatar.png"
             value={avatarInput}
-            name="avatar"
+            name="photo"
+            altName="avatar"
           >
             <img
               className={styles.avatar}
@@ -83,7 +84,8 @@ const UserProfile = ({
           onEdit={onEditEmployer}
           value={employerInput}
           placeholder="Udacity"
-          name="employer"
+          name="organization"
+          altName="employer"
         >
           <Paragraph className={styles.isButton}>
             {user.employer ? user.employer : 'Click to add a employer.'}

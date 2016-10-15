@@ -35,9 +35,10 @@ exports[`<UserProfile /> should render with default props 1`] = `
         justify="center"
         pad="none">
         <undefined
+          altName="avatar"
           autoFocus={true}
           isEditing={false}
-          name="avatar"
+          name="photo"
           onClickToEdit={[Function mockFn]}
           onEdit={[Function mockFn]}
           placeholder="http://github.com/avatar.png"
@@ -61,8 +62,9 @@ exports[`<UserProfile /> should render with default props 1`] = `
         </Paragraph>
       </undefined>
       <undefined
+        altName="employer"
         isEditing={false}
-        name="employer"
+        name="organization"
         onClickToEdit={[Function mockFn]}
         onEdit={[Function mockFn]}
         placeholder="Udacity"

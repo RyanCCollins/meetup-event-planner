@@ -25,6 +25,7 @@ exports[`<Profile /> should render with default props 1`] = `
   emailInput={null}
   employerInput={null}
   isEditing={false}
+  isLoading={false}
   store={
     Object {
       "clearActions": [Function clearActions],

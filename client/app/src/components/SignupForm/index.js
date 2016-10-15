@@ -82,8 +82,11 @@ const SignupForm = ({
             autoFocus
             placeholder="Bill Clinton"
             id="nameInput"
+            autoComplete="on"
             name="name"
             type="text"
+            aria-invalid={nameInput.error}
+            aria-required
             className={styles.input}
           />
         </FormField>
@@ -98,6 +101,9 @@ const SignupForm = ({
             {...emailInput}
             required
             id="emailInput"
+            autoComplete="on"
+            aria-required
+            aria-invalid={emailInput.error}
             name="email"
             placeholder="bill@clinton.com"
             type="email"
@@ -117,6 +123,9 @@ const SignupForm = ({
             id="passwordInput"
             name="password"
             type="password"
+            autoComplete="off"
+            aria-required
+            aria-invalid={passwordInput.error}
             onFocus={onPasswordFocus}
             onBlur={onPasswordBlur}
             onClick={onPasswordFocus}
@@ -135,6 +144,8 @@ const SignupForm = ({
             required
             id="passwordConfirmationInput"
             type="password"
+            aria-invalid={passwordConfirmationInput.error}
+            aria-required
             name="password"
             className={styles.input}
           />
@@ -150,8 +161,11 @@ const SignupForm = ({
             id="bio-input"
             name="bio"
             type="text"
+            autoComplete="off"
             rows="3"
-            placeholder="Hi, my name is Bill. I used to be the president of the US.  Vote for Hillary."
+            placeholder={'Hi, my name is Bill. I used ' +
+              'to be the president of the US.  Vote for Hillary.'
+            }
             cols="40"
           />
         </FormField>
@@ -164,6 +178,9 @@ const SignupForm = ({
           <input
             {...employerInput}
             name="organization"
+            autoComplete="on"
+            aria-required={false}
+            aria-invalid={employerInput.error}
             placeholder="Udacity"
             id="employer-input"
             type="text"

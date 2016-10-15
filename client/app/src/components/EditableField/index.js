@@ -10,6 +10,7 @@ const EditableField = ({
   onEdit,
   value,
   name,
+  altName,
   children,
   type,
   onClickToEdit,
@@ -20,7 +21,7 @@ const EditableField = ({
     {isEditing ?
       <Box size="medium" align="center">
         <FormField
-          help={`Edit your ${name}`}
+          help={`Edit your ${altName || name}`}
           size="large"
           className={styles.formField}
           label={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
@@ -28,6 +29,8 @@ const EditableField = ({
           <textarea
             autoFocus={autoFocus}
             type={type}
+            name={name}
+            autoComplete="on"
             placeholder={placeholder}
             onChange={onEdit}
             value={value}
@@ -55,6 +58,7 @@ EditableField.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   autoFocus: PropTypes.bool.isRequired,
+  altName: PropTypes.string,
 };
 
 EditableField.defaultProps = {

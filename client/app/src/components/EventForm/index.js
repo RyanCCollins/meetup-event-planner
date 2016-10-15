@@ -9,9 +9,8 @@ import Footer from 'grommet-udacity/components/Footer';
 import Button from 'grommet-udacity/components/Button';
 import Select, { Creatable } from 'react-select';
 import Geosuggest from 'react-geosuggest';
-
 import uniq from 'lodash/uniq';
-import calculatedError, { valueRequired, atLeastOne, dateError } from './utils/error';
+import calculatedError, { atLeastOne, dateError } from './utils/error';
 
 const EventForm = ({
   onSubmit,
@@ -45,7 +44,10 @@ const EventForm = ({
           type="text"
           id="name-input"
           placeholder="Bill's Birthday"
-          name="event-name"
+          name="name"
+          autoComplete="off"
+          aria-invalid={nameInput.error}
+          aria-required
         />
       </FormField>
       <FormField
@@ -58,6 +60,10 @@ const EventForm = ({
           {...typeInput}
           required
           id="type-input"
+          name="type"
+          type="text"
+          aria-invalid={typeInput.error}
+          aria-required
           onBlur={() => typeInput.onBlur(typeInput.value)}
           onChange={(option) => {
             if (option && option.value) {
@@ -85,6 +91,9 @@ const EventForm = ({
           required
           id="host-input"
           name="host"
+          type="text"
+          aria-invalid={hostInput.error}
+          aria-required
           required
           value={{ label: hostInput.value, value: hostInput.value }}
           onBlur={() => hostInput.onBlur(hostInput.value)}
@@ -115,6 +124,11 @@ const EventForm = ({
         <Geosuggest
           required
           id="location-input"
+          name="location"
+          type="text"
+          autoComplete="off"
+          aria-invalid={locationInput.error}
+          aria-required
           placeholder="123 Main St, NY, New York 12345"
           onSuggestSelect={(suggest) => locationInput.onChange(suggest)}
           {...locationInput}
@@ -129,6 +143,11 @@ const EventForm = ({
         <DateTime
           {...startDateInput}
           required
+          type="text"
+          aria-invalid={startDateInput.error}
+          aria-required
+          autoComplete="on"
+          name="start"
           id="start-date-input"
           format="MM/DD/YYYY h:mm a"
           step="30"
@@ -143,6 +162,11 @@ const EventForm = ({
         <DateTime
           {...endDateInput}
           required
+          type="text"
+          aria-invalid={endDateInput.error}
+          aria-required
+          autoComplete="on"
+          name="end"
           id="end-date-input"
           onChange={(value) => endDateInput.onChange(value)}
           onBlur={(value) => endDateInput.onBlur(value)}
@@ -160,6 +184,9 @@ const EventForm = ({
         <Creatable
           {...guestsInput}
           required
+          aria-invalid={guestsInput.error}
+          aria-required
+          type="text"
           id="guests-input"
           name="guests"
           multi
@@ -194,6 +221,8 @@ const EventForm = ({
         <textarea
           {...messageInput}
           name="message"
+          type="text"
+          aria-invalid={messageInput.error}
           placeholder="BYOB, bring a swimming suit, no wives allowed"
           id="message-input"
           cols="40"

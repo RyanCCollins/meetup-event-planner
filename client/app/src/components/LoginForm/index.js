@@ -39,6 +39,9 @@ const LoginForm = ({
           <input
             {...emailInput}
             required
+            aria-required
+            aria-invalid={emailInput.error}
+            autoComplete="email"
             autoFocus
             id="emailInput"
             name="email"
@@ -57,6 +60,9 @@ const LoginForm = ({
           <input
             {...passwordInput}
             required
+            aria-required
+            aria-invalid={passwordInput.error}
+            autoComplete="current-password"
             name="password"
             id="passwordInput"
             type="password"

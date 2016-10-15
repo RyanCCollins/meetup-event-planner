@@ -37,6 +37,9 @@ exports[`<LoginForm /> should render with default props 1`] = `
         strong={false}>
         <input
           active={false}
+          aria-invalid={undefined}
+          aria-required={true}
+          autoComplete="email"
           autoFocus={true}
           autofilled={false}
           className={undefined}
@@ -64,6 +67,9 @@ exports[`<LoginForm /> should render with default props 1`] = `
         strong={false}>
         <input
           active={false}
+          aria-invalid={undefined}
+          aria-required={true}
+          autoComplete="current-password"
           autofilled={false}
           className={undefined}
           dirty={true}

@@ -86,6 +86,9 @@ exports[`<SignupForm /> should render with default props 1`] = `
         strong={false}>
         <input
           active={false}
+          aria-invalid="value Required"
+          aria-required={true}
+          autoComplete="on"
           autoFocus={true}
           autofilled={false}
           className={undefined}
@@ -114,6 +117,9 @@ exports[`<SignupForm /> should render with default props 1`] = `
         strong={false}>
         <input
           active={false}
+          aria-invalid="value Required"
+          aria-required={true}
+          autoComplete="on"
           autofilled={false}
           className={undefined}
           dirty={false}
@@ -141,6 +147,9 @@ exports[`<SignupForm /> should render with default props 1`] = `
         strong={false}>
         <input
           active={false}
+          aria-invalid="value Required"
+          aria-required={true}
+          autoComplete="off"
           autofilled={false}
           className={undefined}
           dirty={false}
@@ -170,6 +179,8 @@ exports[`<SignupForm /> should render with default props 1`] = `
         strong={false}>
         <input
           active={false}
+          aria-invalid="value Required"
+          aria-required={true}
           autofilled={false}
           className={undefined}
           dirty={false}
@@ -195,6 +206,7 @@ exports[`<SignupForm /> should render with default props 1`] = `
         strong={false}>
         <textarea
           active={false}
+          autoComplete="off"
           autofilled={false}
           cols="40"
           dirty={false}
@@ -220,6 +232,9 @@ exports[`<SignupForm /> should render with default props 1`] = `
         strong={false}>
         <input
           active={false}
+          aria-invalid={undefined}
+          aria-required={false}
+          autoComplete="on"
           autofilled={false}
           dirty={false}
           id="employer-input"

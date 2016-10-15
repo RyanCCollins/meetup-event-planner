@@ -15,6 +15,9 @@ exports[`<EventForm /> should render with default props 1`] = `
       strong={false}>
       <input
         active={false}
+        aria-invalid="Value Required"
+        aria-required={true}
+        autoComplete="off"
         autoFocus={true}
         autofilled={false}
         dirty={false}
@@ -22,7 +25,7 @@ exports[`<EventForm /> should render with default props 1`] = `
         id="name-input"
         initialValue=""
         invalid={true}
-        name="event-name"
+        name="name"
         placeholder="Bill\'s Birthday"
         pristine={true}
         required={true}
@@ -42,6 +45,8 @@ exports[`<EventForm /> should render with default props 1`] = `
       <Select
         active={false}
         addLabelText="Add \"{label}\"?"
+        aria-invalid="Value Required"
+        aria-required={true}
         arrowRenderer={[Function arrowRenderer]}
         autofilled={false}
         autosize={true}
@@ -60,22 +65,6 @@ exports[`<EventForm /> should render with default props 1`] = `
         ignoreAccents={true}
         ignoreCase={true}
         initialValue=""
-        input={
-          Object {
-            "active": false,
-            "autofilled": false,
-            "dirty": false,
-            "error": "Value Required",
-            "initialValue": "",
-            "invalid": true,
-            "name": "typeInput",
-            "pristine": true,
-            "touched": false,
-            "valid": false,
-            "value": "",
-            "visited": false
-          }
-        }
         inputProps={Object {}}
         invalid={true}
         isLoading={false}
@@ -86,7 +75,7 @@ exports[`<EventForm /> should render with default props 1`] = `
         menuBuffer={0}
         menuRenderer={[Function menuRenderer]}
         multi={false}
-        name="typeInput"
+        name="type"
         noResultsText="No results found"
         onBlur={[Function onBlur]}
         onBlurResetsInput={true}
@@ -127,6 +116,7 @@ exports[`<EventForm /> should render with default props 1`] = `
         simpleValue={false}
         tabSelectsValue={true}
         touched={false}
+        type="text"
         valid={false}
         value=""
         valueComponent={[Function anonymous]}
@@ -135,13 +125,15 @@ exports[`<EventForm /> should render with default props 1`] = `
     </FormField>
     <FormField
       error={null}
-      help="Start typing to set the host, or select from the list."
+      help="Select host from list, or start typing to add new host."
       htmlFor="host-input"
       label="Host *"
       size="medium"
       strong={false}>
       <CreatableSelect
         active={false}
+        aria-invalid="Value Required"
+        aria-required={true}
         autofilled={false}
         dirty={false}
         error="Value Required"
@@ -173,8 +165,14 @@ exports[`<EventForm /> should render with default props 1`] = `
         required={true}
         shouldKeyDownEventCreateNewOption={[Function shouldKeyDownEventCreateNewOption]}
         touched={false}
+        type="text"
         valid={false}
-        value=""
+        value={
+          Object {
+            "label": "",
+            "value": ""
+          }
+        }
         visited={false} />
     </FormField>
     <FormField
@@ -187,7 +185,10 @@ exports[`<EventForm /> should render with default props 1`] = `
       strong={false}>
       <Geosuggest
         active={false}
+        aria-invalid="Value Required"
+        aria-required={true}
         autoActivateFirstSuggest={false}
+        autoComplete="off"
         autofilled={false}
         bounds={null}
         className=""
@@ -225,13 +226,14 @@ exports[`<EventForm /> should render with default props 1`] = `
           }
         }
         touched={false}
+        type="text"
         types={null}
         valid={false}
         value=""
         visited={false} />
     </FormField>
     <FormField
-      error={null}
+      error="Value Required"
       help="When does it start? Set a Date and Time."
       htmlFor="start-date-input"
       label="Start Date *"
@@ -239,6 +241,9 @@ exports[`<EventForm /> should render with default props 1`] = `
       strong={false}>
       <DateTime
         active={false}
+        aria-invalid="Value Required"
+        aria-required={true}
+        autoComplete="on"
         autofilled={false}
         dirty={false}
         error="Value Required"
@@ -246,28 +251,28 @@ exports[`<EventForm /> should render with default props 1`] = `
         id="start-date-input"
         initialValue=""
         invalid={true}
-        name="startDateInput"
-        onBlur={[Function onBlur]}
-        onChange={[Function onChange]}
-        onFocus={[Function onFocus]}
+        name="start"
         pristine={true}
         required={true}
         step="30"
         touched={false}
+        type="text"
         valid={false}
         value=""
         visited={false} />
     </FormField>
     <FormField
-      error={null}
+      error="Value Required"
       help="When does it end? Set a Date and Time."
       htmlFor="end-date-input"
       label="End Date *"
-      onFocus={[Function onFocus]}
       size="medium"
       strong={false}>
       <DateTime
         active={false}
+        aria-invalid="Value Required"
+        aria-required={true}
+        autoComplete="on"
         autofilled={false}
         dirty={false}
         error="Value Required"
@@ -275,13 +280,14 @@ exports[`<EventForm /> should render with default props 1`] = `
         id="end-date-input"
         initialValue=""
         invalid={true}
-        name="endDateInput"
+        name="end"
         onBlur={[Function onBlur]}
         onChange={[Function onChange]}
         pristine={true}
         required={true}
         step="30"
         touched={false}
+        type="text"
         valid={false}
         value=""
         visited={false} />
@@ -300,6 +306,8 @@ exports[`<EventForm /> should render with default props 1`] = `
       }>
       <CreatableSelect
         active={false}
+        aria-invalid={undefined}
+        aria-required={true}
         autofilled={false}
         dirty={false}
         filterOptions={[Function filterOptions]}
@@ -331,6 +339,7 @@ exports[`<EventForm /> should render with default props 1`] = `
         required={true}
         shouldKeyDownEventCreateNewOption={[Function shouldKeyDownEventCreateNewOption]}
         touched={false}
+        type="text"
         valid={true}
         value={
           Array [
@@ -348,6 +357,7 @@ exports[`<EventForm /> should render with default props 1`] = `
       strong={false}>
       <textarea
         active={false}
+        aria-invalid={undefined}
         autofilled={false}
         cols="40"
         dirty={false}
@@ -359,6 +369,7 @@ exports[`<EventForm /> should render with default props 1`] = `
         pristine={true}
         rows="3"
         touched={false}
+        type="text"
         valid={true}
         value=""
         visited={false} />
