@@ -29,11 +29,6 @@ const EventForm = ({
   invalid,
   onAddGuest,
   guestList,
-  onFocusDateTime,
-  startDateFocused,
-  endDateFocused,
-  onAddHost,
-  host,
 }) => (
   <Form onSubmit={onSubmit} className={styles.eventForm}>
     <FormFields>
@@ -96,7 +91,6 @@ const EventForm = ({
           onChange={(option) => {
             if (option && option.value) {
               hostInput.onChange(option.value);
-              onAddHost(option.value);
             } else {
               hostInput.onChange(null);
             }
@@ -129,16 +123,13 @@ const EventForm = ({
       <FormField
         label="Start Date *"
         htmlFor="start-date-input"
-        error={dateError(startDateInput, startDateFocused)}
+        error={dateError(startDateInput)}
         help="When does it start? Set a Date and Time."
       >
         <DateTime
           {...startDateInput}
           required
           id="start-date-input"
-          onFocus={() => onFocusDateTime('end')}
-          onChange={(value) => startDateInput.onChange(value)}
-          onBlur={(value) => startDateInput.onBlur(value)}
           format="MM/DD/YYYY h:mm a"
           step="30"
         />
@@ -146,8 +137,7 @@ const EventForm = ({
       <FormField
         label="End Date *"
         htmlFor="end-date-input"
-        onFocus={() => onFocusDateTime('end')}
-        error={dateError(endDateInput, endDateFocused)}
+        error={dateError(endDateInput)}
         help="When does it end? Set a Date and Time."
       >
         <DateTime
@@ -233,9 +223,6 @@ EventForm.propTypes = {
   eventTypes: PropTypes.array.isRequired,
   guestList: PropTypes.array,
   invalid: PropTypes.bool.isRequired,
-  onFocusDateTime: PropTypes.func.isRequired,
-  startDateFocused: PropTypes.bool.isRequired,
-  endDateFocused: PropTypes.bool.isRequired,
 };
 
 export default cssModules(EventForm, styles);

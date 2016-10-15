@@ -52,24 +52,11 @@ export const fieldsToData = (fields, guestList, user) => ({
     message: fields.messageInput.value,
     start_date: fields.startDateInput.value,
     end_date: fields.endDateInput.value,
-    location: fields.locationInput.value,
-    type: fields.typeInput.value.option,
+    location: fields.locationInput.value.label,
+    type: fields.typeInput.value,
     host: {
       name: fields.hostInput.value,
     },
-    guests: guestList.map((item) => ({ name: item })),
+    guests: guestList.map((item) => ({ name: item.name })),
   },
-});
-
-export const setStartDateFocus = () => ({
-  type: types.CREATE_EVENT_SET_START_DATE_FOCUS,
-});
-
-export const setEndDateFocus = () => ({
-  type: types.CREATE_EVENT_SET_END_DATE_FOCUS,
-});
-
-export const setEventHost = (host) => ({
-  type: types.SET_EVENT_HOST,
-  host,
 });

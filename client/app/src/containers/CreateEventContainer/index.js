@@ -36,7 +36,6 @@ class CreateEvent extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAddingGuest = this.handleAddingGuest.bind(this);
     this.handleRemovingGuest = this.handleRemovingGuest.bind(this);
-    this.handleAddingHost = this.handleAddingHost.bind(this);
   }
   handleClear(type) {
     const {
@@ -81,27 +80,6 @@ class CreateEvent extends Component {
     } = this.props.actions;
     createEventRemoveGuest(index);
   }
-  handleFocusDateTime(type) {
-    const {
-      setStartDateFocus,
-      setEndDateFocus,
-    } = this.props.actions;
-    switch (type) {
-      case 'end':
-        setEndDateFocus();
-        break;
-      case 'start':
-        setStartDateFocus();
-        break;
-      default: break;
-    }
-  }
-  handleAddingHost(host) {
-    const {
-      setEventHost,
-    } = this.props.actions;
-    setEventHost(host);
-  }
   render() {
     const {
       fields,
@@ -113,9 +91,6 @@ class CreateEvent extends Component {
       message,
       guestList,
       invalid,
-      endDateFocused,
-      startDateFocused,
-      host,
     } = this.props;
     return (
       <Section className={styles.createEvent}>
@@ -136,10 +111,6 @@ class CreateEvent extends Component {
               pastHosts={hosts}
               pastGuests={guests}
               onSubmit={this.handleSubmit}
-              endDateFocused={endDateFocused}
-              startDateFocused={startDateFocused}
-              host={host}
-              onAddHost={this.handleAddingHost}
             />
           </Section>
         }
@@ -175,9 +146,6 @@ CreateEvent.propTypes = {
   actions: PropTypes.object.isRequired,
   guestList: PropTypes.array,
   invalid: PropTypes.bool.isRequired,
-  endDateFocused: PropTypes.bool.isRequired,
-  startDateFocused: PropTypes.bool.isRequired,
-  host: PropTypes.string,
 };
 
 CreateEvent.contextTypes = {
@@ -190,9 +158,6 @@ const mapStateToProps = (state) => ({
   errorMessage: state.createEventContainer.error,
   message: state.createEventContainer.message,
   guestList: state.createEventContainer.guestList,
-  endDateFocused: state.createEventContainer.endDateFocused,
-  startDateFocused: state.createEventContainer.startDateFocused,
-  host: state.createEventContainer.host,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}

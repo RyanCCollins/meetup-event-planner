@@ -14,8 +14,7 @@
     "test": {
       "plugins": [
         [
-          "babel-plugin-webpack-loaders",
-          {
+          "babel-plugin-webpack-loaders", {
             "config": "./config/testing/webpack.test.config.js",
             "verbose": false
           }
@@ -98,7 +97,7 @@
     "foundation-sites": "^6.2.3",
     "graphql-tag": "^0.1.14",
     "grommet": "^1.0.0",
-    "grommet-udacity": "^0.1.9",
+    "grommet-udacity": "^0.1.10",
     "history": "^1.14.0",
     "html-webpack-plugin": "^2.7.1",
     "immutable": "^3.7.5",

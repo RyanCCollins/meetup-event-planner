@@ -5,10 +5,6 @@ export const initialState = {
   error: null,
   message: null,
   guestList: [],
-  geoLocation: null,
-  startDateFocused: false,
-  endDateFocused: false,
-  host: null,
 };
 
 const createEventReducer =
@@ -42,24 +38,6 @@ const createEventReducer =
         return update(state, {
           guestList: {
             $set: action.guests,
-          },
-        });
-      case types.CREATE_EVENT_SET_END_DATE_FOCUS:
-        return update(state, {
-          endDateFocused: {
-            $set: true,
-          },
-        });
-      case types.CREATE_EVENT_SET_START_DATE_FOCUS:
-        return update(state, {
-          startDateFocused: {
-            $set: true,
-          },
-        });
-      case types.SET_EVENT_HOST:
-        return update(state, {
-          host: {
-            $set: action.host,
           },
         });
       default:
