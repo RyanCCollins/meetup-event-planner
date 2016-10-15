@@ -159,12 +159,12 @@ const Container = cssModules(Signup, styles);
 
 const createUserMutation = gql`
   mutation signUpUser($userSignup: UserSignupInput) {
-      SignUp(input: { user_signup: $userSignup }) {
-          user {
-            ...authUserData
-          }
+    SignUp(input: { user_signup: $userSignup }) {
+        user {
+          ...authUserData
         }
       }
+    }
 `;
 
 const ContainerWithMutations = graphql(createUserMutation, {
