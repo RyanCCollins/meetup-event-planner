@@ -150,7 +150,7 @@ const EventForm = ({
           name="start"
           id="start-date-input"
           format="MM/DD/YYYY h:mm a"
-          step="30"
+          step={30}
         />
       </FormField>
       <FormField
@@ -171,7 +171,7 @@ const EventForm = ({
           onChange={(value) => endDateInput.onChange(value)}
           onBlur={(value) => endDateInput.onBlur(value)}
           format="MM/DD/YYYY h:mm a"
-          step="30"
+          step={30}
         />
       </FormField>
       <FormField
