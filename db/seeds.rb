@@ -28,7 +28,7 @@ Event.create(
 
 Event.create(
   name: 'GraphQL Summit',
-  guests: Array.new(7) { Guest.all.sample },
+  guests: 7.times.map{ Guest.all.sample },
   host: Host.create(name: 'Sashko Stubailo'),
   start_date: '10/26/2016 9:00AM',
   end_date: '10/26/2016 7:00PM',
@@ -40,7 +40,7 @@ Event.create(
 
 Event.create(
   name: 'ReactJS SF',
-  guests: Array.new(7) { Guest.all.sample },
+  guests: 7.times.map{ Guest.all.sample },
   host: Host.create(name: 'Devon Lindsey'),
   start_date: '11/10/2016 6:30PM',
   end_date: '11/10/2016 9:30PM',
