@@ -129,12 +129,8 @@ const EventForm = ({
           required
           id="start-date-input"
           onFocus={() => onFocusDateTime('end')}
-          onChange={(value) => {
-            startDateInput.onChange(value);
-          }}
-          onBlur={(value) => {
-            startDateInput.onBlur(value);
-          }}
+          onChange={(value) => startDateInput.onChange(value)}
+          onBlur={(value) => startDateInput.onBlur(value)}
           format="MM/DD/YYYY h:mm a"
           step="30"
         />
@@ -150,12 +146,8 @@ const EventForm = ({
           {...endDateInput}
           required
           id="end-date-input"
-          onChange={(value) => {
-            endDateInput.onChange(value);
-          }}
-          onBlur={(value) => {
-            endDateInput.onBlur(value);
-          }}
+          onChange={(value) => endDateInput.onChange(value)}
+          onBlur={(value) => endDateInput.onBlur(value)}
           format="MM/DD/YYYY h:mm a"
           step="30"
         />
@@ -185,7 +177,14 @@ const EventForm = ({
               )
             );
           }}
-          options={uniq(pastGuests.map((guest) => ({ value: guest.name, label: guest.name })))}
+          options={uniq(
+            pastGuests.map((guest) =>
+            ({
+              value: guest.name,
+              label: guest.name,
+            })
+          )
+        )}
         />
       </FormField>
       <FormField
