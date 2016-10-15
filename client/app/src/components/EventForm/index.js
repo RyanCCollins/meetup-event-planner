@@ -72,7 +72,7 @@ const EventForm = ({
               typeInput.onChange(null);
             }
           }}
-          options={eventTypes && eventTypes.map(i =>
+          options={eventTypes.map(i =>
             ({
               value: `${i.charAt(0).toUpperCase()}${i.slice(1)}`,
               label: `${i.charAt(0).toUpperCase()}${i.slice(1)}`,
@@ -105,7 +105,7 @@ const EventForm = ({
             }
           }}
           options={uniq(
-            pastHosts && pastHosts.map((hostVal) =>
+            pastHosts.map((hostVal) =>
               ({
                 value: hostVal.name,
                 label: hostVal.name,
