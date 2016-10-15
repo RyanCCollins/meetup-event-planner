@@ -21,14 +21,14 @@ Event.create(
   start_date: '10/06/2016 5:00PM',
   end_date: '10/06/2016 7:00PM',
   host: Host.create(name: 'Ryan Collins'),
-  guests: 7.times.map{ Guest.all.sample },
+  guests: Guest.all.first(10),
   message: 'Join us to celebrate the release of the alumni web application.  We will have an online celebration as well as an in-person meetup at Udacity headquarters.',
   location: '2465 Latham Street, 3rd Floor., Mountain View, CA 94040'
 )
 
 Event.create(
   name: 'GraphQL Summit',
-  guests: 7.times.map{ Guest.all.sample },
+  guests: Guest.all.first(7),
   host: Host.create(name: 'Sashko Stubailo'),
   start_date: '10/26/2016 9:00AM',
   end_date: '10/26/2016 7:00PM',
@@ -40,7 +40,7 @@ Event.create(
 
 Event.create(
   name: 'ReactJS SF',
-  guests: 7.times.map{ Guest.all.sample },
+  guests: Guest.all.last(10),
   host: Host.create(name: 'Devon Lindsey'),
   start_date: '11/10/2016 6:30PM',
   end_date: '11/10/2016 9:30PM',
