@@ -1,6 +1,7 @@
 exports[`<SignupForm /> should render with default props 1`] = `
 <Box
   announce={false}
+  className={undefined}
   direction="column"
   focusable={true}
   pad={
@@ -26,99 +27,57 @@ exports[`<SignupForm /> should render with default props 1`] = `
       Signup
     </Heading>
     <undefined
-      children={
-        <function Box() {
-            (0, _classCallCheck3.default)(this, Box);
-            return (0, _possibleConstructorReturn3.default)(this, (Box.__proto__ || (0, _getPrototypeOf2.default)(Box)).apply(this, arguments));
-          }
-          announce={false}
-          direction="column"
-          focusable={true}
-          pad="none"
-          responsive={true}
-          size="medium"
-          tag="div">
-          <function Heading() {
-              (0, _classCallCheck3.default)(this, Heading);
-              return (0, _possibleConstructorReturn3.default)(this, (Heading.__proto__ || (0, _getPrototypeOf2.default)(Heading)).apply(this, arguments));
-            }
-            align="center"
-            tag="h4">
-            Secure Password Tips
-          </function Heading() {
-              (0, _classCallCheck3.default)(this, Heading);
-              return (0, _possibleConstructorReturn3.default)(this, (Heading.__proto__ || (0, _getPrototypeOf2.default)(Heading)).apply(this, arguments));
-            }>
-          <function Heading() {
-              (0, _classCallCheck3.default)(this, Heading);
-              return (0, _possibleConstructorReturn3.default)(this, (Heading.__proto__ || (0, _getPrototypeOf2.default)(Heading)).apply(this, arguments));
-            }
-            align="center"
-            tag="h5">
-            Password must have at least
-          </function Heading() {
-              (0, _classCallCheck3.default)(this, Heading);
-              return (0, _possibleConstructorReturn3.default)(this, (Heading.__proto__ || (0, _getPrototypeOf2.default)(Heading)).apply(this, arguments));
-            }>
-          <ul>
-            <li>
-              <function Paragraph() {
-                  (0, _classCallCheck3.default)(this, Paragraph);
-                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
-                }
-                className={undefined}>
-                1. Eight characters total
-              </function Paragraph() {
-                  (0, _classCallCheck3.default)(this, Paragraph);
-                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
-                }>
-            </li>
-            <li>
-              <function Paragraph() {
-                  (0, _classCallCheck3.default)(this, Paragraph);
-                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
-                }
-                className={undefined}>
-                2. One uppercase character
-              </function Paragraph() {
-                  (0, _classCallCheck3.default)(this, Paragraph);
-                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
-                }>
-            </li>
-            <li>
-              <function Paragraph() {
-                  (0, _classCallCheck3.default)(this, Paragraph);
-                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
-                }
-                className={undefined}>
-                3. One special character
-              </function Paragraph() {
-                  (0, _classCallCheck3.default)(this, Paragraph);
-                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
-                }>
-            </li>
-            <li>
-              <function Paragraph() {
-                  (0, _classCallCheck3.default)(this, Paragraph);
-                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
-                }
-                className={undefined}>
-                4. One numerical character
-              </function Paragraph() {
-                  (0, _classCallCheck3.default)(this, Paragraph);
-                  return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
-                }>
-            </li>
-          </ul>
-        </function Box() {
-            (0, _classCallCheck3.default)(this, Box);
-            return (0, _possibleConstructorReturn3.default)(this, (Box.__proto__ || (0, _getPrototypeOf2.default)(Box)).apply(this, arguments));
-          }>
-      }
       isShowing={true}
-      onClose={[Function onPasswordBlur]} />
+      onClose={[Function onPasswordBlur]}>
+      <Box
+        announce={false}
+        direction="column"
+        focusable={true}
+        pad="none"
+        responsive={true}
+        size="medium"
+        tag="div">
+        <Heading
+          align="center"
+          tag="h4">
+          Secure Password Tips
+        </Heading>
+        <Heading
+          align="center"
+          tag="h5">
+          Password must have at least
+        </Heading>
+        <ul>
+          <li>
+            <Paragraph
+              className={undefined}>
+              1. Eight characters total
+            </Paragraph>
+          </li>
+          <li>
+            <Paragraph
+              className={undefined}>
+              2. One uppercase character
+            </Paragraph>
+          </li>
+          <li>
+            <Paragraph
+              className={undefined}>
+              3. One special character
+            </Paragraph>
+          </li>
+          <li>
+            <Paragraph
+              className={undefined}>
+              4. One numerical character
+            </Paragraph>
+          </li>
+        </ul>
+      </Box>
+    </undefined>
     <FormFields>
       <FormField
+        className={undefined}
         error="value Required"
         help="What should we call you?"
         htmlFor="nameInput"
@@ -129,12 +88,14 @@ exports[`<SignupForm /> should render with default props 1`] = `
           active={false}
           autoFocus={true}
           autofilled={false}
+          className={undefined}
           dirty={false}
           error="value Required"
           id="nameInput"
           initialValue=""
           invalid={true}
           name="name"
+          placeholder="Bill Clinton"
           pristine={true}
           required={true}
           touched={true}
@@ -144,6 +105,7 @@ exports[`<SignupForm /> should render with default props 1`] = `
           visited={true} />
       </FormField>
       <FormField
+        className={undefined}
         error={null}
         help="How should we get in touch with you?"
         htmlFor="emailInput"
@@ -153,12 +115,14 @@ exports[`<SignupForm /> should render with default props 1`] = `
         <input
           active={false}
           autofilled={false}
+          className={undefined}
           dirty={false}
           error="value Required"
           id="emailInput"
           initialValue=""
           invalid={true}
           name="email"
+          placeholder="bill@clinton.com"
           pristine={true}
           required={true}
           touched={false}
@@ -168,6 +132,7 @@ exports[`<SignupForm /> should render with default props 1`] = `
           visited={false} />
       </FormField>
       <FormField
+        className={undefined}
         error={null}
         help="Start typing for password tips"
         htmlFor="passwordInput"
@@ -177,6 +142,7 @@ exports[`<SignupForm /> should render with default props 1`] = `
         <input
           active={false}
           autofilled={false}
+          className={undefined}
           dirty={false}
           error="value Required"
           id="passwordInput"
@@ -195,6 +161,7 @@ exports[`<SignupForm /> should render with default props 1`] = `
           visited={false} />
       </FormField>
       <FormField
+        className={undefined}
         error={null}
         help="Confirm your password"
         htmlFor="passwordConfirmationInput"
@@ -204,6 +171,7 @@ exports[`<SignupForm /> should render with default props 1`] = `
         <input
           active={false}
           autofilled={false}
+          className={undefined}
           dirty={false}
           error="value Required"
           id="passwordConfirmationInput"
@@ -219,6 +187,7 @@ exports[`<SignupForm /> should render with default props 1`] = `
           visited={false} />
       </FormField>
       <FormField
+        className={undefined}
         help="Optional Bio for Profile"
         htmlFor="bio-input"
         label="Bio"
@@ -233,6 +202,7 @@ exports[`<SignupForm /> should render with default props 1`] = `
           initialValue=""
           invalid={false}
           name="bio"
+          placeholder="Hi, my name is Bill. I used to be the president of the US.  Vote for Hillary."
           pristine={true}
           rows="3"
           touched={false}
@@ -242,6 +212,7 @@ exports[`<SignupForm /> should render with default props 1`] = `
           visited={false} />
       </FormField>
       <FormField
+        className={undefined}
         help="Optional Employer Field"
         htmlFor="bio-input"
         label="Employer"
@@ -255,6 +226,7 @@ exports[`<SignupForm /> should render with default props 1`] = `
           initialValue=""
           invalid={false}
           name="organization"
+          placeholder="Udacity"
           pristine={true}
           touched={false}
           type="text"

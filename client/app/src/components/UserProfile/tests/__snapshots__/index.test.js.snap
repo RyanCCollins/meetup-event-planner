@@ -1,5 +1,6 @@
 exports[`<UserProfile /> should render with default props 1`] = `
 <Section
+  className={undefined}
   pad={
     Object {
       "vertical": "medium"
@@ -20,6 +21,7 @@ exports[`<UserProfile /> should render with default props 1`] = `
     responsive={true}
     tag="div">
     <Article
+      className={undefined}
       direction="column"
       pad="none">
       <Heading
@@ -29,75 +31,63 @@ exports[`<UserProfile /> should render with default props 1`] = `
       </Heading>
       <Section
         align="center"
+        className={undefined}
         justify="center"
         pad="none">
         <undefined
-          children={
-            <img
-              className={undefined}
-              src="http://bit.ly/2dqCGdd" />
-          }
+          autoFocus={true}
           isEditing={false}
           name="avatar"
           onClickToEdit={[Function mockFn]}
           onEdit={[Function mockFn]}
+          placeholder="http://github.com/avatar.png"
           type="url"
-          value="" />
+          value="">
+          <img
+            className={undefined}
+            src="http://bit.ly/2dqCGdd" />
+        </undefined>
       </Section>
       <undefined
-        children={
-          <function Paragraph() {
-              (0, _classCallCheck3.default)(this, Paragraph);
-              return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
-            }
-            className="undefined undefined">
-            Click to add a bio.
-          </function Paragraph() {
-              (0, _classCallCheck3.default)(this, Paragraph);
-              return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
-            }>
-        }
         isEditing={false}
         name="bio"
         onClickToEdit={[Function mockFn]}
         onEdit={[Function mockFn]}
-        value="" />
+        placeholder="Hi, I\'m Bill and I used to be the president."
+        value="">
+        <Paragraph
+          className="undefined undefined">
+          Click to add a bio.
+        </Paragraph>
+      </undefined>
       <undefined
-        children={
-          <function Paragraph() {
-              (0, _classCallCheck3.default)(this, Paragraph);
-              return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
-            }
-            className={undefined}>
-            Click to add a employer.
-          </function Paragraph() {
-              (0, _classCallCheck3.default)(this, Paragraph);
-              return (0, _possibleConstructorReturn3.default)(this, (Paragraph.__proto__ || (0, _getPrototypeOf2.default)(Paragraph)).apply(this, arguments));
-            }>
-        }
         isEditing={false}
         name="employer"
         onClickToEdit={[Function mockFn]}
         onEdit={[Function mockFn]}
-        value="" />
+        placeholder="Udacity"
+        value="">
+        <Paragraph
+          className={undefined}>
+          Click to add a employer.
+        </Paragraph>
+      </undefined>
       <undefined
-        children={
-          <function Heading() {
-              (0, _classCallCheck3.default)(this, Heading);
-              return (0, _possibleConstructorReturn3.default)(this, (Heading.__proto__ || (0, _getPrototypeOf2.default)(Heading)).apply(this, arguments));
-            }
-            align="center"
-            className={undefined}
-            tag="h3" />
-        }
         isEditing={false}
         name="email"
         onClickToEdit={[Function mockFn]}
         onEdit={[Function mockFn]}
+        placeholder="bill@clinton.com"
         type="email"
-        value="" />
+        value="">
+        <Heading
+          align="center"
+          className={undefined}
+          tag="h3" />
+      </undefined>
     </Article>
     <Article
+      className={undefined}
       direction="column"
       pad="none">
       <Section

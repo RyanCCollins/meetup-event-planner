@@ -1,6 +1,7 @@
 exports[`<EventInfo /> should render with default props 1`] = `
 <Box
   announce={false}
+  className={undefined}
   colorIndex="light-1"
   direction="column"
   focusable={true}
@@ -15,6 +16,7 @@ exports[`<EventInfo /> should render with default props 1`] = `
   tag="div">
   <Heading
     align="start"
+    className={undefined}
     tag="h2">
     Pool Party
   </Heading>
@@ -32,7 +34,7 @@ exports[`<EventInfo /> should render with default props 1`] = `
   <Heading
     align="end"
     tag="h5">
-    From October 12th 2016, 9:55:26 pm to October 12th 2016, 9:55:26 pm
+    From October 14th 2016, 9:55:30 pm to October 14th 2016, 9:55:30 pm
   </Heading>
   <Heading
     align="end"

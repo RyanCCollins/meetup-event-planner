@@ -1,5 +1,6 @@
 exports[`<EventForm /> should render with default props 1`] = `
 <Form
+  className={undefined}
   compact={false}
   fill={false}
   onSubmit={[Function mockFn]}
@@ -22,6 +23,7 @@ exports[`<EventForm /> should render with default props 1`] = `
         initialValue=""
         invalid={true}
         name="event-name"
+        placeholder="Bill\'s Birthday"
         pristine={true}
         required={true}
         touched={true}
@@ -31,7 +33,7 @@ exports[`<EventForm /> should render with default props 1`] = `
         visited={true} />
     </FormField>
     <FormField
-      error="Value Required"
+      error={null}
       help="What type of event is it? Select a value from the list."
       htmlFor="type-input"
       label="Type *"
@@ -39,68 +41,146 @@ exports[`<EventForm /> should render with default props 1`] = `
       strong={false}>
       <Select
         active={false}
+        addLabelText="Add \"{label}\"?"
+        arrowRenderer={[Function arrowRenderer]}
         autofilled={false}
+        autosize={true}
+        backspaceRemoves={true}
+        backspaceToRemoveMessage="Press backspace to remove {label}"
+        clearAllText="Clear all"
+        clearValueText="Clear value"
+        clearable={true}
+        delimiter=","
         dirty={false}
+        disabled={false}
         error="Value Required"
+        escapeClearsValue={true}
+        filterOptions={[Function filterOptions]}
         id="type-input"
+        ignoreAccents={true}
+        ignoreCase={true}
         initialValue=""
-        invalid={true}
-        name="typeInput"
-        onSelect={[Function onSelect]}
-        options={
-          Array [
-            "Birthday",
-            "Conference",
-            "Office",
-            "Wedding",
-            "Other"
-          ]
-        }
-        pristine={true}
-        required={true}
-        touched={false}
-        valid={false}
-        value={
+        input={
           Object {
-            "label": undefined,
-            "value": undefined
+            "active": false,
+            "autofilled": false,
+            "dirty": false,
+            "error": "Value Required",
+            "initialValue": "",
+            "invalid": true,
+            "name": "typeInput",
+            "pristine": true,
+            "touched": false,
+            "valid": false,
+            "value": "",
+            "visited": false
           }
         }
+        inputProps={Object {}}
+        invalid={true}
+        isLoading={false}
+        joinValues={false}
+        labelKey="label"
+        matchPos="any"
+        matchProp="any"
+        menuBuffer={0}
+        menuRenderer={[Function menuRenderer]}
+        multi={false}
+        name="typeInput"
+        noResultsText="No results found"
+        onBlur={[Function onBlur]}
+        onBlurResetsInput={true}
+        onChange={[Function onChange]}
+        onCloseResetsInput={true}
+        openAfterFocus={false}
+        optionComponent={[Function anonymous]}
+        options={
+          Array [
+            Object {
+              "label": "Birthday",
+              "value": "Birthday"
+            },
+            Object {
+              "label": "Conference",
+              "value": "Conference"
+            },
+            Object {
+              "label": "Office",
+              "value": "Office"
+            },
+            Object {
+              "label": "Wedding",
+              "value": "Wedding"
+            },
+            Object {
+              "label": "Other",
+              "value": "Other"
+            }
+          ]
+        }
+        pageSize={5}
+        placeholder="Select..."
+        pristine={true}
+        required={true}
+        scrollMenuIntoView={true}
+        searchable={true}
+        simpleValue={false}
+        tabSelectsValue={true}
+        touched={false}
+        valid={false}
+        value=""
+        valueComponent={[Function anonymous]}
+        valueKey="value"
         visited={false} />
     </FormField>
     <FormField
-      error="Value Required"
+      error={null}
       help="Start typing to set the host, or select from the list."
       htmlFor="host-input"
       label="Host *"
       size="medium"
       strong={false}>
-      <SearchInput
+      <CreatableSelect
         active={false}
         autofilled={false}
         dirty={false}
         error="Value Required"
+        filterOptions={[Function filterOptions]}
         id="host-input"
         initialValue=""
         invalid={true}
+        isOptionUnique={[Function isOptionUnique]}
+        isValidNewOption={[Function isValidNewOption]}
+        menuRenderer={[Function menuRenderer]}
         name="host"
-        onDOMChange={[Function onDOMChange]}
-        onSelect={[Function onSelect]}
-        pristine={true}
-        required={true}
-        suggestions={
+        newOptionCreator={[Function newOptionCreator]}
+        onBlur={[Function onBlur]}
+        onChange={[Function onChange]}
+        options={
           Array [
-            "Miss Ayden Dach",
-            "Joaquin West"
+            Object {
+              "label": "Miss Ayden Dach",
+              "value": "Miss Ayden Dach"
+            },
+            Object {
+              "label": "Joaquin West",
+              "value": "Joaquin West"
+            }
           ]
         }
+        pristine={true}
+        promptTextCreator={[Function promptTextCreator]}
+        required={true}
+        shouldKeyDownEventCreateNewOption={[Function shouldKeyDownEventCreateNewOption]}
         touched={false}
         valid={false}
         value=""
         visited={false} />
     </FormField>
     <FormField
+      className={undefined}
       error={null}
+      help="Start typing to find the event location"
       htmlFor="location-input"
       label="Location *"
       size="medium"
@@ -131,7 +211,7 @@ exports[`<EventForm /> should render with default props 1`] = `
         onFocus={[Function onFocus]}
         onSuggestNoResults={[Function onSuggestNoResults]}
         onSuggestSelect={[Function onSuggestSelect]}
-        placeholder="Start typing to find the event location."
+        placeholder="123 Main St, NY, New York 12345"
         pristine={true}
         queryDelay={250}
         radius={null}
@@ -151,7 +231,7 @@ exports[`<EventForm /> should render with default props 1`] = `
         visited={false} />
     </FormField>
     <FormField
-      error="Value Required"
+      error={null}
       help="When does it start? Set a Date and Time."
       htmlFor="start-date-input"
       label="Start Date *"
@@ -167,6 +247,9 @@ exports[`<EventForm /> should render with default props 1`] = `
         initialValue=""
         invalid={true}
         name="startDateInput"
+        onBlur={[Function onBlur]}
+        onChange={[Function onChange]}
+        onFocus={[Function onFocus]}
         pristine={true}
         required={true}
         step="30"
@@ -176,10 +259,11 @@ exports[`<EventForm /> should render with default props 1`] = `
         visited={false} />
     </FormField>
     <FormField
-      error="Value Required"
+      error={null}
       help="When does it end? Set a Date and Time."
       htmlFor="end-date-input"
       label="End Date *"
+      onFocus={[Function onFocus]}
       size="medium"
       strong={false}>
       <DateTime
@@ -192,6 +276,8 @@ exports[`<EventForm /> should render with default props 1`] = `
         initialValue=""
         invalid={true}
         name="endDateInput"
+        onBlur={[Function onBlur]}
+        onChange={[Function onChange]}
         pristine={true}
         required={true}
         step="30"
@@ -212,97 +298,46 @@ exports[`<EventForm /> should render with default props 1`] = `
           "position": "relative"
         }
       }>
-      <SearchInput
+      <CreatableSelect
         active={false}
         autofilled={false}
         dirty={false}
+        filterOptions={[Function filterOptions]}
         id="guests-input"
         initialValue=""
         invalid={false}
+        isOptionUnique={[Function isOptionUnique]}
+        isValidNewOption={[Function isValidNewOption]}
+        menuRenderer={[Function menuRenderer]}
+        multi={true}
         name="guests"
-        onDOMChange={[Function onDOMChange]}
-        onSelect={[Function onSelect]}
-        pristine={true}
-        required={true}
-        suggestions={
+        newOptionCreator={[Function newOptionCreator]}
+        onBlur={[Function onBlur]}
+        onChange={[Function onChange]}
+        options={
           Array [
-            "Bilbo Baggins",
+            Object {
+              "label": "Bilbo Baggins",
+              "value": "Bilbo Baggins"
+            },
+            Object {
+              "label": "David Harris",
+              "value": "David Harris"
+            }
+          ]
+        }
+        pristine={true}
+        promptTextCreator={[Function promptTextCreator]}
+        required={true}
+        shouldKeyDownEventCreateNewOption={[Function shouldKeyDownEventCreateNewOption]}
+        touched={false}
+        valid={true}
+        value={
+          Array [
             "David Harris"
           ]
         }
-        touched={false}
-        valid={true}
-        value=""
         visited={false} />
-    </FormField>
-    <FormField
-      label="Guest List"
-      size="medium"
-      strong={false}>
-      <Box
-        announce={false}
-        direction="column"
-        focusable={true}
-        pad="none"
-        responsive={true}
-        style={
-          Object {
-            "zIndex": 10
-          }
-        }
-        tag="div">
-        <List
-          role="list">
-          <ListItem
-            align="center"
-            direction="row"
-            pad={
-              Object {
-                "horizontal": "medium",
-                "vertical": "small"
-              }
-            }
-            role="listitem"
-            separator="bottom">
-            <Box
-              align="start"
-              announce={false}
-              direction="row"
-              focusable={true}
-              justify="around"
-              pad="none"
-              responsive={false}
-              style={
-                Object {
-                  "width": "100%"
-                }
-              }
-              tag="div">
-              <span
-                style={
-                  Object {
-                    "flex": 1,
-                    "height": 30,
-                    "marginTop": 18
-                  }
-                }>
-                David Harris
-              </span>
-              <Button
-                icon={
-                  <function Icon() {
-                      (0, _classCallCheck3.default)(this, Icon);
-                      return (0, _possibleConstructorReturn3.default)(this, (Icon.__proto__ || (0, _getPrototypeOf2.default)(Icon)).apply(this, arguments));
-                    }
-                    a11yTitleId="close-title"
-                    responsive={true} />
-                }
-                onClick={[Function onClick]}
-                type="button" />
-            </Box>
-          </ListItem>
-        </List>
-      </Box>
     </FormField>
     <FormField
       error={null}
@@ -320,6 +355,7 @@ exports[`<EventForm /> should render with default props 1`] = `
         initialValue=""
         invalid={false}
         name="message"
+        placeholder="BYOB, bring a swimming suit, no wives allowed"
         pristine={true}
         rows="3"
         touched={false}

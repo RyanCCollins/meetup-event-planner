@@ -1,6 +1,7 @@
 exports[`<LoginForm /> should render with default props 1`] = `
 <Box
   announce={false}
+  className={undefined}
   direction="column"
   focusable={true}
   pad={
@@ -27,6 +28,8 @@ exports[`<LoginForm /> should render with default props 1`] = `
     </Heading>
     <FormFields>
       <FormField
+        className={undefined}
+        error={undefined}
         help="Enter the email you used to create your account"
         htmlFor="emailInput"
         label="Email *"
@@ -36,11 +39,13 @@ exports[`<LoginForm /> should render with default props 1`] = `
           active={false}
           autoFocus={true}
           autofilled={false}
+          className={undefined}
           dirty={true}
           id="emailInput"
           initialValue=""
           invalid={false}
           name="email"
+          placeholder="bill@clinton.com"
           pristine={false}
           required={true}
           touched={true}
@@ -50,6 +55,8 @@ exports[`<LoginForm /> should render with default props 1`] = `
           visited={true} />
       </FormField>
       <FormField
+        className={undefined}
+        error={undefined}
         help="Enter the password you used to create your account"
         htmlFor="passwordInput"
         label="Password *"
@@ -58,6 +65,7 @@ exports[`<LoginForm /> should render with default props 1`] = `
         <input
           active={false}
           autofilled={false}
+          className={undefined}
           dirty={true}
           id="passwordInput"
           initialValue=""

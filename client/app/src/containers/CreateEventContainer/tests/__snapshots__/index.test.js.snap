@@ -5,16 +5,19 @@ exports[`<CreateEvent /> should render with default props 1`] = `
       "clearCreateEventError": [Function anonymous],
       "clearCreateEventMessage": [Function anonymous],
       "clearCreateEventToast": [Function anonymous],
-      "createEventAddGuest": [Function anonymous],
       "createEventError": [Function anonymous],
       "createEventMessage": [Function anonymous],
-      "createEventRemoveGuest": [Function anonymous],
-      "fieldsToData": [Function anonymous]
+      "fieldsToData": [Function anonymous],
+      "onSetGuests": [Function anonymous],
+      "setEndDateFocus": [Function anonymous],
+      "setStartDateFocus": [Function anonymous]
     }
   }
+  endDateFocused={false}
   errorMessage={null}
   guestList={Array []}
   message={null}
+  startDateFocused={false}
   store={
     Object {
       "clearActions": [Function clearActions],

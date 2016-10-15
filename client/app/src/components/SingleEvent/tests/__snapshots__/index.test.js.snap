@@ -16,6 +16,7 @@ exports[`<SingleEvent /> should render with default props 1`] = `
       }
     }>
     <Article
+      className={undefined}
       direction="column"
       pad={
         Object {
@@ -77,7 +78,7 @@ exports[`<SingleEvent /> should render with default props 1`] = `
           responsive={true}
           tag="div">
           <Location
-            a11yTitleId="location-title"
+            className={undefined}
             responsive={true} />
           <Heading
             align="center"
@@ -95,7 +96,7 @@ exports[`<SingleEvent /> should render with default props 1`] = `
           responsive={true}
           tag="div">
           <Clock
-            a11yTitleId="clock-title"
+            className={undefined}
             responsive={true} />
           <Heading
             align="center"
@@ -121,6 +122,7 @@ exports[`<SingleEvent /> should render with default props 1`] = `
           About
         </Heading>
         <Paragraph
+          className={undefined}
           size="large">
           The best party
         </Paragraph>

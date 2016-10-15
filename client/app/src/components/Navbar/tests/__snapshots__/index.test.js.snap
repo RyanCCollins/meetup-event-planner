@@ -1,5 +1,6 @@
 exports[`<Navbar /> should render with default props 1`] = `
-<div>
+<div
+  className={undefined}>
   <Header
     align="center"
     direction="row"
@@ -19,11 +20,13 @@ exports[`<Navbar /> should render with default props 1`] = `
         tag="a">
         <img
           alt="logo"
+          className={undefined}
           src={Object {}} />
       </Anchor>
     </Title>
     <Menu
       align="center"
+      className={undefined}
       closeOnClick={true}
       direction="row"
       dropAlign={

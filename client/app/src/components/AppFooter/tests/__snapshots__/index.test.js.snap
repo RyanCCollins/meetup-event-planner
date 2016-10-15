@@ -1,10 +1,12 @@
 exports[`<AppFooter /> should render with default props 1`] = `
 <Footer
+  className={undefined}
   direction="row"
   responsive={false}>
   <Box
     align="center"
     announce={false}
+    className={undefined}
     direction="column"
     focusable={true}
     pad={
