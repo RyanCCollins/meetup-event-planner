@@ -45,7 +45,7 @@ export const fieldsToData = (fields) => ({
     name: fields.nameInput.value,
     email: fields.emailInput.value,
     password: fields.passwordInput.value,
-    passwordConfirmation: fields.passwordConfirmationInput.value,
+    password_confirmation: fields.passwordConfirmationInput.value,
     bio: fields.bioInput.value || '',
     employer: fields.employerInput.value || '',
   },
