@@ -41,12 +41,14 @@ export const clearSignupToast = (type) =>
   };
 
 export const fieldsToData = (fields) => ({
-  name: fields.nameInput.value,
-  email: fields.emailInput.value,
-  password: fields.passwordInput.value,
-  passwordConfirmation: fields.passwordConfirmationInput.value,
-  bio: fields.bioInput.value || '',
-  employer: fields.employerInput.value || '',
+  userSignup: {
+    name: fields.nameInput.value,
+    email: fields.emailInput.value,
+    password: fields.passwordInput.value,
+    passwordConfirmation: fields.passwordConfirmationInput.value,
+    bio: fields.bioInput.value || '',
+    employer: fields.employerInput.value || '',
+  },
 });
 
 export const signupSetLoading = () => ({

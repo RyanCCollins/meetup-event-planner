@@ -17,6 +17,7 @@ import validation from './utils/validation';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { reduxForm } from 'redux-form';
+import authUserDataFragment from './authUserDataFragment';
 
 export const formFields = [
   'nameInput',
@@ -157,30 +158,20 @@ const mapDispatchToProps = (dispatch) => ({
 const Container = cssModules(Signup, styles);
 
 const createUserMutation = gql`
-  mutation signUpUser($name: String!, $email:String!,
-    $password: String!, $passwordConfirmation: String!) {
-      SignUp(input: { name: $name, email: $email,
-        password: $password, password_confirmation: $passwordConfirmation }) {
+  mutation signUpUser($userSignup: UserSignupInput) {
+      SignUp(input: { user_signup: $userSignup }) {
           user {
             ...authUserData
           }
         }
       }
-    fragment authUserData on AuthUser {
-      id
-      bio
-      email
-      name
-      avatar
-      authToken: auth_token
-      events {
-        name
-        id
-      }
-    }
 `;
 
-const ContainerWithMutations = graphql(createUserMutation)(Container);
+const ContainerWithMutations = graphql(createUserMutation, {
+  options: () => ({
+    fragments: [authUserDataFragment],
+  }),
+})(Container);
 
 const FormContainer = reduxForm({
   form: 'Signup',

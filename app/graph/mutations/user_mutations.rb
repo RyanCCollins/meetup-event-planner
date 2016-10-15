@@ -2,23 +2,19 @@ module UserMutations
   SignUp = GraphQL::Relay::Mutation.define do
     name 'SignUp'
     description 'Sign up a User'
-    input_field :email, !types.String
-    input_field :name, !types.String
-    input_field :password, !types.String
-    input_field :password_confirmation, !types.String
-    input_field :bio, types.String
-    input_field :employer, types.String
+    input_field :user_signup, UserSignupInputType
 
     return_field :user, AuthUserType
     resolve -> (args, ctx) {
+      input_args = args[:user_signup]
       @user = User.create(
-        name: args[:name],
-        email: args[:email],
-        password: args[:password],
-        password_confirmation: args[:password_confirmation]
+        name: input_args[:name],
+        email: input_args[:email],
+        password: input_args[:password],
+        password_confirmation: input_args[:password_confirmation]
       )
-      @user.bio = args[:bio] if args[:bio]
-      @user.employer = args[:employer] if args[:employer]
+      @user.bio = input_args[:bio] if input_args[:bio]
+      @user.employer = input_args[:employer] if input_args[:employer]
       if @user.save
         {
           user: @user
