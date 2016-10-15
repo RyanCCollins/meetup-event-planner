@@ -43,14 +43,18 @@ const Navbar = ({
             </Anchor>
           </Menu>
         :
-          <span>
+          <Menu
+            direction="row"
+            align="center"
+            className={styles.menu}
+          >
             <Anchor href="/login" className={styles.menuItem}>
               Login
             </Anchor>
             <Anchor href="/signup" className={styles.menuItem}>
               Signup
             </Anchor>
-          </span>
+          </Menu>
         }
       </Menu>
     </Header>

@@ -5,5 +5,6 @@ EventTypeEnum = GraphQL::EnumType.define do
   value 'conference'
   value 'office'
   value 'wedding'
+  value 'coding'
   value 'other'
 end

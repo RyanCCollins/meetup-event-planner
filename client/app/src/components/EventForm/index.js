@@ -130,7 +130,7 @@ const EventForm = ({
           aria-invalid={locationInput.error}
           aria-required
           placeholder="123 Main St, NY, New York 12345"
-          onSuggestSelect={(suggest) => locationInput.onChange(suggest)}
+          onSuggestSelect={(suggest) => locationInput.onChange(suggest.label)}
           {...locationInput}
         />
       </FormField>

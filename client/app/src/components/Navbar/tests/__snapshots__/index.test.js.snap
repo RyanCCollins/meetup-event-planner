@@ -43,7 +43,18 @@ exports[`<Navbar /> should render with default props 1`] = `
         tag="a">
         Events
       </Anchor>
-      <span>
+      <Menu
+        align="center"
+        className={undefined}
+        closeOnClick={true}
+        direction="row"
+        dropAlign={
+          Object {
+            "left": "left",
+            "top": "top"
+          }
+        }
+        pad="none">
         <Anchor
           className={undefined}
           href="/login"
@@ -56,7 +67,7 @@ exports[`<Navbar /> should render with default props 1`] = `
           tag="a">
           Signup
         </Anchor>
-      </span>
+      </Menu>
     </Menu>
   </Header>
 </div>

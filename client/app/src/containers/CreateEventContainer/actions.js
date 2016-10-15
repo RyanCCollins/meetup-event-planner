@@ -52,7 +52,7 @@ export const fieldsToData = (fields, guestList, user) => ({
     message: fields.messageInput.value,
     start_date: fields.startDateInput.value,
     end_date: fields.endDateInput.value,
-    location: fields.locationInput.value.label,
+    location: fields.locationInput.value,
     type: fields.typeInput.value,
     host: {
       name: fields.hostInput.value,
