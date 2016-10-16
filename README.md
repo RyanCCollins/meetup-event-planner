@@ -44,6 +44,12 @@ In production, the client connects to the heroku server.  You can run the server
 NODE_ENV=development node server
 ```
 
+### Build
+The application is bundled using Webpack and the production configuration includes many optimizations, including
+- Code Chunking
+- CSS Module Extract Text
+- Minification / Uglification
+
 ### Testing
 The test suite contains over 70 tests and can be run with
 ```
