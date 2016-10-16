@@ -356,13 +356,12 @@ textarea {
   border: 1px solid #ccc;
   border-top-color: #e6e6e6;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   margin-top: -1px;
-  max-height: 200px;
-  position: absolute;
   top: 100%;
   width: 100%;
-  z-index: 1;
+  position: absolute;
+  z-index: 10000;
   -webkit-overflow-scrolling: touch;
 }
 .Select-menu {

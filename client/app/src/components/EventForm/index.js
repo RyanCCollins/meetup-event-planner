@@ -52,6 +52,7 @@ const EventForm = ({
       </FormField>
       <FormField
         label="Type *"
+        className={styles.formField}
         help="What type of event is it? Select a value from the list."
         error={calculatedError(typeInput)}
         htmlFor="type-input"
@@ -83,6 +84,7 @@ const EventForm = ({
       <FormField
         label="Host *"
         htmlFor="host-input"
+        className={styles.formField}
         help="Select host from list, or start typing to add new host."
         error={calculatedError(hostInput)}
       >
@@ -178,7 +180,7 @@ const EventForm = ({
         label="Guests *"
         htmlFor="guests-input"
         help="Add a new guest, or select past guests."
-        style={{ position: 'relative' }}
+        className={styles.formField}
         error={calculatedError(guestsInput) || atLeastOne(guestList, guestsInput)}
       >
         <Creatable
