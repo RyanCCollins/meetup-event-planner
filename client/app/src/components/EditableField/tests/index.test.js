@@ -9,6 +9,7 @@ describe('<EditableField />', () => {
       <EditableField
         isEditing={false}
         onClickToEdit={e => e}
+        placeholder="Hello World"
         onEdit={e => e}
         value={"hello world"}
         name="bio"
