@@ -14,12 +14,18 @@ User.create(
   password: 'GraphQLUser123'
 )
 
+User.create(
+  name: 'Code Reviewer',
+  email: 'codereviewer@udacity.com',
+  password: 'CodeReviewer123!'
+)
+
 Event.create(
   name: 'Alumni App Release Party',
   user: User.first,
   event_type: 4,
-  start_date: '10/06/2016 5:00PM',
-  end_date: '10/06/2016 7:00PM',
+  start_date: '06/10/2016 5:00PM',
+  end_date: '06/10/2016 7:00PM',
   host: Host.create(name: 'Ryan Collins'),
   guests: Guest.all.first(10),
   message: 'Join us to celebrate the release of the alumni web application.  We will have an online celebration as well as an in-person meetup at Udacity headquarters.',
@@ -30,8 +36,8 @@ Event.create(
   name: 'GraphQL Summit',
   guests: Guest.all.first(7),
   host: Host.create(name: 'Sashko Stubailo'),
-  start_date: '10/26/2016 9:00AM',
-  end_date: '10/26/2016 7:00PM',
+  start_date: '26/10/2016 9:00AM',
+  end_date: '26/10/2016 7:00PM',
   location: '601 19th St, San Francisco, CA 94107',
   user: User.first,
   event_type: 5,
@@ -42,8 +48,8 @@ Event.create(
   name: 'ReactJS SF',
   guests: Guest.all.last(10),
   host: Host.create(name: 'Devon Lindsey'),
-  start_date: '11/10/2016 6:30PM',
-  end_date: '11/10/2016 9:30PM',
+  start_date: '10/11/2016 6:30PM',
+  end_date: '10/11/2016 9:30PM',
   location: '535 Mission St, Suite 700, San Francisco, CA',
   user: User.first,
   event_type: 5,
