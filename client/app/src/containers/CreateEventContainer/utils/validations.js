@@ -10,11 +10,13 @@ const nameInput = [
 const startDateInput = [
   validation.isValidDate,
   validation.valueRequired,
+  validation.isInFuture,
 ];
 
 const endDateInput = [
   validation.isValidDate,
   validation.valueRequired,
+  validation.noLaterThan('startDateInput'),
 ];
 
 const typeInput = [

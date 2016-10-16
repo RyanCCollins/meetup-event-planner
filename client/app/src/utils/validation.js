@@ -94,6 +94,12 @@ export const isEmail = (value) =>
 export const isValidDate = (value) =>
   value && validateWithRE(dateRE, 'Must be a valid date time.')(value);
 
+export const isInFuture = (value) => {
+  const currentDate = new Date();
+  const setDate = new Date(value);
+  return setDate < currentDate ? 'Please choose a date in the future' : null;
+};
+
 export const validateOneOf = (values, message) => (value) => {
   const isValid = values.filter(item => item === value).length > 0;
   return isValid ? message : null;
@@ -105,6 +111,12 @@ export const matches = (matchVal) => (currentVal) =>
 export const oneOf = (values) =>
   (value) =>
     validateOneOf(values, `Value must be one of: ${values.join(', ')}`)(value);
+
+export const noLaterThan = (field) => (value, data) => {
+  const startDate = new Date(data[field]);
+  const endDate = new Date(value);
+  return (endDate < startDate) ? 'The end date must come after the start date' : null;
+};
 
 export const createValidator = (validationRules) =>
   (data = {}) => {
