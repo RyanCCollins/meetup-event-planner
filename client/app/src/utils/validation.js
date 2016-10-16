@@ -99,6 +99,9 @@ export const validateOneOf = (values, message) => (value) => {
   return isValid ? message : null;
 };
 
+export const matches = (matchVal) => (currentVal) =>
+  matchVal === currentVal ? null : `Values must match`;
+
 export const oneOf = (values) =>
   (value) =>
     validateOneOf(values, `Value must be one of: ${values.join(', ')}`)(value);

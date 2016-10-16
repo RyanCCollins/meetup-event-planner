@@ -29,7 +29,6 @@ const passwordConfirmationInput = [
   validation.valueRequired,
 ];
 
-
 // Create the validator
 const signupValidation = validation.createValidator({
   passwordInput,

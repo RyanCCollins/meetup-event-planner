@@ -12,6 +12,10 @@ import Paragraph from 'grommet-udacity/components/Paragraph';
 import { AuthFormFooter, ToolTip } from 'components';
 import calculatedError from './utils/error';
 
+const checkMatches = (field1, field2) =>
+  field1.value !== field2.value && field2.touched ?
+    'Passwords must match' : null;
+
 const SignupForm = ({
   onSubmit,
   nameInput,
@@ -137,7 +141,10 @@ const SignupForm = ({
           label="Password Confirmation *"
           htmlFor="passwordConfirmationInput"
           className={styles.formField}
-          error={calculatedError(passwordConfirmationInput)}
+          error={
+            calculatedError(passwordConfirmationInput) ||
+              checkMatches(passwordInput, passwordConfirmationInput)
+          }
         >
           <input
             {...passwordConfirmationInput}
@@ -173,7 +180,7 @@ const SignupForm = ({
           label="Employer"
           className={styles.formField}
           help="Optional Employer Field"
-          htmlFor="bio-input"
+          htmlFor="employer-input"
         >
           <input
             {...employerInput}
@@ -188,7 +195,16 @@ const SignupForm = ({
         </FormField>
       </FormFields>
       <Footer pad={{ vertical: 'medium' }} align="center">
-        <Button onClick={invalid ? null : onSubmit} fill label="Submit" primary />
+        <Button
+          onClick={
+            invalid ||
+              checkMatches(passwordInput, passwordConfirmationInput) !== null ?
+                null : onSubmit
+          }
+          fill
+          label="Submit"
+          primary
+        />
       </Footer>
       <AuthFormFooter text="Already a member?" link="/login" />
     </Form>
