@@ -3,7 +3,7 @@
 # Meetup Event Planner
 
 ## Background
-The app consists of a Rails / GraphQL API and React / Redux SPA Front End.  See here for [a Medium article](https://medium.com/@ryancollinsio/b261f6cfea93) describing the development process for this app.
+The app consists of a Rails / GraphQL API and React Front End.  See here for [a Medium article](https://medium.com/@ryancollinsio/b261f6cfea93) describing the development process for this app.
 
 A web application to arrange meetup events using cutting edge technologies, including GraphQL, Ruby on Rails and React.
 
