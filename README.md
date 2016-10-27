@@ -1,5 +1,8 @@
 ![Code Ship](https://codeship.com/projects/c47fa4d0-72f6-0134-360b-1ae66e72c451/status?branch=master)
 
+## Note:
+Please see the `/client` directory for the React single page application.
+
 # Meetup Event Planner
 
 ## Background
