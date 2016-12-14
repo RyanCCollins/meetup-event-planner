@@ -5,7 +5,7 @@ Please see the `/client` directory for the React single page application.
 
 # Meetup Event Planner
 
-## Background
+## About the App
 The app consists of a Rails / GraphQL API and React Front End.  See here for [a Medium article](https://medium.com/@ryancollinsio/b261f6cfea93) describing the development process for this app.
 
 A web application to arrange meetup events using cutting edge technologies, including GraphQL, Ruby on Rails and React.
